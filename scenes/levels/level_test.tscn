@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ihcus5gs8b1s"]
+
+[sub_resource type="Gradient" id="Gradient_8tfhr"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ua7yo"]
+gradient = SubResource("Gradient_8tfhr")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
+size = Vector2(64, 64)
+
+[node name="level_test" type="Node2D" unique_id=1783229928]
+
+[node name="st_block" type="StaticBody2D" parent="." unique_id=389796962]
+position = Vector2(552, 552)
+scale = Vector2(19.771072, 1.7505958)
+
+[node name="Sprite2D" type="Sprite2D" parent="st_block" unique_id=737177622]
+texture = SubResource("GradientTexture2D_ua7yo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="st_block" unique_id=1581327973]
+shape = SubResource("RectangleShape2D_8njf7")
