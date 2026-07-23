@@ -21,6 +21,7 @@ Global="*uid://2n2dq2xxsjmx"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -36,6 +37,7 @@ enabled=PackedStringArray("res://addons/godot-neovim/plugin.cfg")
 [global_group]
 
 Player=""
+selectable="for time slow ability use"
 
 [input]
 

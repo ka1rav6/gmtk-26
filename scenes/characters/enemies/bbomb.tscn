@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c07337akfr6x5"]
 
 [ext_resource type="Script" uid="uid://cw5qoiwxgp713" path="res://scenes/characters/enemies/bbomb.gd" id="1_5cbh3"]
+[ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="2_qm5xw"]
 
 [sub_resource type="Gradient" id="Gradient_wuwo8"]
 offsets = PackedFloat32Array(0.10452962, 0.46341464, 0.5191638, 0.88850176)
@@ -14,11 +15,29 @@ fill_to = Vector2(0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
 size = Vector2(64, 64)
 
-[node name="bbomb" type="CharacterBody2D" unique_id=512232861]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ua7yo"]
+size = Vector2(64, 64)
+
+[node name="bbomb" type="CharacterBody2D" unique_id=512232861 groups=["selectable"]]
 script = ExtResource("1_5cbh3")
+SPEED = 100.0
+
+[node name="select_sprite" type="Sprite2D" parent="." unique_id=269152621]
+visible = false
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_qm5xw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=154427481]
 texture = SubResource("GradientTexture2D_8njf7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1100398884]
 shape = SubResource("RectangleShape2D_8njf7")
+
+[node name="mouseCollider" type="Area2D" parent="." unique_id=1534806320]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouseCollider" unique_id=1153013348]
+shape = SubResource("RectangleShape2D_ua7yo")
+
+[connection signal="input_event" from="mouseCollider" to="." method="_on_mouse_collider_input_event"]
+[connection signal="mouse_entered" from="mouseCollider" to="." method="_on_mouse_collider_mouse_entered"]
+[connection signal="mouse_exited" from="mouseCollider" to="." method="_on_mouse_collider_mouse_exited"]
