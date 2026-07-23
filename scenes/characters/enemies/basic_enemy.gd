@@ -10,13 +10,16 @@ func _physics_process(delta: float) -> void:
 		velocity.y = tJumpVelocity
 	
 	if Global.player:
-		var direction :=  1 if ((Global.player.global_position.x - global_position.x) > 0) else -1
-		if direction:
-			velocity.x += direction * tSpeed
+		if !isThrown:
+			var direction :=  1 if ((Global.player.global_position.x - global_position.x) > 0) else -1
+			if direction:
+				velocity.x += direction * tSpeed
+			else:
+				velocity.x = move_toward(velocity.x, 0, 2 * tSpeed)
+			if abs(velocity.x) > tMaxVel:
+				velocity.x = sign(velocity.x) * tMaxVel
 		else:
-			velocity.x += move_toward(velocity.x, 0, tSpeed)
-		if velocity.x > tMaxVel:
-			velocity.x = sign(velocity.x) * tMaxVel
+			velocity.x = move_toward(velocity.x, 0, tSpeed)
 	
 	# move and slide is called by super
 	super._physics_process(delta)

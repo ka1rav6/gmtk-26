@@ -18,10 +18,12 @@ extends CharacterBody2D
 @onready var health:= MAX_HEALTH
 
 var currentTimeFactor := 1.0
-var isAffectedBy := 0
 var dragging := false
 var drag_start := Vector2.ZERO
 var drag_current := Vector2.ZERO
+
+var isAffectedBy := 0
+var isThrown := false
 
 func _ready() -> void:
 	if line == null:
@@ -57,12 +59,19 @@ func _on_mouse_collider_mouse_exited() -> void:
 func _tf() -> void:
 	currentTimeFactor /= slowDownTimeFactor
 	isAffectedBy -= 1
+	if dragging:
+		dragging = false
+		Global.toggle_all()
+		mc.scale /= 20.0
+		line.clear_points()
 
-func shoot() -> void:
+func throw() -> void:
 	var drag = global_position - get_global_mouse_position()
 	if drag.length() > max_drag:
 		drag = drag.normalized() * max_drag
 	velocity += drag * power
+	move_and_slide()
+	isThrown = true
 
 func update_trajectory() -> void:
 	line.clear_points()
@@ -93,7 +102,7 @@ func _on_mouse_collider_input_event(_viewport: Node, event: InputEvent, _shape_i
 		elif event.button_index == MOUSE_BUTTON_RIGHT and isAffectedBy > 0:
 			if event.is_released() and dragging:
 				Global.toggle_all()
-				shoot()
+				throw()
 				mc.scale /= 20.0
 				dragging = false
 				line.clear_points()
@@ -108,5 +117,6 @@ func _physics_process(delta: float) -> void:
 	var tDelta = delta * currentTimeFactor
 	if not is_on_floor():
 		velocity += get_gravity() * tDelta 
-	
+	if isThrown && (is_on_ceiling() || is_on_floor() || is_on_wall()):
+		isThrown = false
 	move_and_slide()
