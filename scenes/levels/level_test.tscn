@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="1_h0hot"]
 [ext_resource type="PackedScene" uid="uid://berxsoguxvgf8" path="res://scenes/characters/enemies/basic_enemy.tscn" id="2_yluh8"]
+[ext_resource type="Script" uid="uid://xudid231tqpi" path="res://scenes/ui/UIController.gd" id="3_uictrl"]
+[ext_resource type="PackedScene" uid="uid://start_menu" path="res://scenes/ui/StartMenu.tscn" id="4_startm"]
+[ext_resource type="PackedScene" uid="uid://pause_menu" path="res://scenes/ui/PauseMenu.tscn" id="5_pausem"]
 
 [sub_resource type="Gradient" id="Gradient_8tfhr"]
 
@@ -114,3 +117,25 @@ position = Vector2(232, 16)
 
 [node name="basic_enemy" parent="." unique_id=512232861 instance=ExtResource("2_yluh8")]
 position = Vector2(1176, -16)
+
+[node name="UIController" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("3_uictrl")
+
+[node name="PauseButton" type="Button" parent="UIController"]
+anchors_preset = 1
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+visible = false
+text = "⏸ Pause"
+
+[node name="StartMenu" parent="UIController" instance=ExtResource("4_startm")]
+
+[node name="PauseMenu" parent="UIController" instance=ExtResource("5_pausem")]
+layer = 100
+
