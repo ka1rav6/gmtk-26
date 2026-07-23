@@ -55,6 +55,7 @@ height = 48.0
 [node name="Player" type="CharacterBody2D" unique_id=687081500 groups=["Player"]]
 collision_mask = 15
 script = SubResource("GDScript_su4eo")
+JUMP_VELOCITY = -600.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1371535421]
 scale = Vector2(0.5, 0.75)
