@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ihcus5gs8b1s"]
 
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="1_h0hot"]
-[ext_resource type="PackedScene" uid="uid://c07337akfr6x5" path="res://scenes/characters/enemies/bbomb.tscn" id="2_yluh8"]
+[ext_resource type="PackedScene" uid="uid://berxsoguxvgf8" path="res://scenes/characters/enemies/basic_enemy.tscn" id="2_yluh8"]
 
 [sub_resource type="Gradient" id="Gradient_8tfhr"]
 
@@ -24,6 +24,7 @@ texture = SubResource("GradientTexture2D_ua7yo")
 shape = SubResource("RectangleShape2D_8njf7")
 
 [node name="Player" parent="." unique_id=687081500 instance=ExtResource("1_h0hot")]
+position = Vector2(232, 16)
 
-[node name="bbomb" parent="." unique_id=512232861 instance=ExtResource("2_yluh8")]
-position = Vector2(704, 208)
+[node name="basic_enemy" parent="." unique_id=512232861 instance=ExtResource("2_yluh8")]
+position = Vector2(136, 24)

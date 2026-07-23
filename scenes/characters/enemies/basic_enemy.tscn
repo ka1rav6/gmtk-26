@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://c07337akfr6x5"]
+[gd_scene format=3 uid="uid://berxsoguxvgf8"]
 
-[ext_resource type="Script" uid="uid://cw5qoiwxgp713" path="res://scenes/characters/enemies/bbomb.gd" id="1_5cbh3"]
-[ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="2_qm5xw"]
+[ext_resource type="Script" uid="uid://jfjernl20pxn" path="res://scenes/characters/enemies/basic_enemy.gd" id="1_1whgi"]
+[ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="2_g5wgt"]
 
 [sub_resource type="Gradient" id="Gradient_wuwo8"]
 offsets = PackedFloat32Array(0.10452962, 0.46341464, 0.5191638, 0.88850176)
@@ -18,18 +18,20 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ua7yo"]
 size = Vector2(64, 64)
 
-[node name="bbomb" type="CharacterBody2D" unique_id=512232861 groups=["selectable"]]
+[node name="basic_enemy" type="CharacterBody2D" unique_id=512232861 node_paths=PackedStringArray("line", "sels", "mc") groups=["selectable"]]
 collision_layer = 8
 collision_mask = 3
 floor_max_angle = 1.134464
-script = ExtResource("1_5cbh3")
-SPEED = 100.0
-COUNTDOWN_HEIGHT = 60
+script = ExtResource("1_1whgi")
+power = 2.0
+line = NodePath("ShootDir")
+sels = NodePath("select_sprite")
+mc = NodePath("mouseCollider")
 
 [node name="select_sprite" type="Sprite2D" parent="." unique_id=269152621]
 visible = false
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_qm5xw")
+texture = ExtResource("2_g5wgt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=154427481]
 texture = SubResource("GradientTexture2D_8njf7")
@@ -42,6 +44,4 @@ shape = SubResource("RectangleShape2D_8njf7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mouseCollider" unique_id=1153013348]
 shape = SubResource("RectangleShape2D_ua7yo")
 
-[connection signal="input_event" from="mouseCollider" to="." method="_on_mouse_collider_input_event"]
-[connection signal="mouse_entered" from="mouseCollider" to="." method="_on_mouse_collider_mouse_entered"]
-[connection signal="mouse_exited" from="mouseCollider" to="." method="_on_mouse_collider_mouse_exited"]
+[node name="ShootDir" type="Line2D" parent="." unique_id=55300805]

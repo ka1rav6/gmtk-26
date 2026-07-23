@@ -66,7 +66,9 @@ jump={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="World Static"
-2d_physics/layer_3="Damage Enemy"
+2d_physics/layer_3="Bullets"
+2d_physics/layer_4="Enemy"
+2d_physics/layer_5="KillZone"
 
 [physics]
 
@@ -76,3 +78,5 @@ jump={
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/decals/filter=2
+textures/light_projectors/filter=2

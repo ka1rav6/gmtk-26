@@ -53,6 +53,7 @@ radius = 16.0
 height = 48.0
 
 [node name="Player" type="CharacterBody2D" unique_id=687081500 groups=["Player"]]
+collision_mask = 15
 script = SubResource("GDScript_su4eo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1371535421]
