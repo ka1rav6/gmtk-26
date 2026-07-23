@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://br1y62d552ft6"]
+
+[sub_resource type="GDScript" id="GDScript_srvkq"]
+script/source = "extends Node2D
+
+@export var cb: Callable
+@export var time: int
+@export var height: int
+
+func _ready() -> void:
+	$Timer.wait_time = 1
+	$Label.position += Vector2(0, -height)
+	_on_timer_timeout()
+
+
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_timer_timeout() -> void:
+	if time == 0:
+		cb.call()
+		queue_free()
+	$Label.text = time
+	$Timer.start()
+	time -= 1;
+"
+
+[node name="TimerNode" type="Node2D" unique_id=1739776658]
+script = SubResource("GDScript_srvkq")
+
+[node name="Timer" type="Timer" parent="." unique_id=548267879]
+
+[node name="Label" type="Label" parent="." unique_id=1889335468]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

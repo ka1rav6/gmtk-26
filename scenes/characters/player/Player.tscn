@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://8xvf6qyd5m1m"]
+
+[sub_resource type="GDScript" id="GDScript_su4eo"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
+func _ready() -> void:
+	Global.score = 0
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"ability_fast\"):
+		Global.powerMode = true
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	var direction := Input.get_axis(\"left\", \"right\")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+"
+
+[sub_resource type="Gradient" id="Gradient_srvkq"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bxxdx"]
+gradient = SubResource("Gradient_srvkq")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8njf7"]
+radius = 16.0
+height = 48.0
+
+[node name="Player" type="CharacterBody2D" unique_id=687081500 groups=["Player"]]
+script = SubResource("GDScript_su4eo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1371535421]
+scale = Vector2(0.5, 0.75)
+texture = SubResource("GradientTexture2D_bxxdx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=981056087]
+shape = SubResource("CapsuleShape2D_8njf7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=950777011]
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true

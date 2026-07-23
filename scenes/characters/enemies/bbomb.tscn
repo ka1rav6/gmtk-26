@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c07337akfr6x5"]
+
+[ext_resource type="Script" uid="uid://cw5qoiwxgp713" path="res://scenes/characters/enemies/bbomb.gd" id="1_5cbh3"]
+
+[sub_resource type="Gradient" id="Gradient_wuwo8"]
+offsets = PackedFloat32Array(0.10452962, 0.46341464, 0.5191638, 0.88850176)
+colors = PackedColorArray(0.9177572, 0.4674608, 0.7352155, 1, 1, 1, 1, 1, 0.9764368, 0.9968494, 0.99300313, 1, 0.64066094, 0.95195395, 0.8932974, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8njf7"]
+gradient = SubResource("Gradient_wuwo8")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
+size = Vector2(64, 64)
+
+[node name="bbomb" type="CharacterBody2D" unique_id=512232861]
+script = ExtResource("1_5cbh3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=154427481]
+texture = SubResource("GradientTexture2D_8njf7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1100398884]
+shape = SubResource("RectangleShape2D_8njf7")
