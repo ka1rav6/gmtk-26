@@ -105,7 +105,7 @@ func _on_mouse_collider_input_event(_viewport: Node, event: InputEvent, _shape_i
 			set_speed(slowDownTimeFactor)
 			isAffectedBy += 1
 			CreateTimer(5, Callable(self, "_tf"))
-		elif event.button_index == MOUSE_BUTTON_RIGHT and isAffectedBy > 0:
+		elif event.button_index == MOUSE_BUTTON_RIGHT and (Global.player.global_position - global_position).length_squared() < (Global.throwDistance**2):
 			if event.is_released() and dragging:
 				Global.toggle_all()
 				throw()

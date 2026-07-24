@@ -3,9 +3,26 @@ extends Node
 var score: int
 var powerMode: bool
 var player: CharacterBody2D
+var throwDistance: int
 
-const ULTRAINSTINCT_SLOWDOWN = 0.25
+const ULTRAINSTINCT_SLOWDOWN = 0.1
 
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	score = 0
+	powerMode = false
+	refresh_player()
+	throwDistance = 50
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	if not is_instance_valid(player):
+		refresh_player()
+
+func refresh_player() -> void:
+	if not is_instance_valid(player):
+		player = get_tree().get_first_node_in_group("Player")
+		
 func toggle_all() -> void:
 	refresh_player()
 	powerMode = !powerMode
@@ -26,19 +43,3 @@ func toggle_all() -> void:
 				node.set_speed(ULTRAINSTINCT_SLOWDOWN)
 			else:
 				node.set_speed(1 / ULTRAINSTINCT_SLOWDOWN)
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	score = 0
-	powerMode = false
-	refresh_player()
-	
-
-func refresh_player() -> void:
-	if not is_instance_valid(player):
-		player = get_tree().get_first_node_in_group("Player")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if not is_instance_valid(player):
-		refresh_player()
