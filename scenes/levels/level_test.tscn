@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://diqvtf34faohx" path="res://scenes/level_elements/tile_map_layer.tscn" id="8_8883n"]
 [ext_resource type="PackedScene" uid="uid://7egbo2phrlrn" path="res://scenes/level scenes/roatatingWheel.tscn" id="8_bqmi1"]
 [ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="9_8883n"]
+[ext_resource type="PackedScene" uid="uid://dbn7rh2k1oml0" path="res://scenes/level_elements/spawner.tscn" id="10_es4qh"]
 
 [sub_resource type="Animation" id="Animation_4lw2e"]
 length = 2.5
@@ -123,3 +124,8 @@ tile_map_data = PackedByteArray("AAAGAAoAAgAGAAIAAAAGAAkAAgAAAAMAAAAGAAgAAgAFAAI
 [node name="Area2D" parent="." unique_id=936476831 instance=ExtResource("9_8883n")]
 position = Vector2(-328, 1856)
 scale = Vector2(-981.13696, 3.2612631)
+
+[node name="Spawner" parent="." unique_id=473787837 instance=ExtResource("10_es4qh")]
+position = Vector2(1736, 312)
+toSpawn = ExtResource("2_yluh8")
+spawnEvery = 5.0

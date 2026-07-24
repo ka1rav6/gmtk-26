@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dbn7rh2k1oml0"]
+
+[ext_resource type="Script" uid="uid://kgq7ihfdrxh3" path="res://scenes/level_elements/spawner.gd" id="1_fsgwl"]
+[ext_resource type="Texture2D" uid="uid://bufpncew2nrvx" path="res://art/checkpoint high res.png" id="2_t668y"]
+
+[node name="Spawner" type="Node2D" unique_id=473787837]
+script = ExtResource("1_fsgwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=140006384]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_t668y")
