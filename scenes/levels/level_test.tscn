@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dbn7rh2k1oml0" path="res://scenes/level_elements/spawner.tscn" id="10_es4qh"]
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="11_nxmka"]
 [ext_resource type="PackedScene" uid="uid://qkmetoqvr6pd" path="res://scenes/levels/level_1.tscn" id="12_6racp"]
+[ext_resource type="Script" uid="uid://d3xb0rfnjwx01" path="res://scenes/levels/label.gd" id="13_6racp"]
 
 [sub_resource type="Animation" id="Animation_4lw2e"]
 length = 2.5
@@ -135,3 +136,10 @@ spawnEvery = 5.0
 [node name="portal" parent="." unique_id=1524441498 instance=ExtResource("11_nxmka")]
 position = Vector2(2696, 312)
 nextLevel = ExtResource("12_6racp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1334964417]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1572087833]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("13_6racp")

@@ -60,7 +60,8 @@ func _on_mouse_collider_mouse_exited() -> void:
 	sels.scale /= onHoverScaleFactor
 
 func _tf() -> void:
-	set_speed(1 / slowDownTimeFactor)
+	if currentTimeFactor < 1.0:
+		set_speed(1 / slowDownTimeFactor)
 	isAffectedBy -= 1
 	if dragging:
 		dragging = false
@@ -77,7 +78,11 @@ func throw() -> void:
 	var drag = global_position - get_global_mouse_position()
 	if drag.length() > max_drag:
 		drag = drag.normalized() * max_drag
-	velocity += drag * power
+	var throw_power = power
+	if currentTimeFactor >= 1.0:
+		throw_power *= (1.0 / Global.ULTRAINSTINCT_SLOWDOWN)
+	velocity += drag * throw_power
+	currentTimeFactor = 1.0
 	move_and_slide()
 	isThrown = true
 	set_physics_process(true)
@@ -87,17 +92,18 @@ func update_trajectory() -> void:
 	var drag = global_position - get_global_mouse_position()
 	if drag.length() > max_drag:
 		drag = drag.normalized() * max_drag
-	var vel2 = velocity + drag * power
-	
+	var throw_power = power
+	if currentTimeFactor >= 1.0:
+		throw_power *= (1.0 / Global.ULTRAINSTINCT_SLOWDOWN)
+	var vel2 = velocity + drag * throw_power
+
 	var simpos = Vector2.ZERO
-	#var simvel = vel2
 	var step_dt = 0.25
-	
+
 	for i in range(15):
 		line.add_point(simpos)
-		vel2 += get_gravity() * currentTimeFactor * step_dt / Global.ULTRAINSTINCT_SLOWDOWN
+		vel2 += get_gravity() * step_dt
 		simpos += vel2 * step_dt
-	pass
 
 func _on_mouse_collider_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if not Global.powerMode:

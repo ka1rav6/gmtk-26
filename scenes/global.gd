@@ -1,10 +1,11 @@
 extends Node
 
+
 var score: int
 var powerMode: bool
 var player: CharacterBody2D
 var throwDistance: int
-
+var enemy_count :=0
 const ULTRAINSTINCT_SLOWDOWN = 0.1
 
 # Called when the node enters the scene tree for the first time.
