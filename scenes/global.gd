@@ -7,7 +7,7 @@ var player: CharacterBody2D
 const ULTRAINSTINCT_SLOWDOWN = 0.25
 
 func toggle_all() -> void:
-	await refresh_player()
+	refresh_player()
 	powerMode = !powerMode
 	if is_instance_valid(player):
 		player.bgm.visible = powerMode

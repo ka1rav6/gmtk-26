@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="1_h0hot"]
 [ext_resource type="PackedScene" uid="uid://berxsoguxvgf8" path="res://scenes/characters/enemies/basic_enemy.tscn" id="2_yluh8"]
+[ext_resource type="PackedScene" uid="uid://dhsk5i7hf7tea" path="res://scenes/characters/enemies/Sniper.tscn" id="3_4ptlp"]
+[ext_resource type="PackedScene" uid="uid://kxh4mvnfrfl" path="res://scenes/characters/enemies/Lazer.tscn" id="3_jp5fc"]
 
 [sub_resource type="Gradient" id="Gradient_8tfhr"]
 
@@ -18,6 +20,8 @@ size = Vector2(64, 64)
 [node name="st_block" type="StaticBody2D" parent="levelItems" unique_id=389796962]
 position = Vector2(552, 552)
 scale = Vector2(19.771072, 1.7505958)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="levelItems/st_block" unique_id=737177622]
 texture = SubResource("GradientTexture2D_ua7yo")
@@ -28,6 +32,8 @@ shape = SubResource("RectangleShape2D_8njf7")
 [node name="st_block4" type="StaticBody2D" parent="levelItems" unique_id=140594193]
 position = Vector2(768, 488)
 scale = Vector2(19.771072, 1.7505958)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="levelItems/st_block4" unique_id=740455298]
 texture = SubResource("GradientTexture2D_ua7yo")
@@ -39,6 +45,8 @@ shape = SubResource("RectangleShape2D_8njf7")
 position = Vector2(392, 464)
 rotation = 1.5707964
 scale = Vector2(3.163372, 1.7505958)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="levelItems/st_block5" unique_id=1937287966]
 texture = SubResource("GradientTexture2D_ua7yo")
@@ -50,6 +58,8 @@ shape = SubResource("RectangleShape2D_8njf7")
 position = Vector2(656, 471.99997)
 rotation = 1.5707964
 scale = Vector2(3.163372, 1.7505958)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="levelItems/st_block6" unique_id=1167231365]
 texture = SubResource("GradientTexture2D_ua7yo")
@@ -61,6 +71,8 @@ shape = SubResource("RectangleShape2D_8njf7")
 position = Vector2(744, 416)
 rotation = 1.5707964
 scale = Vector2(3.163372, 1.7505958)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="levelItems/st_block7" unique_id=1247253656]
 texture = SubResource("GradientTexture2D_ua7yo")
@@ -72,6 +84,8 @@ shape = SubResource("RectangleShape2D_8njf7")
 position = Vector2(848, 471.99997)
 rotation = 1.5707964
 scale = Vector2(3.163372, 1.7505958)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="levelItems/st_block8" unique_id=78014648]
 texture = SubResource("GradientTexture2D_ua7yo")
@@ -82,6 +96,8 @@ shape = SubResource("RectangleShape2D_8njf7")
 [node name="st_block9" type="StaticBody2D" parent="levelItems" unique_id=513112810]
 position = Vector2(528, 200)
 scale = Vector2(3.7752075, 0.6324934)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="levelItems/st_block9" unique_id=516339186]
 texture = SubResource("GradientTexture2D_ua7yo")
@@ -93,6 +109,8 @@ shape = SubResource("RectangleShape2D_8njf7")
 position = Vector2(1496, 216)
 rotation = 2.3561945
 scale = Vector2(19.771072, 1.7505958)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="levelItems/st_block2" unique_id=2012987506]
 texture = SubResource("GradientTexture2D_ua7yo")
@@ -104,6 +122,8 @@ shape = SubResource("RectangleShape2D_8njf7")
 position = Vector2(-320, 328)
 rotation = 0.7853982
 scale = Vector2(19.771072, 1.7505958)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="levelItems/st_block3" unique_id=235296894]
 texture = SubResource("GradientTexture2D_ua7yo")
@@ -116,3 +136,9 @@ position = Vector2(232, 16)
 
 [node name="basic_enemy" parent="." unique_id=512232861 instance=ExtResource("2_yluh8")]
 position = Vector2(976, -56)
+
+[node name="sniper" parent="." unique_id=1634255476 instance=ExtResource("3_4ptlp")]
+position = Vector2(-384, -160)
+
+[node name="lazer" parent="." unique_id=1249195999 instance=ExtResource("3_jp5fc")]
+position = Vector2(512, 88)
