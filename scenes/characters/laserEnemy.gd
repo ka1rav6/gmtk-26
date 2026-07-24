@@ -17,6 +17,9 @@ extends CharacterBody2D
 @onready var tmrScene: PackedScene = preload("res://scenes/characters/timer_node.tscn")
 @onready var health:= MAX_HEALTH
 
+var pulseTimer: Timer
+@onready var motionRayScene: PackedScene = preload("res://scenes/effects/motion_ray.tscn")
+
 # last direction the enemy was actually moving in, so a stationary enemy still
 # projects a sensible ray
 var lastDir := Vector2.RIGHT
@@ -40,6 +43,25 @@ func _ready() -> void:
 	mc.mouse_entered.connect(_on_mouse_collider_mouse_entered)
 	mc.mouse_exited.connect(_on_mouse_collider_mouse_exited)
 
+	pulseTimer = Timer.new()
+	pulseTimer.one_shot = true
+	pulseTimer.timeout.connect(_on_pulse_timer_timeout)
+	add_child(pulseTimer)
+	_schedule_pulse()
+
+func _schedule_pulse() -> void:
+	# next ping in 3, 4 or 5 seconds
+	pulseTimer.start(randi_range(3, 5))
+
+func _on_pulse_timer_timeout() -> void:
+	pulse()
+	_schedule_pulse()
+
+func pulse() -> void:
+	var w = motionRayScene.instantiate()
+	add_child(w)
+	w.global_position = global_position
+	w.fire(lastDir, [get_rid()] as Array[RID])
 
 func toggle_sprite() -> void:
 	sels.visible = Global.powerMode
@@ -124,6 +146,6 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * tDelta 
 	if isThrown && (is_on_ceiling() || is_on_floor() || is_on_wall()):
 		isThrown = false
-	if velocity.length_squared() > 1.0:
-		lastDir = velocity.normalized()
+	if abs(velocity.x) > 1.0:
+		lastDir = Vector2(signf(velocity.x),0.0)
 	move_and_slide()

@@ -45,3 +45,5 @@ shape = SubResource("RectangleShape2D_8njf7")
 shape = SubResource("RectangleShape2D_ua7yo")
 
 [node name="ShootDir" type="Line2D" parent="." unique_id=55300805]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1225379894]

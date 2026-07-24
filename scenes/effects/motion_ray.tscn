@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://wsmovodi8wxn"]
+
+[ext_resource type="Script" uid="uid://nufsii8bpyq8" path="res://scenes/effects/motion_ray.gd" id="1_ray"]
+
+[node name="motion_ray" type="Node2D" unique_id=1871159047]
+top_level = true
+script = ExtResource("1_ray")
+extend_time = 0.12
+fade_time = 0.35
