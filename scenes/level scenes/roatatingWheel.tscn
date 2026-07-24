@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://7egbo2phrlrn"]
+
+[ext_resource type="Texture2D" uid="uid://chula8l4dgfx8" path="res://art/plus-removebg-preview.png" id="1_fqw3k"]
+
+[sub_resource type="Animation" id="Animation_h63lj"]
+length = 1.9666667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 6.2831855, -0.3277778, -1.0471976, 0, 0),
+"times": PackedFloat32Array(0, 1.9666667)
+}
+
+[sub_resource type="Animation" id="Animation_fqw3k"]
+resource_name = "roatation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qd020"]
+_data = {
+&"RESET": SubResource("Animation_h63lj"),
+&"roatation": SubResource("Animation_fqw3k")
+}
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_sasfg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sasfg"]
+
+[node name="RoatatingWheel" type="Node2D" unique_id=1564126359]
+scale = Vector2(15.265, 5.729)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1847892785]
+libraries/ = SubResource("AnimationLibrary_qd020")
+autoplay = &"RESET"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=451907762]
+scale = Vector2(0.087092526, 0.0978713)
+texture = ExtResource("1_fqw3k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D" unique_id=183690413]
+shape = SubResource("ConvexPolygonShape2D_sasfg")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Sprite2D" unique_id=1983628705]
+position = Vector2(-0.75218093, -112.35861)
+shape = SubResource("RectangleShape2D_sasfg")
+target_position = Vector2(-0.75218093, 224.71722)

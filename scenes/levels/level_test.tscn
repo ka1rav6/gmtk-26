@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://berxsoguxvgf8" path="res://scenes/characters/enemies/basic_enemy.tscn" id="2_yluh8"]
 [ext_resource type="PackedScene" uid="uid://dhsk5i7hf7tea" path="res://scenes/characters/enemies/Sniper.tscn" id="3_4ptlp"]
 [ext_resource type="PackedScene" uid="uid://kxh4mvnfrfl" path="res://scenes/characters/enemies/Lazer.tscn" id="3_jp5fc"]
+[ext_resource type="PackedScene" uid="uid://dxsr6d3bwtg23" path="res://scenes/level scenes/platform.tscn" id="6_uh3ll"]
+[ext_resource type="PackedScene" uid="uid://cig3xu4f20xgd" path="res://scenes/level scenes/larger_platform.tscn" id="7_4lw2e"]
+[ext_resource type="PackedScene" uid="uid://7egbo2phrlrn" path="res://scenes/level scenes/roatatingWheel.tscn" id="8_bqmi1"]
 
 [sub_resource type="Gradient" id="Gradient_8tfhr"]
 
@@ -12,6 +15,82 @@ gradient = SubResource("Gradient_8tfhr")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
 size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_4lw2e"]
+length = 2.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(74, 196), Vector2(74, 196), Vector2(659, 196)]
+}
+
+[sub_resource type="Animation" id="Animation_bqmi1"]
+resource_name = "new_animation"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(74, 196), Vector2(619, 196)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8883n"]
+_data = {
+&"RESET": SubResource("Animation_4lw2e"),
+&"new_animation": SubResource("Animation_bqmi1")
+}
+
+[sub_resource type="Animation" id="Animation_es4qh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(939, 319)]
+}
+
+[sub_resource type="Animation" id="Animation_s0ovu"]
+resource_name = "verticalMotion"
+length = 2.5000000000000004
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(939, 319), Vector2(939, 58)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nxmka"]
+_data = {
+&"RESET": SubResource("Animation_es4qh"),
+&"verticalMotion": SubResource("Animation_s0ovu")
+}
 
 [node name="level_test" type="Node2D" unique_id=1783229928]
 
@@ -142,3 +221,20 @@ position = Vector2(-384, -160)
 
 [node name="lazer" parent="." unique_id=1249195999 instance=ExtResource("3_jp5fc")]
 position = Vector2(512, 88)
+
+[node name="Platform" parent="." unique_id=1546735083 instance=ExtResource("7_4lw2e")]
+position = Vector2(74, 196)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform" unique_id=1674103341]
+libraries/ = SubResource("AnimationLibrary_8883n")
+autoplay = &"RESET"
+
+[node name="Platform2" parent="." unique_id=1129744368 instance=ExtResource("6_uh3ll")]
+position = Vector2(939, 319)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2" unique_id=1883440497]
+libraries/ = SubResource("AnimationLibrary_nxmka")
+autoplay = &"verticalMotion"
+
+[node name="RoatatingWheel" parent="." unique_id=1564126359 instance=ExtResource("8_bqmi1")]
+position = Vector2(1241, 200)

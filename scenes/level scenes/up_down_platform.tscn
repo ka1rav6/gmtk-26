@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bfsyvm563fpnp"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sasfg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2fby"]
+size = Vector2(265.5, 33.75)
+
+[sub_resource type="Animation" id="Animation_u5x0f"]
+resource_name = "up down"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sm216"]
+_data = {
+&"up down": SubResource("Animation_u5x0f")
+}
+
+[node name="Platform" type="AnimatableBody2D" unique_id=1546735083]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1697402375]
+position = Vector2(123, 17.499998)
+scale = Vector2(266, 34.999996)
+texture = SubResource("CanvasTexture_sasfg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1123699167]
+position = Vector2(123.25, 17.125)
+shape = SubResource("RectangleShape2D_s2fby")
+one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1875891472]
+libraries/ = SubResource("AnimationLibrary_sm216")
