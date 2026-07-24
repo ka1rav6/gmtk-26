@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8xvf6qyd5m1m"]
 
 [ext_resource type="Texture2D" uid="uid://17e0yruel2ss" path="res://art/temp frame.png" id="1_db84v"]
-[ext_resource type="PackedScene" uid="uid://pause_menu" path="res://scenes/ui/PauseMenu.tscn" id="2_pause"]
+[ext_resource type="PackedScene" path="res://scenes/ui/PauseMenu.tscn" id="2_pause"]
 
 [sub_resource type="GDScript" id="GDScript_su4eo"]
 script/source = "extends CharacterBody2D
@@ -18,6 +18,7 @@ script/source = "extends CharacterBody2D
 @onready var health := MAX_HEALTH
 
 var _isTreePaused := false
+var wall_jumped := false
 
 func _ready() -> void:
 	Global.score = 0
@@ -52,6 +53,7 @@ func _physics_process(delta: float) -> void:
 		if is_on_wall():
 			velocity.y *= WALL_SLIDE_GRAVITY_MULT
 
+	wall_jumped = false
 	# Handle jump.
 	if Input.is_action_just_pressed(\"jump\"):
 		if is_on_floor():
@@ -59,15 +61,17 @@ func _physics_process(delta: float) -> void:
 		elif is_on_wall():
 			velocity.y = tJumpVelocity
 			velocity.x = get_wall_normal().x * tSpeed * WALL_JUMP_KICK_MULT
+			wall_jumped = true
 	
 	if Input.is_action_just_pressed(\"down\") and !is_on_floor():
 		velocity.y -= tJumpVelocity
 
 	var direction := Input.get_axis(\"left\", \"right\")
-	if direction:
-		velocity.x = direction * tSpeed
-	else:
-		velocity.x = move_toward(velocity.x, 0, tSpeed)
+	if not wall_jumped:
+		if direction:
+			velocity.x = direction * tSpeed
+		else:
+			velocity.x = move_toward(velocity.x, 0, tSpeed)
 
 	move_and_slide()
 
@@ -96,6 +100,8 @@ size = Vector2(2400, 1400)
 collision_mask = 15
 script = SubResource("GDScript_su4eo")
 JUMP_VELOCITY = -600.0
+WALL_SLIDE_GRAVITY_MULT = 0.7
+WALL_JUMP_KICK_MULT = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1371535421]
 z_index = 4
@@ -119,6 +125,7 @@ texture = ExtResource("1_db84v")
 centered = false
 
 [node name="activeArea" type="Area2D" parent="." unique_id=1438056155]
+position = Vector2(1, 0)
 collision_layer = 0
 collision_mask = 8
 monitorable = false
@@ -126,7 +133,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="activeArea" unique_id=242807403]
 shape = SubResource("RectangleShape2D_8njf7")
 
-[node name="PauseMenu" parent="." instance=ExtResource("2_pause")]
+[node name="PauseMenu" parent="." unique_id=1875723097 instance=ExtResource("2_pause")]
 
 [connection signal="body_entered" from="activeArea" to="." method="_on_active_area_body_entered"]
 [connection signal="body_exited" from="activeArea" to="." method="_on_active_area_body_exited"]
