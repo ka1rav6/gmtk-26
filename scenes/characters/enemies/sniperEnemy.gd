@@ -8,6 +8,7 @@ extends "res://scenes/characters/generic_enemy.gd"
 var isShooting := false
 
 func _ready() -> void:
+	set_physics_process(true)
 	super._ready()
 	animP.animation_finished.connect(_on_animation_player_animation_finished)
 	animP.play("idle")
@@ -20,7 +21,7 @@ func set_speed(mult: float) -> void:
 func _schedule_pulse() -> void:
 	if (not is_instance_valid(Global.player)):
 		return
-	if (not isShooting) && (Global.player.global_position - global_position).length_squared() < 10000000.0:
+	if (not isShooting) && (Global.player.global_position - global_position).length_squared() < 100000000.0:
 		isShooting = true
 		playerPos = Global.player.global_position
 		crossHair.reparent(get_parent())
@@ -29,7 +30,7 @@ func _schedule_pulse() -> void:
 		sight.clear_points()
 		sight.add_point(Vector2.ZERO)
 		sight.add_point(to_local(crossHair.global_position))
-		animP.play("shoot", 0.5, randf_range(0.75, 1.25))
+		animP.play("shoot", 0.5, randf_range(0.75, 2.25))
 
 
 func _physics_process(delta: float) -> void:
