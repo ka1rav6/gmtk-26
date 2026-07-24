@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://pause_menu"]
 
 [ext_resource type="Script" uid="uid://cqfyj5v82504k" path="res://scenes/ui/pause_menu.gd" id="pause_menu_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HowToPlayOverlay.tscn" id="howtoplay_overlay"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 layer = 100
@@ -39,21 +40,45 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -120.0
-offset_top = 320.0
+offset_top = 300.0
 offset_right = 120.0
-offset_bottom = 380.0
+offset_bottom = 355.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 20
 text = "▶  Resume"
+
+[node name="RestartButton" type="Button" parent="ColorRect"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 367.0
+offset_right = 120.0
+offset_bottom = 422.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "⟲  Restart"
+
+[node name="HowToPlayButton" type="Button" parent="ColorRect"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 434.0
+offset_right = 120.0
+offset_bottom = 484.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 18
+text = "?  How to Play"
 
 [node name="OptionsButton" type="Button" parent="ColorRect"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -120.0
-offset_top = 400.0
+offset_top = 496.0
 offset_right = 120.0
-offset_bottom = 450.0
+offset_bottom = 546.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 18
 text = "⚙  Options"
@@ -63,9 +88,11 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -120.0
-offset_top = 470.0
+offset_top = 558.0
 offset_right = 120.0
-offset_bottom = 520.0
+offset_bottom = 608.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 18
 text = "✕  Quit Game"
+
+[node name="HowToPlayOverlay" parent="." instance=ExtResource("howtoplay_overlay")]

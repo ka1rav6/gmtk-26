@@ -23,6 +23,30 @@ func _process(_delta: float) -> void:
 func refresh_player() -> void:
 	if not is_instance_valid(player):
 		player = get_tree().get_first_node_in_group("Player")
+
+# Resets every piece of persistent state Global tracks. Scene-local state
+# (player, enemies, collectibles, timers, etc.) lives in the level scene
+# itself, so reloading/swapping that scene resets it for free — this only
+# has to clean up what actually survives a scene change.
+func reset_state() -> void:
+	score = 0
+	powerMode = false
+	enemy_count = 0
+	player = null
+
+# Used by both the start menu and the pause menu so "Start" and "Restart"
+# never fall out of sync with each other.
+func start_level(level_scene: PackedScene) -> void:
+	reset_state()
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(level_scene)
+
+# Restarts whatever level is currently running, fresh, regardless of
+# whether it's paused or the player has already died.
+func restart_current_level() -> void:
+	reset_state()
+	get_tree().paused = false
+	get_tree().reload_current_scene()
 		
 func toggle_all() -> void:
 	refresh_player()

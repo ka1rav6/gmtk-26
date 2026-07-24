@@ -1,0 +1,87 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/how_to_play_overlay.gd" id="howtoplay_script"]
+
+[node name="HowToPlayOverlay" type="CanvasLayer"]
+layer = 101
+process_mode = 3
+script = ExtResource("howtoplay_script")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="PanelContainer" type="ColorRect" parent="ColorRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -260.0
+offset_right = 340.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07, 0.03, 0.14, 0.98)
+
+[node name="TitleLabel" type="Label" parent="ColorRect/PanelContainer"]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 18.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "How to Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BodyText" type="RichTextLabel" parent="ColorRect/PanelContainer"]
+layout_mode = 0
+anchor_right = 1.0
+offset_left = 36.0
+offset_top = 78.0
+offset_right = -36.0
+offset_bottom = 440.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 18
+theme_override_colors/default_color = Color(0.9, 0.88, 0.95, 1)
+bbcode_enabled = true
+text = "[b]Objective[/b]
+Fight your way across each level and reach the portal to move on to the next one.
+
+[b]Movement[/b]
+[b]A[/b] / [b]D[/b] — move left / right
+[b]W[/b] — jump (works off walls too, for wall-jumping)
+[b]S[/b] — fast-fall / drop
+
+[b]Power Ability — [/b][b]E[/b]
+Slows down time so you can react and take control of enemies. While active:
+• [b]Left-click[/b] an enemy to grab it — this freezes that enemy in place for a few seconds and, if it's a laser-type enemy, turns its beam against other enemies instead of you.
+• [b]Right-click and drag[/b] on a grabbed or stationary enemy, then release, to sling it like a slingshot — the further you pull, the harder the throw. This only works while the power ability is active.
+
+[b]Win / Lose[/b]
+Reach the portal at the end of the level to win it and advance. Taking too much damage from enemy fire, or falling into a hazard zone, ends your run.
+
+[b]Tips[/b]
+• Laser-type enemies hit hard enough to one-shot other enemies — grab one and use it against the rest.
+• Time your grabs: enemies stay frozen only for a few seconds before they wake back up.
+• Watch your positioning — throws only work on enemies close enough to you."
+scroll_active = true
+
+[node name="BackButton" type="Button" parent="ColorRect/PanelContainer"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_top = 460.0
+offset_right = 110.0
+offset_bottom = 505.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 18
+text = "←  Back"
