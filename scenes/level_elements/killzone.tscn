@@ -17,8 +17,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method(\"take_damage\"):
 		body.take_damage(1000000000000)
-	if body:
-		body.queue_free()
+	body.queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
