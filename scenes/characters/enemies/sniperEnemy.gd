@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func set_speed(mult: float) -> void:
 	super.set_speed(mult)
-	animP.speed_scale *= mult 
+	animP.speed_scale = currentTimeFactor
 
 func _schedule_pulse() -> void:
 	if (not is_instance_valid(Global.player)):
