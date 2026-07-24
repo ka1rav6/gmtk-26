@@ -7,7 +7,7 @@ var player: CharacterBody2D
 const ULTRAINSTINCT_SLOWDOWN = 0.25
 
 func toggle_all() -> void:
-	refresh_player()
+	await refresh_player()
 	powerMode = !powerMode
 	if is_instance_valid(player):
 		player.bgm.visible = powerMode
@@ -36,10 +36,9 @@ func _ready() -> void:
 
 func refresh_player() -> void:
 	if not is_instance_valid(player):
-		player = null
-		await  get_tree().process_frame
 		player = get_tree().get_first_node_in_group("Player")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if not is_instance_valid(player):
+		refresh_player()
