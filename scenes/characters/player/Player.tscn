@@ -8,8 +8,10 @@ script/source = "extends CharacterBody2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
+@export var MAX_HEALTH := 100
 @onready var bgm := $CanvasLayer/bg_display_on_mode
 @onready var currentTimeFactor := 1.0
+@onready var health := MAX_HEALTH
 
 func _ready() -> void:
 	Global.score = 0
@@ -21,6 +23,11 @@ func _process(_delta: float) -> void:
 
 func set_speed(mult: float) -> void:
 	currentTimeFactor *= mult
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		queue_free()
 
 func _physics_process(delta: float) -> void:
 	var tDelta = delta * currentTimeFactor

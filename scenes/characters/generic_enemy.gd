@@ -66,6 +66,11 @@ func _tf() -> void:
 		mc.scale /= 20.0
 		line.clear_points()
 
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		queue_free()
+
 func throw() -> void:
 	var drag = global_position - get_global_mouse_position()
 	if drag.length() > max_drag:

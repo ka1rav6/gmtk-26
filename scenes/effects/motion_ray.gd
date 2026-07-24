@@ -12,8 +12,9 @@ extends Node2D
 @export var fade_time := 0.35
 @export var thickness := 4.0
 @export var color := Color(1, 0.85, 0.4)
-# world static only, so the ray ignores other enemies and the player
 @export_flags_2d_physics var collision_mask := 2
+@export var damage: int = 10
+@export var damages_enemies: bool = false
 
 var _length := 0.0
 var _alpha := 1.0
@@ -31,22 +32,35 @@ func fire(dir: Vector2, exclude: Array[RID] = []) -> void:
 		return
 	direction = dir.normalized()
 
-	var target := _cast(exclude)
+	var mask := collision_mask | 1  # always include Player layer
+	if damages_enemies:
+		mask |= 8  # include Enemy layer (4)
+
+	var result := _cast(exclude, mask)
+	_apply_damage(result)
+
 	var tw := create_tween()
-	tw.tween_method(_set_length, 0.0, target, extend_time)\
+	tw.tween_method(_set_length, 0.0, result.distance, extend_time)\
 		.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tw.tween_method(_set_alpha, 1.0, 0.0, fade_time)
 	tw.tween_callback(queue_free)
 
-func _cast(exclude: Array[RID]) -> float:
+func _cast(exclude: Array[RID], mask: int) -> Dictionary:
 	var space := get_world_2d().direct_space_state
 	var params := PhysicsRayQueryParameters2D.create(
-		global_position, global_position + direction * max_length, collision_mask)
+		global_position, global_position + direction * max_length, mask)
 	params.exclude = exclude
 	var hit := space.intersect_ray(params)
 	if hit.is_empty():
-		return max_length
-	return global_position.distance_to(hit.position)
+		return { "distance": max_length, "collider": null }
+	return { "distance": global_position.distance_to(hit.position), "collider": hit.collider }
+
+func _apply_damage(result: Dictionary) -> void:
+	var col = result.collider
+	if col == null:
+		return
+	if col.has_method("take_damage"):
+		col.take_damage(damage)
 
 func _set_length(l: float) -> void:
 	_length = l

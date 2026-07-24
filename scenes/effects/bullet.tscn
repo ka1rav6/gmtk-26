@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://olucqote1enl"]
+
+[ext_resource type="Script" uid="uid://cl34tp2o7xa3g" path="res://scenes/effects/bullet.gd" id="1_ol65t"]
+[ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="2_0fgko"]
+
+[sub_resource type="Gradient" id="Gradient_uu02x"]
+offsets = PackedFloat32Array(0.9186747)
+colors = PackedColorArray(0, 0.76138985, 0.54324764, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ua7yo"]
+gradient = SubResource("Gradient_uu02x")
+width = 40
+height = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
+size = Vector2(40, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8njf7"]
+radius = 24.0
+
+[node name="Bullet" type="Area2D" unique_id=2130209614]
+collision_layer = 0
+collision_mask = 11
+script = ExtResource("1_ol65t")
+
+[node name="select_sprite" type="Sprite2D" parent="." unique_id=698335739]
+visible = false
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_0fgko")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=586460065]
+texture = SubResource("GradientTexture2D_ua7yo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=944507727]
+shape = SubResource("RectangleShape2D_8njf7")
+
+[node name="mouseCollider" type="Area2D" parent="." unique_id=2100449456]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouseCollider" unique_id=740911593]
+shape = SubResource("CircleShape2D_8njf7")
