@@ -26,6 +26,7 @@ var isAffectedBy := 0
 var isThrown := false
 
 func _ready() -> void:
+	Global.enemy_count += 1
 	set_physics_process(false)
 	if line == null:
 		line = $ShootDir
@@ -54,7 +55,8 @@ func set_speed(mult: float) -> void:
 	velocity *= mult
 
 func _on_death() -> void:
-	pass # overriding it in the subclasses 
+	Global.enemy_count -= 1
+	
 
 func _on_mouse_collider_mouse_entered() -> void:
 	sels.scale *= onHoverScaleFactor
