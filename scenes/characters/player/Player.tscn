@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://8xvf6qyd5m1m"]
 
 [ext_resource type="Texture2D" uid="uid://17e0yruel2ss" path="res://art/temp frame.png" id="1_db84v"]
+[ext_resource type="PackedScene" uid="uid://pause_menu" path="res://scenes/ui/PauseMenu.tscn" id="2_pause"]
 
 [sub_resource type="GDScript" id="GDScript_su4eo"]
 script/source = "extends CharacterBody2D
@@ -10,8 +11,11 @@ script/source = "extends CharacterBody2D
 @export var JUMP_VELOCITY = -400.0
 @export var MAX_HEALTH := 100
 @onready var bgm := $CanvasLayer/bg_display_on_mode
+@onready var actArea := $activeArea
 @onready var currentTimeFactor := 1.0
 @onready var health := MAX_HEALTH
+
+var _isTreePaused := false
 
 func _ready() -> void:
 	Global.score = 0
@@ -21,8 +25,15 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(\"ability_fast\"):
 		Global.toggle_all()
 
+#is name fine? pta nahi
+func set_pause(val: bool) -> void:
+	_isTreePaused = val
+	for body in actArea.get_overlapping_bodies():
+		body.set_physics_process(!val)
+
 func set_speed(mult: float) -> void:
 	currentTimeFactor *= mult
+	velocity *= mult
 
 func take_damage(amount: int) -> void:
 	health -= amount
@@ -51,6 +62,14 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, tSpeed)
 
 	move_and_slide()
+
+
+func _on_active_area_body_entered(body: Node2D) -> void:
+	body.set_physics_process(!_isTreePaused)
+
+
+func _on_active_area_body_exited(body: Node2D) -> void:
+	body.set_physics_process(false)
 "
 
 [sub_resource type="Gradient" id="Gradient_srvkq"]
@@ -61,6 +80,9 @@ gradient = SubResource("Gradient_srvkq")
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8njf7"]
 radius = 16.0
 height = 48.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
+size = Vector2(2400, 1400)
 
 [node name="Player" type="CharacterBody2D" unique_id=687081500 groups=["Player"]]
 collision_mask = 15
@@ -87,3 +109,16 @@ layer = 100
 [node name="bg_display_on_mode" type="Sprite2D" parent="CanvasLayer" unique_id=1490776435]
 texture = ExtResource("1_db84v")
 centered = false
+
+[node name="activeArea" type="Area2D" parent="." unique_id=1438056155]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="activeArea" unique_id=242807403]
+shape = SubResource("RectangleShape2D_8njf7")
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_pause")]
+
+[connection signal="body_entered" from="activeArea" to="." method="_on_active_area_body_entered"]
+[connection signal="body_exited" from="activeArea" to="." method="_on_active_area_body_exited"]

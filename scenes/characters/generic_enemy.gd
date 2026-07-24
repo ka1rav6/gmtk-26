@@ -26,6 +26,7 @@ var isAffectedBy := 0
 var isThrown := false
 
 func _ready() -> void:
+	set_physics_process(false)
 	if line == null:
 		line = $ShootDir
 	if sels == null:
@@ -50,6 +51,7 @@ func CreateTimer(time: int, functi: Callable):
 
 func set_speed(mult: float) -> void:
 	currentTimeFactor *= mult
+	velocity *= mult
 
 func _on_mouse_collider_mouse_entered() -> void:
 	sels.scale *= onHoverScaleFactor
@@ -78,6 +80,7 @@ func throw() -> void:
 	velocity += drag * power
 	move_and_slide()
 	isThrown = true
+	set_physics_process(true)
 
 func update_trajectory() -> void:
 	line.clear_points()
