@@ -2,21 +2,79 @@
 
 [ext_resource type="Script" uid="uid://pn1v34js18xy" path="res://scenes/characters/enemies/sniperEnemy.gd" id="1_tuvoq"]
 [ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="2_ly5bj"]
+[ext_resource type="Texture2D" uid="uid://fcvrcoy55y13" path="res://art/big big dot.png" id="3_gmie3"]
+[ext_resource type="Texture2D" uid="uid://c42sqx57m74y7" path="res://art/crosshair.png" id="3_ly5bj"]
 
-[sub_resource type="Gradient" id="Gradient_wuwo8"]
-offsets = PackedFloat32Array(0.10452962, 0.46341464, 0.5191638, 0.88850176)
-colors = PackedColorArray(0.9177572, 0.4674608, 0.7352155, 1, 1, 1, 1, 1, 0.9764368, 0.9968494, 0.99300313, 1, 0.64066094, 0.95195395, 0.8932974, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8njf7"]
-gradient = SubResource("Gradient_wuwo8")
-fill_from = Vector2(1, 0)
-fill_to = Vector2(0, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ua7yo"]
+size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
 size = Vector2(64, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ua7yo"]
-size = Vector2(64, 64)
+[sub_resource type="Gradient" id="Gradient_tuvoq"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4lw2e"]
+gradient = SubResource("Gradient_tuvoq")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_u041i"]
+diffuse_texture = ExtResource("3_gmie3")
+texture_repeat = 2
+
+[sub_resource type="Animation" id="Animation_tuvoq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ly5bj"]
+resource_name = "idle"
+length = 50.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gmie3"]
+resource_name = "shoot"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2666667, 1.8, 2.3, 2.6666667, 3, 3.3166664, 3.6, 3.8166664, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, -9.1895685),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.9999222, 0.27481207, 0.31658572, 1), Color(1, 0.6984457, 0.67948985, 1), Color(0.9270527, 0, 0.20067993, 1), Color(1, 0.6984457, 0.67948985, 1), Color(0.9270527, 0, 0.20067993, 1), Color(1, 0.6984457, 0.67948985, 1), Color(0.9270527, 0, 0.20067993, 1), Color(1, 0.6984457, 0.67948985, 1), Color(0.71497595, 0, 0.13749129, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c0240"]
+_data = {
+&"RESET": SubResource("Animation_tuvoq"),
+&"idle": SubResource("Animation_ly5bj"),
+&"shoot": SubResource("Animation_gmie3")
+}
 
 [node name="sniper" type="CharacterBody2D" unique_id=512232861 groups=["selectable"]]
 collision_layer = 8
@@ -24,20 +82,33 @@ collision_mask = 3
 floor_max_angle = 1.134464
 script = ExtResource("1_tuvoq")
 
+[node name="mouseCollider" type="Area2D" parent="." unique_id=1534806320]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouseCollider" unique_id=1153013348]
+shape = SubResource("RectangleShape2D_ua7yo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1100398884]
+shape = SubResource("RectangleShape2D_8njf7")
+
 [node name="select_sprite" type="Sprite2D" parent="." unique_id=269152621]
 visible = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_ly5bj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=154427481]
-texture = SubResource("GradientTexture2D_8njf7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1100398884]
-shape = SubResource("RectangleShape2D_8njf7")
-
-[node name="mouseCollider" type="Area2D" parent="." unique_id=1534806320]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mouseCollider" unique_id=1153013348]
-shape = SubResource("RectangleShape2D_ua7yo")
+texture = SubResource("GradientTexture2D_4lw2e")
 
 [node name="ShootDir" type="Line2D" parent="." unique_id=55300805]
+width = 15.0
+texture = SubResource("CanvasTexture_u041i")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1024402035]
+libraries/ = SubResource("AnimationLibrary_c0240")
+
+[node name="crosshair" type="Sprite2D" parent="." unique_id=996480481]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_ly5bj")

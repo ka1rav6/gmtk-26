@@ -1,36 +1,56 @@
 extends "res://scenes/characters/generic_enemy.gd"
 
-var pulseTimer: Timer
 @onready var motionRayScene: PackedScene = preload("res://scenes/effects/motion_ray.tscn")
+@onready var animP: AnimationPlayer = $AnimationPlayer
+@onready var crossHair: Sprite2D = $crosshair
+@onready var playerPos:= Vector2.ZERO
+var isShooting := false
 
 func _ready() -> void:
 	super._ready()
-	pulseTimer = Timer.new()
-	pulseTimer.one_shot = true
-	pulseTimer.timeout.connect(_on_pulse_timer_timeout)
-	add_child(pulseTimer)
-	_schedule_pulse()
+	animP.animation_finished.connect(_on_animation_player_animation_finished)
+	animP.play("idle")
+	crossHair.visible = false
+
+func set_speed(mult: float) -> void:
+	super.set_speed(mult)
+	animP.speed_scale *= mult 
 
 func _schedule_pulse() -> void:
-	pulseTimer.start(randi_range(3, 5))
+	if (not is_instance_valid(Global.player)):
+		return
+	if (not isShooting) && (Global.player.global_position - global_position).length_squared() < 100000.0:
+		isShooting = true
+		playerPos = Global.player.global_position
+		crossHair.reparent(get_parent())
+		crossHair.global_position = playerPos
+		crossHair.visible = true
+		animP.play("shoot", 0.5, randf_range(0.75, 1.25))
 
-func _on_pulse_timer_timeout() -> void:
-	pulse()
-	_schedule_pulse()
 
 func _physics_process(delta: float) -> void:
+	_schedule_pulse()
 	var tSpeed = SPEED * currentTimeFactor
 	if isThrown:
 		velocity.x = move_toward(velocity.x, 0, tSpeed)
 	else:
 		velocity.x = move_toward(velocity.x, 0, 2 * tSpeed)
-		super._physics_process(delta)
+	super._physics_process(delta)
 
 func pulse() -> void:
 	var w = motionRayScene.instantiate()
 	add_child(w)
 	w.global_position = global_position
-	if not is_instance_valid(Global.player):
+	if playerPos == Vector2.ZERO:
 		return
-	var dir = (Global.player.global_position - global_position).normalized()
+	var dir = (playerPos - global_position).normalized()
 	w.fire(dir, [get_rid()] as Array[RID])
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "shoot":
+		isShooting = false
+		pulse()
+		animP.play("idle")
+		crossHair.visible = false
+		crossHair.reparent(self)

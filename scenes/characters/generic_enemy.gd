@@ -17,10 +17,6 @@ extends CharacterBody2D
 @onready var tmrScene: PackedScene = preload("res://scenes/characters/timer_node.tscn")
 @onready var health:= MAX_HEALTH
 
-# last direction the enemy was actually moving in, so a stationary enemy still
-# projects a sensible ray
-var lastDir := Vector2.RIGHT
-
 var currentTimeFactor := 1.0
 var dragging := false
 var drag_start := Vector2.ZERO
@@ -62,7 +58,7 @@ func _on_mouse_collider_mouse_exited() -> void:
 	sels.scale /= onHoverScaleFactor
 
 func _tf() -> void:
-	currentTimeFactor /= slowDownTimeFactor
+	set_speed(1 / slowDownTimeFactor)
 	isAffectedBy -= 1
 	if dragging:
 		dragging = false
@@ -87,9 +83,9 @@ func update_trajectory() -> void:
 	
 	var simpos = Vector2.ZERO
 	#var simvel = vel2
-	var step_dt = 0.08
+	var step_dt = 0.25
 	
-	for i in range(30):
+	for i in range(15):
 		line.add_point(simpos)
 		vel2 += get_gravity() * currentTimeFactor * step_dt / Global.ULTRAINSTINCT_SLOWDOWN
 		simpos += vel2 * step_dt
@@ -101,7 +97,7 @@ func _on_mouse_collider_input_event(_viewport: Node, event: InputEvent, _shape_i
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			Global.toggle_all()
-			currentTimeFactor *= slowDownTimeFactor
+			set_speed(slowDownTimeFactor)
 			isAffectedBy += 1
 			CreateTimer(5, Callable(self, "_tf"))
 		elif event.button_index == MOUSE_BUTTON_RIGHT and isAffectedBy > 0:
@@ -124,6 +120,4 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * tDelta 
 	if isThrown && (is_on_ceiling() || is_on_floor() || is_on_wall()):
 		isThrown = false
-	if velocity.length_squared() > 1.0:
-		lastDir = velocity.normalized()
 	move_and_slide()

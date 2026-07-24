@@ -42,6 +42,7 @@ script = SubResource("GDScript_srvkq")
 [node name="Timer" type="Timer" parent="." unique_id=548267879]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1440472947]
+self_modulate = Color(0.76544553, 0.61551934, 0.9757009, 0.4862745)
 texture = SubResource("GradientTexture2D_8njf7")
 
 [node name="Label" type="Label" parent="." unique_id=1889335468]

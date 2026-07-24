@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ca35m23fge551" path="res://scenes/characters/enemies/laserEnemy.gd" id="1_ulutc"]
 [ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="2_v4f75"]
+[ext_resource type="Texture2D" uid="uid://fcvrcoy55y13" path="res://art/big big dot.png" id="3_v4f75"]
 
 [sub_resource type="Gradient" id="Gradient_wuwo8"]
 offsets = PackedFloat32Array(0.10452962, 0.42771083, 0.5903614, 0.88850176)
@@ -17,6 +18,10 @@ size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ua7yo"]
 size = Vector2(64, 64)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_c0240"]
+diffuse_texture = ExtResource("3_v4f75")
+texture_repeat = 2
 
 [node name="lazer" type="CharacterBody2D" unique_id=512232861 groups=["selectable"]]
 collision_layer = 8
@@ -41,3 +46,8 @@ shape = SubResource("RectangleShape2D_8njf7")
 shape = SubResource("RectangleShape2D_ua7yo")
 
 [node name="ShootDir" type="Line2D" parent="." unique_id=55300805]
+width = 15.0
+texture = SubResource("CanvasTexture_c0240")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
