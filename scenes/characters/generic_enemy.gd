@@ -53,6 +53,9 @@ func set_speed(mult: float) -> void:
 	currentTimeFactor *= mult
 	velocity *= mult
 
+func _on_death() -> void:
+	pass # overriding it in the subclasses 
+
 func _on_mouse_collider_mouse_entered() -> void:
 	sels.scale *= onHoverScaleFactor
 
@@ -72,6 +75,7 @@ func _tf() -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
+		_on_death()
 		queue_free()
 
 func throw() -> void:
