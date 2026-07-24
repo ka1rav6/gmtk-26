@@ -105,6 +105,14 @@ texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
 
+[node name="sight" type="Line2D" parent="." unique_id=1712703565]
+self_modulate = Color(1, 0.7525, 0.00999999, 1)
+width = 15.0
+texture = SubResource("CanvasTexture_u041i")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1024402035]
 libraries/ = SubResource("AnimationLibrary_c0240")
 
