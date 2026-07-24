@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://7egbo2phrlrn" path="res://scenes/level scenes/roatatingWheel.tscn" id="8_bqmi1"]
 [ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="9_8883n"]
 [ext_resource type="PackedScene" uid="uid://dbn7rh2k1oml0" path="res://scenes/level_elements/spawner.tscn" id="10_es4qh"]
+[ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="11_nxmka"]
+[ext_resource type="PackedScene" uid="uid://qkmetoqvr6pd" path="res://scenes/levels/level_1.tscn" id="12_6racp"]
 
 [sub_resource type="Animation" id="Animation_4lw2e"]
 length = 2.5
@@ -129,3 +131,7 @@ scale = Vector2(-981.13696, 3.2612631)
 position = Vector2(1736, 312)
 toSpawn = ExtResource("2_yluh8")
 spawnEvery = 5.0
+
+[node name="portal" parent="." unique_id=1524441498 instance=ExtResource("11_nxmka")]
+position = Vector2(2696, 312)
+nextLevel = ExtResource("12_6racp")
