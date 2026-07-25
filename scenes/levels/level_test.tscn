@@ -147,4 +147,4 @@ offset_bottom = 23.0
 script = ExtResource("13_6racp")
 
 [node name="DestroyablePlatform" parent="." unique_id=517292022 instance=ExtResource("14_tdlkl")]
-position = Vector2(127, 329)
+position = Vector2(132, 461)
