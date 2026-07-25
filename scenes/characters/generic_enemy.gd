@@ -24,6 +24,7 @@ var drag_current := Vector2.ZERO
 
 var isAffectedBy := 0
 var isThrown := false
+var is_grabbed := false
 
 func _ready() -> void:
 	Global.enemy_count += 1

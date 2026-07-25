@@ -32,7 +32,6 @@ func _fire() -> void:
 	b.direction = (Global.player.global_position - global_position).normalized()
 	b.SPEED = MAX_VELOCITY * 1.5
 	b.damage = BULLET_DAMAGE
-	b.damage_enemies = isAffectedBy > 0
 	b.ignore_body = self
 
 func _on_fire_cooldown() -> void:

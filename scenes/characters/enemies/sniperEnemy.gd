@@ -53,7 +53,6 @@ func pulse() -> void:
 	add_child(w)
 	w.global_position = global_position
 	w.damage = 40
-	w.damages_enemies = isAffectedBy > 0
 	if playerPos == Vector2.ZERO:
 		return
 	var dir = (playerPos - global_position).normalized()

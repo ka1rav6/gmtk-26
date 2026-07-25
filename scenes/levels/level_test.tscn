@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="11_nxmka"]
 [ext_resource type="PackedScene" uid="uid://qkmetoqvr6pd" path="res://scenes/levels/level_1.tscn" id="12_6racp"]
 [ext_resource type="Script" uid="uid://d3xb0rfnjwx01" path="res://scenes/levels/label.gd" id="13_6racp"]
-[ext_resource type="PackedScene" uid="uid://caikyytchu28a" path="res://scenes/level scenes/destroyable_platform.tscn" id="14_tdlkl"]
+[ext_resource type="PackedScene" path="res://scenes/level scenes/selectable_platform.tscn" id="14_selplat"]
 
 [sub_resource type="Animation" id="Animation_4lw2e"]
 length = 2.5
@@ -120,6 +120,9 @@ position = Vector2(939, 319)
 libraries/ = SubResource("AnimationLibrary_nxmka")
 autoplay = &"verticalMotion"
 
+[node name="SelectablePlatform" parent="." unique_id=105919508 instance=ExtResource("14_selplat")]
+position = Vector2(500, 400)
+
 [node name="RoatatingWheel" parent="." unique_id=1564126359 instance=ExtResource("8_bqmi1")]
 position = Vector2(1241, 200)
 
@@ -146,5 +149,5 @@ offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("13_6racp")
 
-[node name="DestroyablePlatform" parent="." unique_id=517292022 instance=ExtResource("14_tdlkl")]
-position = Vector2(132, 461)
+[node name="SelectablePlatform2" parent="." unique_id=874674851 instance=ExtResource("14_selplat")]
+position = Vector2(-280, 232)

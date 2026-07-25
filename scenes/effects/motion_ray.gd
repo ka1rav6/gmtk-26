@@ -14,7 +14,7 @@ extends Node2D
 @export var color := Color(1, 0.85, 0.4)
 @export_flags_2d_physics var collision_mask := 2
 @export var damage: int = 10
-@export var damages_enemies: bool = false
+@export var damages_enemies: bool = true
 
 var _length := 0.0
 var _alpha := 1.0

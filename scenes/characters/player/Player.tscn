@@ -20,6 +20,8 @@ script/source = "extends CharacterBody2D
 var _isTreePaused := false
 var wall_jump_timer := 0.0
 var wall_jump_direction := 0.0
+var grabbed_enemy: CharacterBody2D = null
+var facing_direction := 1
 
 func _ready() -> void:
 	Global.score = 0
@@ -28,8 +30,48 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(\"ability_fast\"):
 		Global.toggle_all()
+	if Input.is_action_just_pressed(\"grab\"):
+		if grabbed_enemy == null:
+			try_grab()
+		else:
+			release_grab()
 
-#is name fine? pta nahi
+func try_grab() -> void:
+	var enemies = get_tree().get_nodes_in_group(\"selectable\")
+	var closest: CharacterBody2D = null
+	var closest_dist_sq := Global.throwDistance ** 2
+	for enemy in enemies:
+		if not is_instance_valid(enemy) or enemy.get(\"is_grabbed\"):
+			continue
+		var dist_sq = global_position.distance_squared_to(enemy.global_position)
+		if dist_sq < closest_dist_sq:
+			closest_dist_sq = dist_sq
+			closest = enemy
+	if closest == null:
+		return
+	grabbed_enemy = closest
+	grabbed_enemy.is_grabbed = true
+	grabbed_enemy.set_physics_process(false)
+	grabbed_enemy.velocity = Vector2.ZERO
+	var col = grabbed_enemy.get_node_or_null(\"CollisionShape2D\")
+	if col:
+		col.disabled = true
+	grabbed_enemy.reparent(self)
+	grabbed_enemy.global_position = global_position + Vector2(facing_direction * 40, -20)
+
+func release_grab() -> void:
+	if grabbed_enemy == null:
+		return
+	grabbed_enemy.reparent(get_parent())
+	grabbed_enemy.global_position = global_position + Vector2(facing_direction * 40, 0)
+	var col = grabbed_enemy.get_node_or_null(\"CollisionShape2D\")
+	if col:
+		col.disabled = false
+	grabbed_enemy.is_grabbed = false
+	grabbed_enemy.set_physics_process(true)
+	grabbed_enemy.velocity = Vector2.ZERO
+	grabbed_enemy = null
+
 func set_pause(val: bool) -> void:
 	_isTreePaused = val
 	for body in actArea.get_overlapping_bodies():
@@ -43,9 +85,7 @@ func set_speed(mult: float) -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
-		# PauseMenu lives under the player normally; reparent it to the level
-		# root first so it (and its Restart button) survive the player dying,
-		# instead of getting freed along with us.
+		release_grab()
 		var menu := get_node_or_null(\"PauseMenu\")
 		if menu:
 			menu.reparent(get_tree().current_scene)
@@ -78,6 +118,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= tJumpVelocity
 
 	var direction := Input.get_axis(\"left\", \"right\")
+	if direction != 0:
+		facing_direction = sign(direction)
 	if wall_jump_timer > 0.0:
 		var toward_wall = sign(direction) == -sign(wall_jump_direction)
 		if direction != 0.0 and toward_wall:
@@ -93,12 +135,21 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	if grabbed_enemy and is_instance_valid(grabbed_enemy):
+		grabbed_enemy.global_position = global_position + Vector2(facing_direction * 40, -20)
+	elif grabbed_enemy:
+		grabbed_enemy = null
+
 
 func _on_active_area_body_entered(body: Node2D) -> void:
+	if body == grabbed_enemy:
+		return
 	body.set_physics_process(!_isTreePaused)
 
 
 func _on_active_area_body_exited(body: Node2D) -> void:
+	if body == grabbed_enemy:
+		return
 	body.set_physics_process(false)
 "
 

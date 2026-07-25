@@ -1,7 +1,7 @@
 extends Area2D
 
 var damage:= 30
-var damage_enemies:=false
+var damage_enemies:=true
 var direction:= Vector2.RIGHT
 var SPEED:= 0
 var ignore_body: Node2D = null
@@ -60,6 +60,4 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 				if is_instance_valid(self):
 					set_speed(1.0 / slowDownTimeFactor)
 					isAffectedBy -= 1
-					if isAffectedBy <= 0:
-						damage_enemies = false
 			)

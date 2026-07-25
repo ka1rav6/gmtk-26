@@ -23,7 +23,6 @@ func pulse() -> void:
 	add_child(w)
 	w.global_position = global_position
 	w.damage = 100
-	w.damages_enemies = isAffectedBy > 0
 	if not is_instance_valid(Global.player):
 		return
 	var dir = Vector2(sign(Global.player.global_position.x - global_position.x), 0)
