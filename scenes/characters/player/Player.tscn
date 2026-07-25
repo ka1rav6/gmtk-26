@@ -45,7 +45,7 @@ func try_grab() -> void:
 			continue
 		var dist_sq = global_position.distance_squared_to(enemy.global_position)
 		if dist_sq < closest_dist_sq:
-			closest_dist_sq = dist_sq
+			closest_dist_sq = int(dist_sq)
 			closest = enemy
 	if closest == null:
 		return
