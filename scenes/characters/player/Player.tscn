@@ -109,7 +109,7 @@ collision_mask = 15
 script = SubResource("GDScript_su4eo")
 JUMP_VELOCITY = -600.0
 WALL_SLIDE_GRAVITY_MULT = 0.7
-WALL_JUMP_KICK_MULT = 3.0
+WALL_JUMP_KICK_MULT = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1371535421]
 z_index = 4

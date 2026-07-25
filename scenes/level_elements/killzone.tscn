@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bq1x8dobvxllh"]
 
+[ext_resource type="Texture2D" uid="uid://enn3mfrvd7yr" path="res://art/spike.png" id="1_sreq4"]
+
 [sub_resource type="GDScript" id="GDScript_fuuho"]
 script/source = "extends Area2D
 
@@ -21,12 +23,18 @@ func _on_body_entered(body: Node2D) -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
-size = Vector2(200, 200)
+size = Vector2(221, 200)
 
 [node name="Area2D" type="Area2D" unique_id=936476831]
 script = SubResource("GDScript_fuuho")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1505100625]
+position = Vector2(17.5, 0)
 shape = SubResource("RectangleShape2D_8njf7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1068339136]
+position = Vector2(18, -25.250008)
+scale = Vector2(3.6699998, 8.234375)
+texture = ExtResource("1_sreq4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
