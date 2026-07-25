@@ -29,7 +29,6 @@ collision_mask = 43
 floor_max_angle = 1.134464
 script = ExtResource("1_1whgi")
 slowDownTimeFactor = 0.0
-power = 0.1
 line = NodePath("ShootDir")
 sels = NodePath("select_sprite")
 mc = NodePath("mouseCollider")

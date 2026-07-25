@@ -18,7 +18,7 @@ var isAffectedBy := 0
 
 func _ready() -> void:
 	add_to_group("selectable")
-	mc.input_event.connect(_on_mouse_collider_input_event)
+	# mc.input_event.connect(_on_mouse_collider_input_event)
 	mc.mouse_entered.connect(_on_mouse_collider_mouse_entered)
 	mc.mouse_exited.connect(_on_mouse_collider_mouse_exited)
 	spinAnimP.play("saw_animation")
