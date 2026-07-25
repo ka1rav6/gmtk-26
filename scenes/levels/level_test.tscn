@@ -148,6 +148,3 @@ nextLevel = ExtResource("12_6racp")
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("13_6racp")
-
-[node name="SelectablePlatform2" parent="." unique_id=874674851 instance=ExtResource("14_selplat")]
-position = Vector2(-280, 232)
