@@ -189,6 +189,7 @@ drag_horizontal_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=527054487]
 layer = 100
+visible = false
 
 [node name="bg_display_on_mode" type="Sprite2D" parent="CanvasLayer" unique_id=1490776435]
 visible = false
@@ -196,6 +197,7 @@ texture = ExtResource("1_db84v")
 centered = false
 
 [node name="activeArea" type="Area2D" parent="." unique_id=1438056155]
+visible = false
 position = Vector2(1, 0)
 collision_layer = 0
 collision_mask = 8

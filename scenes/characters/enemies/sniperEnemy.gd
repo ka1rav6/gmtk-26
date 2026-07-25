@@ -1,6 +1,6 @@
 extends "res://scenes/characters/generic_enemy.gd"
 
-@onready var motionRayScene: PackedScene = preload("res://scenes/effects/motion_ray.tscn")
+@onready var motionRayScene: PackedScene = preload("res://scenes/attack_mechanisms/motion_ray.tscn")
 @onready var animP: AnimationPlayer = $AnimationPlayer
 @onready var crossHair: Sprite2D = $crosshair
 @onready var sight: Line2D = $sight

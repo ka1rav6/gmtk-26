@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnrhs8gxinfaf"]
 
-[ext_resource type="Script" uid="uid://cybdb73o6aqml" path="res://scenes/level scenes/selectable_platform.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://cybdb73o6aqml" path="res://scenes/level_elements/selectable_platform.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="2_sel"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_plat"]

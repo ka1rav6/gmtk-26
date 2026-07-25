@@ -1,7 +1,7 @@
 extends "res://scenes/characters/generic_enemy.gd"
 
 var pulseTimer: Timer
-@onready var motionRayScene: PackedScene = preload("res://scenes/effects/motion_ray.tscn")
+@onready var motionRayScene: PackedScene = preload("res://scenes/attack_mechanisms/motion_ray.tscn")
 
 func _ready() -> void:
 	super._ready()

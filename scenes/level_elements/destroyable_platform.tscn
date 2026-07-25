@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://caikyytchu28a"]
 
-[ext_resource type="Script" uid="uid://bqchai65aof2u" path="res://scenes/level scenes/destroyable_platform.gd" id="1_q0kli"]
+[ext_resource type="Script" uid="uid://bqchai65aof2u" path="res://scenes/level_elements/destroyable_platform.gd" id="1_q0kli"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyttb"]
 size = Vector2(104, 50)

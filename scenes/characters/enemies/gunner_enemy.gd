@@ -1,6 +1,6 @@
 extends "res://scenes/characters/generic_enemy.gd"
 
-@onready var bullet_scene: PackedScene = preload("res://scenes/effects/bullet.tscn")
+@onready var bullet_scene: PackedScene = preload("res://scenes/attack_mechanisms/bullet.tscn")
 @onready var fire_timer: Timer
 var can_fire := true
 
@@ -8,6 +8,7 @@ const FIRE_COOLDOWN := 1.0
 const BULLET_DAMAGE := 20
 const Y_RANGE := 100.0
 const DIST_SQ_RANGE := 1000000.0
+@export var bullet_slowdown := 0.1
 
 func _ready() -> void:
 	super._ready()
@@ -33,6 +34,7 @@ func _fire() -> void:
 	b.SPEED = MAX_VELOCITY * 1.5
 	b.damage = BULLET_DAMAGE
 	b.ignore_body = self
+	b.slowDownTimeFactor = bullet_slowdown
 
 func _on_fire_cooldown() -> void:
 	can_fire = true

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://olucqote1enl"]
 
-[ext_resource type="Script" uid="uid://cl34tp2o7xa3g" path="res://scenes/effects/bullet.gd" id="1_ol65t"]
+[ext_resource type="Script" uid="uid://cl34tp2o7xa3g" path="res://scenes/attack_mechanisms/bullet.gd" id="1_ol65t"]
 [ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="2_0fgko"]
 
 [sub_resource type="Gradient" id="Gradient_uu02x"]

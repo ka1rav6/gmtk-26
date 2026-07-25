@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b02diyhkn2nly"]
 
 [ext_resource type="PackedScene" uid="uid://ihcus5gs8b1s" path="res://scenes/levels/level_test.tscn" id="2_xr47m"]
-[ext_resource type="Script" uid="uid://71ek2iu26fu4" path="res://scenes/ui/start_menu.gd" id="start_menu_script"]
 [ext_resource type="PackedScene" path="res://scenes/ui/HowToPlayOverlay.tscn" id="howtoplay_overlay"]
+[ext_resource type="Script" uid="uid://71ek2iu26fu4" path="res://scenes/ui/start_menu.gd" id="start_menu_script"]
 
 [node name="StartMenu" type="CanvasLayer" unique_id=90173304]
 process_mode = 3
@@ -61,7 +61,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 22
 text = "▶  Start Game"
 
-[node name="HowToPlayButton" type="Button" parent="ColorRect"]
+[node name="HowToPlayButton" type="Button" parent="ColorRect" unique_id=958599263]
 layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
@@ -97,4 +97,5 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 18
 text = "✕  Quit"
 
-[node name="HowToPlayOverlay" parent="." instance=ExtResource("howtoplay_overlay")]
+[node name="HowToPlayOverlay" parent="." unique_id=1517836480 instance=ExtResource("howtoplay_overlay")]
+visible = false
