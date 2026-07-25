@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="3_fmg3e"]
 [ext_resource type="PackedScene" uid="uid://dcm11727btdpl" path="res://scenes/levels/level_4.tscn" id="4_ftfob"]
 [ext_resource type="PackedScene" uid="uid://r4qgna3qvoyh" path="res://scenes/level_elements/saw.tscn" id="5_ftfob"]
-[ext_resource type="PackedScene" uid="uid://dhsk5i7hf7tea" path="res://scenes/characters/enemies/Sniper.tscn" id="6_fkk1g"]
+[ext_resource type="PackedScene" path="res://scenes/level_elements/moveable_saw.tscn" id="6_ftfob"]
 
 [node name="Level3" type="Node2D" unique_id=387417563]
 position = Vector2(1579, -154)
@@ -57,5 +57,11 @@ scale = Vector2(0.2, 0.2)
 position = Vector2(-1292, 1245)
 scale = Vector2(0.2, 0.2)
 
-[node name="sniper" parent="." unique_id=512232861 instance=ExtResource("6_fkk1g")]
-position = Vector2(-1433, 1643)
+[node name="MoveableSaw" parent="TileMapLayer" unique_id=2123795080 instance=ExtResource("6_ftfob")]
+position = Vector2(-1435, 1620)
+scale = Vector2(0.5, 0.5)
+
+[node name="to_point" parent="TileMapLayer/MoveableSaw" index="5"]
+position = Vector2(8, -3446)
+
+[editable path="TileMapLayer/MoveableSaw"]
