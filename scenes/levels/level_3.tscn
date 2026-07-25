@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="2_44gv1"]
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="3_fmg3e"]
 [ext_resource type="PackedScene" uid="uid://dcm11727btdpl" path="res://scenes/levels/level_4.tscn" id="4_ftfob"]
-[ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="5_ftfob"]
+[ext_resource type="PackedScene" uid="uid://r4qgna3qvoyh" path="res://scenes/level_elements/saw.tscn" id="5_ftfob"]
 [ext_resource type="PackedScene" uid="uid://dhsk5i7hf7tea" path="res://scenes/characters/enemies/Sniper.tscn" id="6_fkk1g"]
 
 [node name="Level3" type="Node2D" unique_id=387417563]
@@ -22,47 +22,39 @@ position = Vector2(-936, -14)
 nextLevel = ExtResource("4_ftfob")
 
 [node name="Area2D" parent="TileMapLayer" unique_id=936476831 instance=ExtResource("5_ftfob")]
-position = Vector2(-1543, 1118)
-rotation = 1.5707964
+position = Vector2(-1567, 1409)
 scale = Vector2(0.2, 0.2)
 
-[node name="Area2D2" parent="TileMapLayer" unique_id=1609556125 instance=ExtResource("5_ftfob")]
-position = Vector2(-1304, 953)
-rotation = -1.5707964
+[node name="Area2D2" parent="TileMapLayer" unique_id=461737897 instance=ExtResource("5_ftfob")]
+position = Vector2(-1567, 85.00012)
 scale = Vector2(0.2, 0.2)
 
-[node name="Area2D3" parent="TileMapLayer" unique_id=1420171473 instance=ExtResource("5_ftfob")]
-position = Vector2(-1546, 766)
-rotation = 1.5707964
+[node name="Area2D3" parent="TileMapLayer" unique_id=219109565 instance=ExtResource("5_ftfob")]
+position = Vector2(-1288, 236.00012)
 scale = Vector2(0.2, 0.2)
 
-[node name="Area2D4" parent="TileMapLayer" unique_id=1963676738 instance=ExtResource("5_ftfob")]
-position = Vector2(-1304, 573.00006)
-rotation = -1.5707964
+[node name="Area2D4" parent="TileMapLayer" unique_id=1435541338 instance=ExtResource("5_ftfob")]
+position = Vector2(-1567, 446.00006)
 scale = Vector2(0.2, 0.2)
 
-[node name="Area2D5" parent="TileMapLayer" unique_id=324684455 instance=ExtResource("5_ftfob")]
-position = Vector2(-1549, -24.999878)
+[node name="Area2D5" parent="TileMapLayer" unique_id=847559630 instance=ExtResource("5_ftfob")]
+position = Vector2(-1292, 575.00006)
 scale = Vector2(0.2, 0.2)
 
-[node name="Area2D6" parent="TileMapLayer" unique_id=1179979765 instance=ExtResource("5_ftfob")]
-position = Vector2(-1553, 434.00006)
-rotation = 1.5707964
+[node name="Area2D6" parent="TileMapLayer" unique_id=2065242632 instance=ExtResource("5_ftfob")]
+position = Vector2(-1567, 760.00006)
 scale = Vector2(0.2, 0.2)
 
-[node name="Area2D7" parent="TileMapLayer" unique_id=706373733 instance=ExtResource("5_ftfob")]
-position = Vector2(-1329, 241.00012)
-rotation = -1.5707964
+[node name="Area2D7" parent="TileMapLayer" unique_id=1595473882 instance=ExtResource("5_ftfob")]
+position = Vector2(-1571, 1062)
 scale = Vector2(0.2, 0.2)
 
-[node name="Area2D8" parent="TileMapLayer" unique_id=1373734813 instance=ExtResource("5_ftfob")]
-position = Vector2(-1550, 1390.9999)
-rotation = 1.5707964
+[node name="Area2D8" parent="TileMapLayer" unique_id=1254862002 instance=ExtResource("5_ftfob")]
+position = Vector2(-1294, 951)
 scale = Vector2(0.2, 0.2)
 
-[node name="Area2D9" parent="TileMapLayer" unique_id=1237475754 instance=ExtResource("5_ftfob")]
-position = Vector2(-1305, 1296.9999)
-rotation = -1.5707964
+[node name="Area2D9" parent="TileMapLayer" unique_id=727609239 instance=ExtResource("5_ftfob")]
+position = Vector2(-1292, 1245)
 scale = Vector2(0.2, 0.2)
 
 [node name="sniper" parent="." unique_id=512232861 instance=ExtResource("6_fkk1g")]
