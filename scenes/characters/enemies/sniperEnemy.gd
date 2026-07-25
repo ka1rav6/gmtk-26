@@ -13,7 +13,6 @@ func _ready() -> void:
 	animP.animation_finished.connect(_on_animation_player_animation_finished)
 	animP.play("idle")
 	crossHair.visible = false
-	Global.enemy_count += 1
 
 func set_speed(mult: float) -> void:
 	super.set_speed(mult)

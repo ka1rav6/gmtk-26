@@ -8,6 +8,7 @@ extends Area2D
 
 
 func _ready() -> void:
+	Global.kill_count = 0
 	modulate = Color.RED
 	col.set_deferred("disabled", true)
 

@@ -56,19 +56,17 @@ func toggle_all() -> void:
 	if is_instance_valid(player):
 		player.bgm.visible = powerMode
 		if powerMode:
-			player.set_speed(ULTRAINSTINCT_SLOWDOWN)
-		else:
-			player.set_speed(1 / ULTRAINSTINCT_SLOWDOWN)
+			player.velocity *= ULTRAINSTINCT_SLOWDOWN
+		player.currentTimeFactor = ULTRAINSTINCT_SLOWDOWN if powerMode else 1.0
 	var nodes = get_tree().get_nodes_in_group("selectable")
 	for node in nodes:
 		if not is_instance_valid(node):
 			continue
 		if node.has_method("toggle_sprite"):
 			node.toggle_sprite()
-		if node.has_method("set_speed"):
+		if "currentTimeFactor" in node:
 			if "isAffectedBy" in node and node.isAffectedBy > 0:
 				continue
-			if powerMode:
-				node.set_speed(ULTRAINSTINCT_SLOWDOWN)
-			else:
-				node.set_speed(1 / ULTRAINSTINCT_SLOWDOWN)
+			if powerMode and "velocity" in node:
+				node.velocity *= ULTRAINSTINCT_SLOWDOWN
+			node.currentTimeFactor = ULTRAINSTINCT_SLOWDOWN if powerMode else 1.0

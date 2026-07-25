@@ -21,7 +21,8 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method(\"take_damage\"):
 		body.take_damage(1000000000000)
-	body.queue_free()
+	else:
+		body.queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
@@ -65,6 +66,8 @@ _data = {
 }
 
 [node name="Area2D" type="Area2D" unique_id=936476831]
+collision_layer = 16
+collision_mask = 9
 script = SubResource("GDScript_fuuho")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1505100625]

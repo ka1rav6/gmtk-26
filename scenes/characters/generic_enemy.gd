@@ -25,6 +25,7 @@ var drag_current := Vector2.ZERO
 var isAffectedBy := 0
 var isThrown := false
 var is_grabbed := false
+var _kill_counted := false
 
 func _ready() -> void:
 	Global.enemy_count += 1
@@ -42,6 +43,10 @@ func _ready() -> void:
 
 func toggle_sprite() -> void:
 	sels.visible = Global.powerMode
+	if not Global.powerMode and dragging:
+		dragging = false
+		mc.scale /= 20.0
+		line.clear_points()
 
 func CreateTimer(time: int, functi: Callable):
 	var x = tmrScene.instantiate()
@@ -56,8 +61,12 @@ func set_speed(mult: float) -> void:
 	if mult < 1.0:
 		velocity *= mult
 
+func _exit_tree() -> void:
+	if not _kill_counted:
+		_kill_counted = true
+		Global.kill_count += 1
+
 func _on_death() -> void:
-	Global.kill_count += 1
 	Global.enemy_count -= 1
 	
 
@@ -81,6 +90,8 @@ func _tf() -> void:
 		line.clear_points()
 
 func take_damage(amount: int) -> void:
+	print("hit for : ", amount)
+	print("Global emems dead", Global.kill_count)
 	health -= amount
 	if health <= 0:
 		_on_death()

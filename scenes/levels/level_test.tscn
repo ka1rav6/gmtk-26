@@ -13,7 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="11_nxmka"]
 [ext_resource type="PackedScene" uid="uid://qkmetoqvr6pd" path="res://scenes/levels/level_1.tscn" id="12_6racp"]
 [ext_resource type="Script" uid="uid://d3xb0rfnjwx01" path="res://scenes/levels/label.gd" id="13_6racp"]
-[ext_resource type="PackedScene" path="res://scenes/level scenes/selectable_platform.tscn" id="14_selplat"]
+[ext_resource type="PackedScene" uid="uid://dnrhs8gxinfaf" path="res://scenes/level scenes/selectable_platform.tscn" id="14_selplat"]
+[ext_resource type="PackedScene" uid="uid://r4qgna3qvoyh" path="res://scenes/level_elements/saw.tscn" id="15_bc127"]
+[ext_resource type="PackedScene" path="res://scenes/level_elements/locked_portal.tscn" id="16_dl0q5"]
+[ext_resource type="PackedScene" uid="uid://drud1dyqn4ew8" path="res://scenes/levels/level_2.tscn" id="17_eanp0"]
 
 [sub_resource type="Animation" id="Animation_4lw2e"]
 length = 2.5
@@ -132,6 +135,7 @@ tile_map_data = PackedByteArray("AAAGAAoAAgAGAAIAAAAGAAkAAgAAAAMAAAAGAAgAAgAFAAI
 [node name="Area2D" parent="." unique_id=936476831 instance=ExtResource("9_8883n")]
 position = Vector2(-328, 1856)
 scale = Vector2(-981.13696, 3.2612631)
+collision_mask = 1
 
 [node name="Spawner" parent="." unique_id=473787837 instance=ExtResource("10_es4qh")]
 position = Vector2(1736, 312)
@@ -148,3 +152,13 @@ nextLevel = ExtResource("12_6racp")
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("13_6racp")
+
+[node name="Area2D2" parent="." unique_id=1833014645 instance=ExtResource("15_bc127")]
+position = Vector2(2008, 322)
+
+[node name="Area2D3" parent="." unique_id=1207423518 instance=ExtResource("9_8883n")]
+position = Vector2(1424, 600)
+
+[node name="LockedPortal" parent="." unique_id=882548806 instance=ExtResource("16_dl0q5")]
+position = Vector2(1216, 384)
+nextLevel = ExtResource("17_eanp0")
