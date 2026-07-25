@@ -1,2 +1,1 @@
 camera has to be little upper so that the main character is at the bottom of the viewframe 
-
