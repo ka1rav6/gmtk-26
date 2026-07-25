@@ -8,3 +8,6 @@ func _ready():
 func _on_death() -> void:
 	# call this function when you kill it
 	Global.enemy_count -= 1
+
+func _exit_tree() -> void:
+	pass

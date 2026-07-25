@@ -90,8 +90,6 @@ func _tf() -> void:
 		line.clear_points()
 
 func take_damage(amount: int) -> void:
-	print("hit for : ", amount)
-	print("Global emems dead", Global.kill_count)
 	health -= amount
 	if health <= 0:
 		_on_death()
