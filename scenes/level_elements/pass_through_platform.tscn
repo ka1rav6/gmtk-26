@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://divwe1hmwpkej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(300, 30)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1v51b"]
+
+[node name="PassThroughPlatform" type="StaticBody2D" unique_id=805281583]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=870977132]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1097577945]
+texture = SubResource("CanvasTexture_1v51b")

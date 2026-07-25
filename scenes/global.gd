@@ -14,7 +14,7 @@ func _ready() -> void:
 	score = 0
 	powerMode = false
 	refresh_player()
-	throwDistance = 300
+	throwDistance = 225
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

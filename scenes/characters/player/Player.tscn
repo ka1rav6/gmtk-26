@@ -166,7 +166,7 @@ height = 48.0
 size = Vector2(4800, 2800)
 
 [node name="Player" type="CharacterBody2D" unique_id=687081500 groups=["Player"]]
-collision_mask = 15
+collision_mask = 47
 script = SubResource("GDScript_su4eo")
 JUMP_VELOCITY = -600.0
 WALL_SLIDE_GRAVITY_MULT = 0.9

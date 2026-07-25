@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" path="res://scenes/level_elements/moveable_saw.tscn" id="15_dl0q5"]
 [ext_resource type="PackedScene" path="res://scenes/level_elements/locked_portal.tscn" id="16_dl0q5"]
 [ext_resource type="PackedScene" path="res://scenes/characters/enemies/LongLazer.tscn" id="16_eanp0"]
+[ext_resource type="PackedScene" path="res://scenes/level_elements/pass_through_platform.tscn" id="17_8adak"]
 [ext_resource type="PackedScene" uid="uid://drud1dyqn4ew8" path="res://scenes/levels/level_2.tscn" id="17_eanp0"]
+[ext_resource type="PackedScene" path="res://scenes/characters/enemies/gunner_enemy.tscn" id="18_8adak"]
 
 [sub_resource type="Animation" id="Animation_4lw2e"]
 length = 2.5
@@ -155,9 +157,16 @@ position = Vector2(-381, 87)
 
 [node name="LongLazer" parent="." unique_id=802574493 node_paths=PackedStringArray("target") instance=ExtResource("16_eanp0")]
 position = Vector2(-8, -424)
+collision_mask = 11
 target = NodePath("Target")
 
 [node name="Target" parent="LongLazer" index="5"]
 position = Vector2(-216, 762)
+
+[node name="PassThroughPlatform" parent="." unique_id=1671733279 instance=ExtResource("17_8adak")]
+position = Vector2(520, 456)
+
+[node name="gunner_enemy" parent="." unique_id=545990969 instance=ExtResource("18_8adak")]
+position = Vector2(512, 536)
 
 [editable path="LongLazer"]

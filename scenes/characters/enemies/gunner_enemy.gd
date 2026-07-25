@@ -6,7 +6,6 @@ var can_fire := true
 
 const FIRE_COOLDOWN := 1.0
 const BULLET_DAMAGE := 20
-const Y_RANGE := 100.0
 const DIST_SQ_RANGE := 1000000.0
 @export var bullet_slowdown := 0.1
 
@@ -19,8 +18,6 @@ func _ready() -> void:
 
 func _in_range() -> bool:
 	if not is_instance_valid(Global.player):
-		return false
-	if abs(global_position.y - Global.player.global_position.y) >= Y_RANGE:
 		return false
 	return global_position.distance_squared_to(Global.player.global_position) < DIST_SQ_RANGE
 

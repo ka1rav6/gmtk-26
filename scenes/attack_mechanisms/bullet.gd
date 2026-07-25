@@ -32,6 +32,7 @@ func set_speed(mult: float) -> void:
 	currentTimeFactor *= mult
 
 func _physics_process(delta: float) -> void:
+	rotation = direction.angle()
 	global_position += direction * delta * currentTimeFactor * SPEED
 
 func _on_body_entered(body: Node2D) -> void:

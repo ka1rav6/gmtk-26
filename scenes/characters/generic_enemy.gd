@@ -39,6 +39,8 @@ func _ready() -> void:
 	mc.input_event.connect(_on_mouse_collider_input_event)
 	mc.mouse_entered.connect(_on_mouse_collider_mouse_entered)
 	mc.mouse_exited.connect(_on_mouse_collider_mouse_exited)
+	if Global.powerMode:
+		currentTimeFactor = Global.ULTRAINSTINCT_SLOWDOWN
 
 
 func toggle_sprite() -> void:
@@ -136,9 +138,6 @@ func _on_mouse_collider_input_event(_viewport: Node, event: InputEvent, _shape_i
 			if event.is_released() and dragging:
 				Global.toggle_all()
 				throw()
-				mc.scale /= 20.0
-				dragging = false
-				line.clear_points()
 			elif event.pressed:
 				if global_position.distance_squared_to(get_global_mouse_position()) < 576:
 					mc.scale *= 20.0

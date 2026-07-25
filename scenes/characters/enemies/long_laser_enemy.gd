@@ -1,12 +1,14 @@
-extends "res://scenes/characters/generic_enemy.gd"
+extends CharacterBody2D
 
 @export var on_duration := 3.0
 @export var off_duration := 2.0
 @export var beam_damage := 10
 @export var beam_thickness := 8.0
 @export var beam_color := Color(1.0, 0.2, 0.2)
+@export var MAX_HEALTH := 25
 @export var target: Node2D
 
+var health: int
 var _beam_active := false
 var _beam_timer: Timer
 var _beam_length := 0.0
@@ -14,12 +16,25 @@ var _beam_hit_distance := 0.0
 var _beam_direction := Vector2.RIGHT
 
 func _ready() -> void:
-	super._ready()
+	health = MAX_HEALTH
+	Global.enemy_count += 1
 	_beam_timer = Timer.new()
 	_beam_timer.one_shot = true
 	_beam_timer.timeout.connect(_on_beam_timer_timeout)
 	add_child(_beam_timer)
 	_start_off_cycle()
+
+func _exit_tree() -> void:
+	Global.kill_count += 1
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		_on_death()
+
+func _on_death() -> void:
+	Global.enemy_count -= 1
+	queue_free()
 
 func _start_off_cycle() -> void:
 	_beam_active = false
