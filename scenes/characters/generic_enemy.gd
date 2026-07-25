@@ -98,10 +98,7 @@ func update_trajectory() -> void:
 	var drag = global_position - get_global_mouse_position()
 	if drag.length() > max_drag:
 		drag = drag.normalized() * max_drag
-	var throw_power = power
-	if currentTimeFactor >= 1.0:
-		throw_power *= (1.0 / Global.ULTRAINSTINCT_SLOWDOWN)
-	var vel2 = velocity + drag * throw_power
+	var vel2 = (velocity + drag * power) * (1.0 / Global.ULTRAINSTINCT_SLOWDOWN)
 
 	var simpos = Vector2.ZERO
 	var step_dt = 0.25
@@ -131,6 +128,9 @@ func _on_mouse_collider_input_event(_viewport: Node, event: InputEvent, _shape_i
 				if global_position.distance_squared_to(get_global_mouse_position()) < 576:
 					mc.scale *= 20.0
 					dragging = true
+		else:
+			if (not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)) and (dragging or line.points.size() > 0):
+				line.clear_points()
 	elif event is InputEventMouseMotion and dragging:
 		update_trajectory()
 
