@@ -153,9 +153,19 @@ func _on_mouse_collider_input_event(_viewport: Node, event: InputEvent, _shape_i
 		update_trajectory()
 
 func _physics_process(delta: float) -> void:
+	#animating shit
+	if velocity.x > 0 || velocity.x < 0:
+		animate('run')
+	else:
+		animate('idle')
 	var tDelta = delta * currentTimeFactor
 	if not is_on_floor():
 		velocity += get_gravity() * tDelta 
+		animate('jump')
 	if isThrown && (is_on_ceiling() || is_on_floor() || is_on_wall()):
 		isThrown = false
+		animate('jump')
 	move_and_slide()
+	
+func animate(animation_name: String) -> void:
+	pass

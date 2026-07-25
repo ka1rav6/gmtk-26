@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://dfrao2ofwutpe"]
+
+[ext_resource type="Script" uid="uid://bx1ek2i21c8mi" path="res://scenes/characters/enemies/bomber.gd" id="1_0scq7"]
+[ext_resource type="Texture2D" uid="uid://chyixxq33m5l0" path="res://art/bomber.png" id="1_o8ghd"]
+[ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="3_5jqwb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0scq7"]
+atlas = ExtResource("1_o8ghd")
+region = Rect2(10, 0, 320, 469)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jqwb"]
+atlas = ExtResource("1_o8ghd")
+region = Rect2(330, 0, 320, 469)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e22f3"]
+atlas = ExtResource("1_o8ghd")
+region = Rect2(650, 0, 320, 469)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8ghd"]
+atlas = ExtResource("1_o8ghd")
+region = Rect2(0, 0, 352, 469)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jyttb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0scq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jqwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e22f3")
+}],
+"loop": 0,
+"name": &"explosion",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8ghd")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jyttb"]
+radius = 97.04638
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dyrki"]
+radius = 529.81885
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yopjt"]
+radius = 240.85889
+
+[node name="Bomber" type="CharacterBody2D" unique_id=890417041 node_paths=PackedStringArray("line", "sels", "mc")]
+script = ExtResource("1_0scq7")
+line = NodePath("ShootDir")
+sels = NodePath("select_sprite")
+mc = NodePath("mouseCollider")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1715483146]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jyttb")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281111138]
+position = Vector2(-14, -17)
+shape = SubResource("CircleShape2D_jyttb")
+
+[node name="Detection_radius" type="Area2D" parent="." unique_id=259387586]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_radius" unique_id=338824990]
+position = Vector2(-15, -13)
+shape = SubResource("CircleShape2D_dyrki")
+
+[node name="Explosion_radius" type="Area2D" parent="." unique_id=34766761]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion_radius" unique_id=265960365]
+position = Vector2(-15, -15)
+shape = SubResource("CircleShape2D_yopjt")
+
+[node name="explode_time" type="Timer" parent="." unique_id=551819674]
+wait_time = 1.5
+
+[node name="mouseCollider" type="Area2D" parent="." unique_id=107711320]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouseCollider" unique_id=1098004983]
+position = Vector2(-14, -17)
+shape = SubResource("CircleShape2D_jyttb")
+
+[node name="ShootDir" type="Line2D" parent="." unique_id=2022557861]
+
+[node name="select_sprite" type="Sprite2D" parent="." unique_id=164749493]
+position = Vector2(-14, -12)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_5jqwb")
