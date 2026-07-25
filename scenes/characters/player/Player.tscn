@@ -18,7 +18,8 @@ script/source = "extends CharacterBody2D
 @onready var health := MAX_HEALTH
 
 var _isTreePaused := false
-var wall_jumped := false
+var wall_jump_timer := 0.0
+var wall_jump_direction := 0.0
 
 func _ready() -> void:
 	Global.score = 0
@@ -62,7 +63,7 @@ func _physics_process(delta: float) -> void:
 		if is_on_wall():
 			velocity.y *= WALL_SLIDE_GRAVITY_MULT
 
-	wall_jumped = false
+	wall_jump_timer = maxf(wall_jump_timer - tDelta, 0.0)
 	# Handle jump.
 	if Input.is_action_just_pressed(\"jump\"):
 		if is_on_floor():
@@ -70,17 +71,25 @@ func _physics_process(delta: float) -> void:
 		elif is_on_wall():
 			velocity.y = tJumpVelocity
 			velocity.x = get_wall_normal().x * tSpeed * WALL_JUMP_KICK_MULT
-			wall_jumped = true
+			wall_jump_timer = 0.7
+			wall_jump_direction = get_wall_normal().x
 	
 	if Input.is_action_just_pressed(\"down\") and !is_on_floor():
 		velocity.y -= tJumpVelocity
 
 	var direction := Input.get_axis(\"left\", \"right\")
-	if not wall_jumped:
-		if direction:
+	if wall_jump_timer > 0.0:
+		var toward_wall = sign(direction) == -sign(wall_jump_direction)
+		if direction != 0.0 and toward_wall:
+			velocity.x = move_toward(velocity.x, 0, tSpeed * (0.7 - wall_jump_timer))
+		elif direction:
 			velocity.x = direction * tSpeed
 		else:
-			velocity.x = move_toward(velocity.x, 0, tSpeed)
+			velocity.x = move_toward(velocity.x, 0, tSpeed * 0.07)
+	elif direction:
+		velocity.x = direction * tSpeed
+	else:
+		velocity.x = move_toward(velocity.x, 0, tSpeed)
 
 	move_and_slide()
 
@@ -109,8 +118,8 @@ size = Vector2(4800, 2800)
 collision_mask = 15
 script = SubResource("GDScript_su4eo")
 JUMP_VELOCITY = -600.0
-WALL_SLIDE_GRAVITY_MULT = 0.7
-WALL_JUMP_KICK_MULT = 5.0
+WALL_SLIDE_GRAVITY_MULT = 0.9
+WALL_JUMP_KICK_MULT = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1371535421]
 z_index = 4
