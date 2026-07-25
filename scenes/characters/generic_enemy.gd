@@ -8,8 +8,8 @@ extends CharacterBody2D
 @export var COUNTDOWN_HEIGHT := 60
 @export var onHoverScaleFactor = 1.25
 @export var slowDownTimeFactor = 0.1
-@export var power := 8.0
-@export var max_drag := 200.0
+@export var power := 2.0
+@export var max_drag := 50.0
 @export var line : Line2D = null
 @export var sels : Sprite2D = null
 @export var mc : Area2D = null
@@ -52,7 +52,8 @@ func CreateTimer(time: int, functi: Callable):
 
 func set_speed(mult: float) -> void:
 	currentTimeFactor *= mult
-	velocity *= mult
+	if mult < 1.0:
+		velocity *= mult
 
 func _on_death() -> void:
 	Global.enemy_count -= 1
@@ -129,7 +130,7 @@ func _on_mouse_collider_input_event(_viewport: Node, event: InputEvent, _shape_i
 					mc.scale *= 20.0
 					dragging = true
 		else:
-			if (not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)) and (dragging or line.points.size() > 0):
+			if (!Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)) and (line.points.size() > 0):
 				line.clear_points()
 	elif event is InputEventMouseMotion and dragging:
 		update_trajectory()

@@ -26,8 +26,8 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, 0, 2 * tSpeed)
 			if abs(velocity.x) > tMaxVel:
 				velocity.x = sign(velocity.x) * tMaxVel
-		else:
-			velocity.x = move_toward(velocity.x, 0, tSpeed)
+		# else:
+		# 	velocity.x = move_toward(velocity.x, 0, tSpeed)
 	
 	# move and slide is called by super
 	super._physics_process(delta)

@@ -36,7 +36,8 @@ func set_pause(val: bool) -> void:
 
 func set_speed(mult: float) -> void:
 	currentTimeFactor *= mult
-	velocity *= mult
+	if mult < 1.0:
+		velocity *= mult
 
 func take_damage(amount: int) -> void:
 	health -= amount
