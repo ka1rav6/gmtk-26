@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://drud1dyqn4ew8" path="res://scenes/levels/level_2.tscn" id="17_eanp0"]
 [ext_resource type="PackedScene" path="res://scenes/characters/enemies/gunner_enemy.tscn" id="18_8adak"]
 [ext_resource type="PackedScene" path="res://scenes/characters/enemies/melee_enemy.tscn" id="19_melee"]
+[ext_resource type="PackedScene" uid="uid://r1rf68rd11u" path="res://scenes/level_elements/tile_map_layer_tcent.tscn" id="18_tp444"]
 
 [sub_resource type="Animation" id="Animation_es4qh"]
 length = 0.001
@@ -128,5 +129,8 @@ position = Vector2(512, 536)
 
 [node name="melee_enemy" parent="." unique_id=232378540 instance=ExtResource("19_melee")]
 position = Vector2(-94, 353)
+
+[node name="TileMapLayer2" parent="." unique_id=1783266238 instance=ExtResource("18_tp444")]
+tile_map_data = PackedByteArray("AAAGAPv/AQAJAAAAAAAGAPz/AQAJAAMAAAAFAPz/AQAJAAAAAAAEAP3/AQAAAAMAAAAFAP3/AQAHAAIAAAAGAP3/AQAKAAEAAAAHAP3/AQAKAAEAAAAHAPz/AQAKAAEAAAAHAPv/AQAKAAAAAAAIAP3/AQAKAAEAAAAJAP3/AQAKAAEAAAAKAP3/AQAKAAEAAAALAP3/AQALAAEAAAALAPz/AQALAAEAAAAKAPz/AQAKAAEAAAAJAPz/AQAKAAEAAAAIAPz/AQAKAAEAAAAGAP7/AQAKAAEAAAAHAP7/AQAKAAEAAAAIAP7/AQAKAAEAAAAJAP7/AQAKAAEAAAAKAP7/AQAKAAMAAAALAP7/AQALAAIAAAAKAP//AQALAAEAAAAKAAAAAQALAAIAAAAJAAAAAQAJAAIAAAAIAP//AQAKAAIAAAAHAP//AQAKAAIAAAAGAP//AQAKAAIAAAAFAP7/AQAJAAEAAAAFAP//AQAIAAEAAAAFAAAAAQALAAIAAAAEAAAAAQAGAAEAAAADAAAAAQAAAAMAAAAEAP//AQAJAAAAAAAJAP//AQALAAMAAAAIAPr/AQAAAAAAAAAIAPv/AQAEAAAAAAAJAPv/AQAKAAAAAAAKAPv/AQAKAAAAAAALAPv/AQALAAAAAAA=")
 
 [editable path="LongLazer"]
