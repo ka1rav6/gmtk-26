@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://b0l5lljwo4x8q"]
 
-[ext_resource type="Script" uid="uid://jfjernl20pxn" path="res://scenes/characters/enemies/basic_enemy.gd" id="1_usgmt"]
+[ext_resource type="Script" uid="uid://bjm4bvnce6w8s" path="res://scenes/characters/enemies/crate.gd" id="1_rxw24"]
 [ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="2_rxw24"]
 [ext_resource type="Texture2D" uid="uid://fcvrcoy55y13" path="res://art/big big dot.png" id="3_iflx6"]
+[ext_resource type="Texture2D" uid="uid://cktgpfljppgdo" path="res://art/crate.png" id="3_rxw24"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
 size = Vector2(64, 64)
@@ -14,14 +15,11 @@ size = Vector2(64, 64)
 diffuse_texture = ExtResource("3_iflx6")
 texture_repeat = 2
 
-[node name="basic_enemy" type="CharacterBody2D" unique_id=512232861 node_paths=PackedStringArray("line", "sels", "mc") groups=["selectable"]]
+[node name="basic_enemy" type="CharacterBody2D" unique_id=512232861 groups=["selectable"]]
 collision_layer = 8
 collision_mask = 3
 floor_max_angle = 1.134464
-script = ExtResource("1_usgmt")
-line = NodePath("ShootDir")
-sels = NodePath("select_sprite")
-mc = NodePath("mouseCollider")
+script = ExtResource("1_rxw24")
 
 [node name="select_sprite" type="Sprite2D" parent="." unique_id=269152621]
 visible = false
@@ -29,6 +27,8 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_rxw24")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=154427481]
+scale = Vector2(0.17028986, 0.17022792)
+texture = ExtResource("3_rxw24")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1100398884]
 shape = SubResource("RectangleShape2D_8njf7")

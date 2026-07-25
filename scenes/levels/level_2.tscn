@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://diqvtf34faohx" path="res://scenes/level_elements/tile_map_layer.tscn" id="1_j2425"]
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="2_g2h2n"]
 [ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="3_fiq81"]
-[ext_resource type="PackedScene" uid="uid://berxsoguxvgf8" path="res://scenes/characters/enemies/basic_enemy.tscn" id="5_l37oo"]
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="5_qpwj6"]
 [ext_resource type="PackedScene" uid="uid://yb1n7lubjnmp" path="res://scenes/levels/level_3.tscn" id="6_ibugp"]
+[ext_resource type="PackedScene" uid="uid://b0l5lljwo4x8q" path="res://scenes/characters/enemies/crate.tscn" id="6_qpwj6"]
 
 [node name="Level2" type="Node2D" unique_id=611799087]
 
@@ -20,20 +20,15 @@ scale = Vector2(5, 1)
 [node name="Player2" parent="TileMapLayer" unique_id=424179130 instance=ExtResource("2_g2h2n")]
 position = Vector2(379, 76)
 
-[node name="basic_enemy" parent="TileMapLayer" unique_id=512232861 instance=ExtResource("5_l37oo")]
-position = Vector2(86, 81)
-SPEED = 0.0
-
-[node name="basic_enemy" parent="TileMapLayer/basic_enemy" unique_id=40042555 instance=ExtResource("5_l37oo")]
-position = Vector2(87, 86)
-SPEED = 0.0
-
-[node name="basic_enemy" parent="TileMapLayer/basic_enemy/basic_enemy" unique_id=1419617291 instance=ExtResource("5_l37oo")]
-position = Vector2(101, 56)
-SPEED = 0.0
-JUMP_VELOCITY = 0.0
-MAX_VELOCITY = 0.0
-
 [node name="portal" parent="TileMapLayer" unique_id=1524441498 instance=ExtResource("5_qpwj6")]
 position = Vector2(1187, 191)
 nextLevel = ExtResource("6_ibugp")
+
+[node name="basic_enemy" parent="TileMapLayer" unique_id=512232861 instance=ExtResource("6_qpwj6")]
+position = Vector2(60, 83)
+
+[node name="basic_enemy2" parent="TileMapLayer" unique_id=1171967162 instance=ExtResource("6_qpwj6")]
+position = Vector2(174, 168)
+
+[node name="basic_enemy3" parent="TileMapLayer" unique_id=555006786 instance=ExtResource("6_qpwj6")]
+position = Vector2(175, 71)
