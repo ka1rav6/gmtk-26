@@ -192,7 +192,6 @@ layer = 100
 visible = false
 
 [node name="bg_display_on_mode" type="Sprite2D" parent="CanvasLayer" unique_id=1490776435]
-visible = false
 texture = ExtResource("1_db84v")
 centered = false
 
@@ -208,7 +207,6 @@ visible = false
 shape = SubResource("RectangleShape2D_8njf7")
 
 [node name="PauseMenu" parent="." unique_id=1875723097 instance=ExtResource("2_pause")]
-visible = false
 
 [connection signal="body_entered" from="activeArea" to="." method="_on_active_area_body_entered"]
 [connection signal="body_exited" from="activeArea" to="." method="_on_active_area_body_exited"]

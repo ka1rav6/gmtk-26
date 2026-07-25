@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="2_nsrm0"]
 [ext_resource type="PackedScene" uid="uid://kxh4mvnfrfl" path="res://scenes/characters/enemies/Lazer.tscn" id="3_nsrm0"]
 [ext_resource type="PackedScene" uid="uid://berxsoguxvgf8" path="res://scenes/characters/enemies/basic_enemy.tscn" id="5_6761a"]
+[ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="5_sk5k4"]
+[ext_resource type="PackedScene" uid="uid://drud1dyqn4ew8" path="res://scenes/levels/level_2.tscn" id="6_oc4kc"]
 
 [node name="Level1" type="Node2D" unique_id=213221670]
 position = Vector2(1233, -935)
@@ -22,7 +24,11 @@ position = Vector2(-193, 1047)
 position = Vector2(-184, 1251)
 
 [node name="basic_enemy" parent="TileMapLayer" unique_id=2142671947 instance=ExtResource("5_6761a")]
-position = Vector2(-190, 1578)
+position = Vector2(-469, 1572)
+
+[node name="portal" parent="TileMapLayer" unique_id=1524441498 instance=ExtResource("5_sk5k4")]
+position = Vector2(-189, 1554)
+nextLevel = ExtResource("6_oc4kc")
 
 [node name="Label" type="Label" parent="." unique_id=1670112826]
 offset_left = -995.0
