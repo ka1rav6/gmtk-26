@@ -2,16 +2,30 @@ extends Area2D
 
 
 @export var anim_length := 3.0
+@export var slowDownTimeFactor := 0.1
+@export var onHoverScaleFactor := 1.25
 
 @onready var animP: AnimationPlayer = $AnimationPlayer
 @onready var spinAnimP: AnimationPlayer = $SpinAnimationPlayer
 @onready var from_point: Marker2D = $from_point
 @onready var to_point: Marker2D = $to_point
+@onready var sels: Sprite2D = $select_sprite
+@onready var mc: Area2D = $mouseCollider
+
+var currentTimeFactor := 1.0
+var isAffectedBy := 0
 
 
 func _ready() -> void:
+	add_to_group("selectable")
+	mc.input_event.connect(_on_mouse_collider_input_event)
+	mc.mouse_entered.connect(_on_mouse_collider_mouse_entered)
+	mc.mouse_exited.connect(_on_mouse_collider_mouse_exited)
 	spinAnimP.play("saw_animation")
 	_build_movement()
+	if Global.powerMode:
+		set_speed(Global.ULTRAINSTINCT_SLOWDOWN)
+	toggle_sprite()
 
 
 func _build_movement() -> void:
@@ -33,6 +47,39 @@ func _build_movement() -> void:
 	lib.add_animation(&"saw_move", anim)
 	animP.add_animation_library(&"move", lib)
 	animP.play(&"move/saw_move")
+
+
+func toggle_sprite() -> void:
+	sels.visible = Global.powerMode
+
+
+func set_speed(mult: float) -> void:
+	currentTimeFactor *= mult
+	animP.speed_scale = currentTimeFactor
+	spinAnimP.speed_scale = currentTimeFactor
+
+
+func _on_mouse_collider_mouse_entered() -> void:
+	sels.scale *= onHoverScaleFactor
+
+
+func _on_mouse_collider_mouse_exited() -> void:
+	sels.scale /= onHoverScaleFactor
+
+
+func _on_mouse_collider_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if not Global.powerMode:
+		return
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			Global.toggle_all()
+			set_speed(slowDownTimeFactor)
+			isAffectedBy += 1
+			get_tree().create_timer(5.0).timeout.connect(func():
+				if is_instance_valid(self):
+					set_speed(1.0 / slowDownTimeFactor)
+					isAffectedBy -= 1
+			)
 
 
 func _on_body_entered(body: Node2D) -> void:

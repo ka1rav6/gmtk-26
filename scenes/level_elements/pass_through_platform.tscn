@@ -13,4 +13,5 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_platform")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1097577945]
+scale = Vector2(300, 30)
 texture = SubResource("CanvasTexture_1v51b")

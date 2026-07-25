@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="1_h0hot"]
 [ext_resource type="PackedScene" uid="uid://berxsoguxvgf8" path="res://scenes/characters/enemies/basic_enemy.tscn" id="2_yluh8"]
 [ext_resource type="PackedScene" uid="uid://dxsr6d3bwtg23" path="res://scenes/level_elements/platform.tscn" id="6_uh3ll"]
-[ext_resource type="PackedScene" uid="uid://cig3xu4f20xgd" path="res://scenes/level_elements/larger_platform.tscn" id="7_4lw2e"]
 [ext_resource type="PackedScene" uid="uid://diqvtf34faohx" path="res://scenes/level_elements/tile_map_layer.tscn" id="8_8883n"]
 [ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="9_8883n"]
 [ext_resource type="PackedScene" uid="uid://dbn7rh2k1oml0" path="res://scenes/level_elements/spawner.tscn" id="10_es4qh"]
@@ -19,43 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://drud1dyqn4ew8" path="res://scenes/levels/level_2.tscn" id="17_eanp0"]
 [ext_resource type="PackedScene" path="res://scenes/characters/enemies/gunner_enemy.tscn" id="18_8adak"]
 
-[sub_resource type="Animation" id="Animation_4lw2e"]
-length = 2.5
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.001, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(74, 196), Vector2(74, 196), Vector2(659, 196)]
-}
-
-[sub_resource type="Animation" id="Animation_bqmi1"]
-resource_name = "new_animation"
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(74, 196), Vector2(619, 196)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8883n"]
-_data = {
-&"RESET": SubResource("Animation_4lw2e"),
-&"new_animation": SubResource("Animation_bqmi1")
-}
 
 [sub_resource type="Animation" id="Animation_es4qh"]
 length = 0.001
@@ -100,13 +62,6 @@ _data = {
 [node name="Player" parent="." unique_id=687081500 instance=ExtResource("1_h0hot")]
 position = Vector2(232, 16)
 WALL_JUMP_KICK_MULT = 3.0
-
-[node name="Platform" parent="." unique_id=1546735083 instance=ExtResource("7_4lw2e")]
-position = Vector2(74, 196)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform" unique_id=1674103341]
-libraries/ = SubResource("AnimationLibrary_8883n")
-autoplay = &"RESET"
 
 [node name="Platform2" parent="." unique_id=1129744368 instance=ExtResource("6_uh3ll")]
 position = Vector2(939, 319)

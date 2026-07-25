@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var onHoverScaleFactor = 1.25
 @export var slowDownTimeFactor = 0.1
 @export var power := 2.0
+@export var friction := 1.0
 @export var max_drag := 50.0
 @export var line : Line2D = null
 @export var sels : Sprite2D = null
@@ -30,6 +31,9 @@ var _kill_counted := false
 func _ready() -> void:
 	Global.enemy_count += 1
 	set_physics_process(false)
+	var mat := PhysicsMaterial.new()
+	mat.friction = friction
+	set("physics_material_override", mat)
 	if line == null:
 		line = $ShootDir
 	if sels == null:
