@@ -57,6 +57,7 @@ func set_speed(mult: float) -> void:
 		velocity *= mult
 
 func _on_death() -> void:
+	Global.kill_count += 1
 	Global.enemy_count -= 1
 	
 
@@ -68,7 +69,10 @@ func _on_mouse_collider_mouse_exited() -> void:
 
 func _tf() -> void:
 	if currentTimeFactor < 1.0:
-		set_speed(1 / slowDownTimeFactor)
+		if Global.powerMode:
+			currentTimeFactor = Global.ULTRAINSTINCT_SLOWDOWN
+		else:
+			currentTimeFactor = 1.0
 	isAffectedBy -= 1
 	if dragging:
 		dragging = false

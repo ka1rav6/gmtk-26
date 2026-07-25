@@ -6,6 +6,7 @@ var powerMode: bool
 var player: CharacterBody2D
 var throwDistance: int
 var enemy_count :=0
+var kill_count := 0
 const ULTRAINSTINCT_SLOWDOWN = 0.1
 
 # Called when the node enters the scene tree for the first time.
@@ -32,6 +33,7 @@ func reset_state() -> void:
 	score = 0
 	powerMode = false
 	enemy_count = 0
+	kill_count = 0
 	player = null
 
 # Used by both the start menu and the pause menu so "Start" and "Restart"
@@ -64,6 +66,8 @@ func toggle_all() -> void:
 		if node.has_method("toggle_sprite"):
 			node.toggle_sprite()
 		if node.has_method("set_speed"):
+			if "isAffectedBy" in node and node.isAffectedBy > 0:
+				continue
 			if powerMode:
 				node.set_speed(ULTRAINSTINCT_SLOWDOWN)
 			else:

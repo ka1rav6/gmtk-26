@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" uid="uid://bcwewnibqbbbf" path="res://art/portal.png" id="1_tex"]
+[ext_resource type="Script" path="res://scenes/level_elements/locked_portal.gd" id="2_script"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_col"]
+radius = 48.0
+height = 128.0
+
+[node name="LockedPortal" type="Area2D"]
+script = ExtResource("2_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_col")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
