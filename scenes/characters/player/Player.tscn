@@ -207,6 +207,7 @@ visible = false
 shape = SubResource("RectangleShape2D_8njf7")
 
 [node name="PauseMenu" parent="." unique_id=1875723097 instance=ExtResource("2_pause")]
+visible = false
 
 [connection signal="body_entered" from="activeArea" to="." method="_on_active_area_body_entered"]
 [connection signal="body_exited" from="activeArea" to="." method="_on_active_area_body_exited"]
