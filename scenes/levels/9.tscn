@@ -2,12 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://divwe1hmwpkej" path="res://scenes/level_elements/pass_through_platform.tscn" id="1_81fxf"]
 [ext_resource type="PackedScene" uid="uid://r1rf68rd11u" path="res://scenes/level_elements/tile_map_layer_tcent.tscn" id="1_e3nts"]
+[ext_resource type="PackedScene" uid="uid://cyvotpk3y0f31" path="res://scenes/level_elements/bg.tscn" id="1_fhc31"]
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="2_n6fel"]
 [ext_resource type="PackedScene" path="res://scenes/characters/enemies/gunner_enemy.tscn" id="4_80fcu"]
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="5_tvm3i"]
 [ext_resource type="PackedScene" uid="uid://brwwl7ogkg837" path="res://scenes/levels/10.tscn" id="6_2j3bg"]
 
 [node name="kv2" type="Node2D" unique_id=355161182]
+
+[node name="BG" parent="." unique_id=1674609490 instance=ExtResource("1_fhc31")]
 
 [node name="PassThroughPlatform" parent="." unique_id=805281583 instance=ExtResource("1_81fxf")]
 position = Vector2(3672.0002, 538)

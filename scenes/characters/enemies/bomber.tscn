@@ -67,7 +67,7 @@ texture_filter = 1
 position = Vector2(3.100003, 3.4500031)
 scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_jyttb")
-animation = &"idle"
+animation = &"explosion"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281111138]
 shape = SubResource("CircleShape2D_jyttb")
