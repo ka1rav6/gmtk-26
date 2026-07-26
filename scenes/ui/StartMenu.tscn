@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://b02diyhkn2nly"]
 
-[ext_resource type="PackedScene" uid="uid://ihcus5gs8b1s" path="res://scenes/levels/level_test.tscn" id="2_xr47m"]
-[ext_resource type="PackedScene" path="res://scenes/ui/HowToPlayOverlay.tscn" id="howtoplay_overlay"]
-[ext_resource type="Script" uid="uid://71ek2iu26fu4" path="res://scenes/ui/start_menu.gd" id="start_menu_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/LevelSelect.tscn" id="2_pridf"]
 [ext_resource type="PackedScene" path="res://scenes/ui/OptionsScene.tscn" id="4_options"]
+[ext_resource type="PackedScene" uid="uid://cwqpxe48ooixl" path="res://scenes/ui/HowToPlayOverlay.tscn" id="howtoplay_overlay"]
+[ext_resource type="Script" uid="uid://71ek2iu26fu4" path="res://scenes/ui/start_menu.gd" id="start_menu_script"]
 
 [node name="StartMenu" type="CanvasLayer" unique_id=90173304]
 process_mode = 3
 layer = 100
 script = ExtResource("start_menu_script")
-next_scene = ExtResource("2_xr47m")
+next_scene = ExtResource("2_pridf")
 options_scene = ExtResource("4_options")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=652741435]
@@ -100,4 +100,3 @@ theme_override_font_sizes/font_size = 18
 text = "✕  Quit"
 
 [node name="HowToPlayOverlay" parent="." unique_id=1517836480 instance=ExtResource("howtoplay_overlay")]
-visible = false

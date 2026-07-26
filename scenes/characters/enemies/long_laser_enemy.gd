@@ -19,6 +19,8 @@ var is_grabbed := true # Prevents player from grabbing
 var isAffectedBy := 0
 var COUNTDOWN_HEIGHT := 60
 
+var _enemy_dead := false
+
 var _beam_active := false
 var _cycle_time_remaining := 0.0
 var _beam_length := 0.0
@@ -34,12 +36,11 @@ func _ready() -> void:
 		mc.input_event.connect(_on_mouse_input)
 	_start_off_cycle()
 
-func _exit_tree() -> void:
-	Global.kill_count += 1
-
 func take_damage(amount: int) -> void:
 	health -= amount
-	if health <= 0:
+	if health <= 0 and not _enemy_dead:
+		_enemy_dead = true
+		Global.kill_count += 1
 		Global.enemy_count -= 1
 		queue_free()
 

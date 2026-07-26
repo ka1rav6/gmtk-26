@@ -25,6 +25,7 @@ var grabbed_enemy: CollisionObject2D = null
 var facing_direction := 1
 
 func _ready() -> void:
+	Global.reset_state()
 	Global.score = 0
 	bgm.visible = Global.powerMode
 
@@ -60,9 +61,6 @@ func try_grab() -> void:
 	var col = grabbed_enemy.get_node_or_null(\"CollisionShape2D\")
 	if col:
 		col.set_deferred(\"disabled\", true)
-	if grabbed_enemy.get(\"_kill_counted\") != null:
-		grabbed_enemy._kill_counted = true
-		Global.kill_count -= 1
 	grabbed_enemy.reparent(self)
 	grabbed_enemy.global_position = global_position + Vector2(facing_direction * 40, -20)
 
@@ -77,9 +75,6 @@ func release_grab() -> void:
 	grabbed_enemy.is_grabbed = false
 	grabbed_enemy.set_physics_process(true)
 	grabbed_enemy.velocity = Vector2.ZERO
-	if grabbed_enemy.get(\"_kill_counted\") != null:
-		grabbed_enemy._kill_counted = false
-		Global.kill_count += 1
 	grabbed_enemy = null
 
 func set_pause(val: bool) -> void:

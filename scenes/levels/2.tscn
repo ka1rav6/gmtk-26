@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b0l5lljwo4x8q" path="res://scenes/characters/enemies/crate.tscn" id="6_ctqvy"]
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="7_yqrfs"]
 [ext_resource type="PackedScene" uid="uid://cymjwe3j64qvp" path="res://scenes/characters/enemies/LongLazer.tscn" id="8_3io2x"]
+[ext_resource type="PackedScene" uid="uid://qkmetoqvr6pd" path="res://scenes/levels/3.tscn" id="8_uyxho"]
 
 [node name="Node2D" type="Node2D" unique_id=861412764]
 
@@ -33,11 +34,17 @@ position = Vector2(1176, -32)
 
 [node name="portal" parent="." unique_id=1524441498 instance=ExtResource("7_yqrfs")]
 position = Vector2(2864, -24)
+nextLevel = ExtResource("8_uyxho")
 
 [node name="LongLazer" parent="." unique_id=1671628358 instance=ExtResource("8_3io2x")]
 position = Vector2(1428, 1168)
+on_duration = 0.25
+off_duration = 0.25
 
 [node name="Target" parent="LongLazer" index="2" unique_id=1652668192]
 position = Vector2(0, -512)
+
+[node name="basic_enemy" parent="." unique_id=578448281 instance=ExtResource("6_ctqvy")]
+position = Vector2(936, 968)
 
 [editable path="LongLazer"]

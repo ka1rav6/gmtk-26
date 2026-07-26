@@ -29,9 +29,6 @@ func _ready() -> void:
 	_set_hitbox_active(false)
 	weapon_pivot.rotation = REST_ANGLE
 
-func _on_death() -> void:
-	Global.enemy_count -= 1
-
 func _in_attack_range() -> bool:
 	if not is_instance_valid(Global.player):
 		return false

@@ -15,7 +15,7 @@ size = Vector2(64, 64)
 diffuse_texture = ExtResource("3_iflx6")
 texture_repeat = 2
 
-[node name="basic_enemy" type="CharacterBody2D" unique_id=512232861 groups=["selectable"]]
+[node name="crate" type="CharacterBody2D" unique_id=512232861 groups=["selectable"]]
 collision_layer = 8
 collision_mask = 43
 floor_max_angle = 1.134464

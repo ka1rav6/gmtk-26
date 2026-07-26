@@ -2,11 +2,6 @@ extends "res://scenes/characters/generic_enemy.gd"
 
 func _ready():
 	super._ready()
-	
-
-func _on_death() -> void:
-	# call this function when you kill it
-	Global.enemy_count -= 1
 
 func _physics_process(delta: float) -> void:
 	var tSpeed = SPEED * currentTimeFactor
@@ -25,8 +20,5 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, 0, 2 * tSpeed)
 			if abs(velocity.x) > tMaxVel:
 				velocity.x = sign(velocity.x) * tMaxVel
-		# else:
-		# 	velocity.x = move_toward(velocity.x, 0, tSpeed)
-	
-	# move and slide is called by super
+
 	super._physics_process(delta)

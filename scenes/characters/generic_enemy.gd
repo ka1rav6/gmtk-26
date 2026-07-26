@@ -28,6 +28,7 @@ var isAffectedBy := 0
 var isThrown := false
 var is_grabbed := false
 var _kill_counted := false
+var _enemy_dead := false
 const REF_GRAVITY: float = 980.0
 
 func _ready() -> void:
@@ -79,14 +80,12 @@ func _gravity_compensation() -> float:
 		return 1.0
 	return sqrt(g / REF_GRAVITY)
 
-func _exit_tree() -> void:
-	if not _kill_counted:
-		_kill_counted = true
-		Global.kill_count += 1
-
 func _on_death() -> void:
+	if _enemy_dead:
+		return
+	_enemy_dead = true
+	Global.kill_count += 1
 	Global.enemy_count -= 1
-	
 
 func _on_mouse_collider_mouse_entered() -> void:
 	sels.scale *= onHoverScaleFactor
