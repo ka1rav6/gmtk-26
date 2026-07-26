@@ -11,7 +11,9 @@ script/source = "extends CharacterBody2D
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
 @export var MAX_HEALTH := 100
-@export var WALL_JUMP_KICK_MULT := 1.5
+@export var WALL_JUMP_ANGLE := 45.0
+@export var WALL_JUMP_SPEED := 650.0
+@export var WALL_JUMP_DURATION := 0.7
 @export var MAX_FALL_SPEED := 800.0
 @onready var bgm := $CanvasLayer/bg_display_on_mode
 @onready var actArea := $activeArea
@@ -132,9 +134,11 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			velocity.y = tJumpVelocity
 		elif is_on_wall():
-			velocity.y = tJumpVelocity
-			velocity.x = get_wall_normal().x * tSpeed * WALL_JUMP_KICK_MULT
-			wall_jump_timer = 0.7
+			var angle_rad = deg_to_rad(WALL_JUMP_ANGLE)
+			var jump_magnitude = WALL_JUMP_SPEED * sqrt(currentTimeFactor)
+			velocity.x = get_wall_normal().x * cos(angle_rad) * jump_magnitude
+			velocity.y = -sin(angle_rad) * jump_magnitude
+			wall_jump_timer = WALL_JUMP_DURATION
 			wall_jump_direction = get_wall_normal().x
 	
 	if Input.is_action_just_pressed(\"down\") and !is_on_floor():
@@ -146,7 +150,7 @@ func _physics_process(delta: float) -> void:
 	if wall_jump_timer > 0.0:
 		var toward_wall = sign(direction) == -sign(wall_jump_direction)
 		if direction != 0.0 and toward_wall:
-			velocity.x = move_toward(velocity.x, 0, tSpeed * (0.7 - wall_jump_timer))
+			velocity.x = move_toward(velocity.x, 0, tSpeed * (WALL_JUMP_DURATION - wall_jump_timer))
 		elif direction:
 			velocity.x = direction * tSpeed
 		else:
@@ -193,6 +197,9 @@ collision_mask = 47
 script = SubResource("GDScript_su4eo")
 SPEED = 489.0
 JUMP_VELOCITY = -600.0
+WALL_JUMP_ANGLE = 35.0
+WALL_JUMP_SPEED = 1100.0
+WALL_JUMP_DURATION = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1371535421]
 z_index = 4

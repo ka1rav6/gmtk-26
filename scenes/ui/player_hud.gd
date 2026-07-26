@@ -21,4 +21,17 @@ func _process(_delta: float) -> void:
 	elixir_bar.value = Global.elixir
 	elixir_label.text = "%d / %d" % [int(Global.elixir), int(Global.max_elixir)]
 	
-	enemies_label.text = "Kills: %d | Left: %d" % [Global.kill_count, Global.enemy_count]
+	var red_portal = _find_red_portal()
+	if red_portal:
+		var needed = max(0, red_portal.enemies_required - Global.kill_count)
+		enemies_label.text = "Enemies needed: %d" % needed
+		enemies_label.visible = true
+	else:
+		enemies_label.text = "get to the portal, fast."
+		enemies_label.visible = true
+
+func _find_red_portal() -> Node:
+	for p in get_tree().get_nodes_in_group("locked_portal"):
+		if is_instance_valid(p) and "enemies_required" in p and Global.kill_count < p.enemies_required:
+			return p
+	return null

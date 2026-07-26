@@ -1,6 +1,6 @@
 extends Control
 
-@export var back_scene: PackedScene
+@export_file("*.tscn") var back_scene_path: String
 
 var rebinding_action: String = ""
 
@@ -115,5 +115,5 @@ func _remap_action(action: String, physical_keycode: int) -> void:
 	InputMap.action_add_event(action, ev)
 
 func _on_back_pressed() -> void:
-	if back_scene:
-		get_tree().change_scene_to_packed(back_scene)
+	if back_scene_path:
+		get_tree().change_scene_to_file(back_scene_path)

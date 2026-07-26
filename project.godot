@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/godot-neovim/plugin.cfg")
 
 Player=""
 selectable="for time slow ability use"
+locked_portal=""
 
 [input]
 

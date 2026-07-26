@@ -1,29 +1,29 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://b8i4dtjkdrtt0"]
 
 [ext_resource type="Texture2D" uid="uid://bcwewnibqbbbf" path="res://art/portal.png" id="1_tex"]
-[ext_resource type="Script" path="res://scenes/level_elements/locked_portal.gd" id="2_script"]
+[ext_resource type="Script" uid="uid://cufn3qjgyb2a8" path="res://scenes/level_elements/locked_portal.gd" id="2_script"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_col"]
 radius = 48.0
 height = 128.0
 
-[node name="LockedPortal" type="Area2D"]
+[node name="LockedPortal" type="Area2D" unique_id=505869986 groups=["locked_portal"]]
 script = ExtResource("2_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1449785763]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1775950363]
 shape = SubResource("CapsuleShape2D_col")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=496522286]
 offset_left = -120.0
 offset_top = -120.0
 offset_right = 120.0
 offset_bottom = -80.0
+text = "0 / 5"
 horizontal_alignment = 1
 vertical_alignment = 1
-text = "0 / 5"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

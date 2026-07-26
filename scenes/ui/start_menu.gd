@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@export var next_scene: PackedScene
-@export var options_scene: PackedScene
+@export_file("*.tscn") var next_scene_path: String
+@export_file("*.tscn") var options_scene_path: String
 
 @onready var start_button: Button = $ColorRect/StartButton
 @onready var how_to_play_button: Button = $ColorRect/HowToPlayButton
@@ -18,8 +18,8 @@ func _ready() -> void:
 	how_to_play_overlay.closed.connect(_on_how_to_play_closed)
 
 func _on_start_button_pressed() -> void:
-	if next_scene:
-		Global.start_level(next_scene)
+	if next_scene_path:
+		Global.start_level(load(next_scene_path))
 	else:
 		visible = false
 
@@ -37,9 +37,9 @@ func _set_menu_buttons_disabled(is_disabled: bool) -> void:
 	quit_button.disabled = is_disabled
 
 func _on_options_button_pressed() -> void:
-	if options_scene:
+	if options_scene_path:
 		get_tree().paused = false
-		get_tree().change_scene_to_packed(options_scene)
+		get_tree().change_scene_to_file(options_scene_path)
 	else:
 		print("Options button clicked!")
 

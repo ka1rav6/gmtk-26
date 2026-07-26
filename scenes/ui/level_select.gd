@@ -19,7 +19,7 @@ extends Control
 		level_scenes = val
 		_rebuild_grid()
 
-@export var back_scene: PackedScene
+@export_file("*.tscn") var back_scene_path: String
 
 @onready var grid_container: GridContainer = $ColorRect/GridContainer
 @onready var back_button: Button = $ColorRect/BackButton
@@ -63,5 +63,5 @@ func _on_level_button_pressed(index: int) -> void:
 		print("Level scene not assigned for level %d" % (index + 1))
 
 func _on_back_pressed() -> void:
-	if back_scene:
-		get_tree().change_scene_to_packed(back_scene)
+	if back_scene_path:
+		get_tree().change_scene_to_file(back_scene_path)
