@@ -85,7 +85,7 @@ grab={
 [physics]
 
 3d/physics_engine="Jolt Physics"
-2d/default_gravity=1706.996
+2d/default_gravity=1200.996
 
 [rendering]
 
