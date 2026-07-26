@@ -4,17 +4,17 @@
 [ext_resource type="Script" uid="uid://cc04qw23sob1k" path="res://scenes/level_elements/moveable_saw.gd" id="2_script"]
 [ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="3_sel"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_col"]
-size = Vector2(221, 200)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ty3wx"]
+radius = 147.03061
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mouse"]
-size = Vector2(221, 200)
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3f3i"]
+radius = 156.55351
 
 [node name="MoveableSaw" type="Area2D" unique_id=998351863 groups=["selectable"]]
 script = ExtResource("2_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=221903204]
-shape = SubResource("RectangleShape2D_col")
+shape = SubResource("CircleShape2D_ty3wx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=77175463]
 
@@ -28,7 +28,7 @@ texture = ExtResource("3_sel")
 [node name="mouseCollider" type="Area2D" parent="." unique_id=1098934889]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mouseCollider" unique_id=758959166]
-shape = SubResource("RectangleShape2D_mouse")
+shape = SubResource("CircleShape2D_b3f3i")
 
 [node name="from_point" type="Marker2D" parent="." unique_id=516594154]
 

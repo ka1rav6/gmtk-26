@@ -45,7 +45,7 @@ func _schedule_pulse() -> void:
 		sight.clear_points()
 		sight.add_point(Vector2.ZERO)
 		sight.add_point(to_local(crossHair.global_position))
-		animP.play("shoot", 0.5, randf_range(0.75, 2.25))
+		animP.play("shoot", 0.5, randf_range(1.2, 2.25))
 
 
 func _physics_process(delta: float) -> void:
