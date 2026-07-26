@@ -11,7 +11,6 @@ script/source = "extends CharacterBody2D
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
 @export var MAX_HEALTH := 100
-@export var WALL_SLIDE_GRAVITY_MULT := 0.3
 @export var WALL_JUMP_KICK_MULT := 1.5
 @export var MAX_FALL_SPEED := 800.0
 @onready var bgm := $CanvasLayer/bg_display_on_mode
@@ -69,7 +68,8 @@ func release_grab() -> void:
 	if grabbed_enemy == null:
 		return
 	grabbed_enemy.reparent(get_parent())
-	grabbed_enemy.global_position = global_position + Vector2(facing_direction * 40, 0)
+	var release_pos = _resolve_release_position(global_position + Vector2(facing_direction * 40, 0))
+	grabbed_enemy.global_position = release_pos
 	var col = grabbed_enemy.get_node_or_null(\"CollisionShape2D\")
 	if col:
 		col.set_deferred(\"disabled\", false)
@@ -77,6 +77,23 @@ func release_grab() -> void:
 	grabbed_enemy.set_physics_process(true)
 	grabbed_enemy.velocity = Vector2.ZERO
 	grabbed_enemy = null
+
+func _resolve_release_position(pos: Vector2) -> Vector2:
+	var space_state = get_world_2d().direct_space_state
+	var col = grabbed_enemy.get_node_or_null(\"CollisionShape2D\")
+	if not col or not col.shape:
+		return pos
+	var resolved = pos
+	for i in range(10):
+		var params = PhysicsShapeQueryParameters2D.new()
+		params.shape = col.shape
+		params.transform = Transform2D(0, resolved)
+		params.exclude = [grabbed_enemy.get_rid()]
+		var result = space_state.intersect_shape(params, 1)
+		if result.is_empty():
+			return resolved
+		resolved += Vector2.UP * 4.0
+	return resolved
 
 func set_pause(val: bool) -> void:
 	_isTreePaused = val
@@ -91,7 +108,8 @@ func set_speed(mult: float) -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
-		release_grab()
+		if grabbed_enemy != null:
+			call_deferred(\"release_grab\")
 		var menu := get_node_or_null(\"PauseMenu\")
 		if menu:
 			menu.reparent(get_tree().current_scene)
@@ -106,8 +124,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * tDelta
-		if is_on_wall():
-			velocity.y *= WALL_SLIDE_GRAVITY_MULT
 		velocity.y = minf(velocity.y, MAX_FALL_SPEED * currentTimeFactor)
 
 	wall_jump_timer = maxf(wall_jump_timer - tDelta, 0.0)
@@ -176,8 +192,7 @@ size = Vector2(4800, 2800)
 collision_mask = 47
 script = SubResource("GDScript_su4eo")
 SPEED = 489.0
-JUMP_VELOCITY = -800.0
-WALL_SLIDE_GRAVITY_MULT = 0.7
+JUMP_VELOCITY = -600.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1371535421]
 z_index = 4

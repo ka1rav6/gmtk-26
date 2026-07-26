@@ -10,6 +10,7 @@ var currentTimeFactor := 1.0
 var onHoverScaleFactor := 1.25
 var slowDownTimeFactor := 0.1
 var isAffectedBy := 0
+var _freeze_timer: Timer = null
 
 @onready var sels: Sprite2D = $select_sprite
 @onready var mc: Area2D = $mouseCollider
@@ -53,12 +54,30 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if isAffectedBy > 0:
+				Global.toggle_all()
+				_reset_freeze_timer()
+				return
 			Global.toggle_all()
 			set_speed(slowDownTimeFactor)
 			isAffectedBy += 1
 			damage_enemies = true
-			get_tree().create_timer(5.0).timeout.connect(func():
-				if is_instance_valid(self):
-					set_speed(1.0 / slowDownTimeFactor)
-					isAffectedBy -= 1
-			)
+			_start_freeze_timer()
+
+func _start_freeze_timer() -> void:
+	_freeze_timer = Timer.new()
+	_freeze_timer.wait_time = 5.0
+	_freeze_timer.one_shot = true
+	add_child(_freeze_timer)
+	_freeze_timer.timeout.connect(func():
+		if is_instance_valid(self):
+			set_speed(1.0 / slowDownTimeFactor)
+			isAffectedBy -= 1
+	)
+	_freeze_timer.start()
+
+func _reset_freeze_timer() -> void:
+	if _freeze_timer and is_instance_valid(_freeze_timer):
+		_freeze_timer.stop()
+		_freeze_timer.queue_free()
+	_start_freeze_timer()
