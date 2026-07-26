@@ -25,8 +25,8 @@ func _on_body_entered(body: Node2D) -> void:
 		body.queue_free()
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8njf7"]
-size = Vector2(221, 200)
+[sub_resource type="CircleShape2D" id="CircleShape2D_q1mat"]
+radius = 162.6899
 
 [sub_resource type="Animation" id="Animation_kved7"]
 length = 0.001
@@ -71,7 +71,7 @@ collision_mask = 9
 script = SubResource("GDScript_fuuho")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1505100625]
-shape = SubResource("RectangleShape2D_8njf7")
+shape = SubResource("CircleShape2D_q1mat")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=940739322]
 libraries/ = SubResource("AnimationLibrary_4rrii")
