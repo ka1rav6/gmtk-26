@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://kxh4mvnfrfl" path="res://scenes/characters/enemies/Lazer.tscn" id="5_siifp"]
 [ext_resource type="PackedScene" uid="uid://b0l5lljwo4x8q" path="res://scenes/characters/enemies/crate.tscn" id="6_5opce"]
 [ext_resource type="PackedScene" uid="uid://r4qgna3qvoyh" path="res://scenes/level_elements/saw.tscn" id="7_pv2es"]
+[ext_resource type="Texture2D" uid="uid://cehlyro7l7l4b" path="res://art/deco-assets/Lamp.png" id="10_i6aa5"]
 
 [node name="level 1" type="Node2D" unique_id=1090548792]
 
@@ -60,6 +61,11 @@ position = Vector2(2008, 136)
 
 [node name="Area2D" parent="." unique_id=936476831 instance=ExtResource("7_pv2es")]
 position = Vector2(3168, 434)
+
+[node name="Lamp" type="Sprite2D" parent="." unique_id=1557128230]
+position = Vector2(1010.25, 206.1875)
+scale = Vector2(0.7499994, 0.7159095)
+texture = ExtResource("10_i6aa5")
 
 [editable path="LongLazer"]
 [editable path="LongLazer2"]

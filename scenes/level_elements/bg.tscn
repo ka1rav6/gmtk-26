@@ -11,7 +11,7 @@ scale = Vector2(1.5, 2)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=494144373]
 texture_filter = 1
-scroll_scale = Vector2(0.1, 0.1)
+scroll_scale = Vector2(0.1, 0)
 scroll_offset = Vector2(1400, 0)
 repeat_size = Vector2(1400, 0)
 repeat_times = 4
