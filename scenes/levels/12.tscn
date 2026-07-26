@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dwcy15pq33ivq"]
 
 [ext_resource type="PackedScene" uid="uid://caikyytchu28a" path="res://scenes/level_elements/destroyable_platform.tscn" id="1_2r80v"]
+[ext_resource type="PackedScene" uid="uid://cyvotpk3y0f31" path="res://scenes/level_elements/bg.tscn" id="1_jel50"]
 [ext_resource type="PackedScene" uid="uid://r1rf68rd11u" path="res://scenes/level_elements/tile_map_layer_tcent.tscn" id="2_jel50"]
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="3_sqryg"]
 [ext_resource type="PackedScene" uid="uid://cymjwe3j64qvp" path="res://scenes/characters/enemies/LongLazer.tscn" id="4_lemf0"]
@@ -9,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="7_rp2w8"]
 
 [node name="Level_12" type="Node2D" unique_id=2008316122]
+
+[node name="BG" parent="." unique_id=1674609490 instance=ExtResource("1_jel50")]
+position = Vector2(-410, -1581)
+scale = Vector2(0.5, 0.5)
 
 [node name="DestroyablePlatform" parent="." unique_id=517292022 instance=ExtResource("1_2r80v")]
 position = Vector2(661.00006, -1232)
