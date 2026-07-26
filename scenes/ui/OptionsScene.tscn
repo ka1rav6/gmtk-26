@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://iu7l6yjy2u4v"]
 
 [ext_resource type="Script" uid="uid://e0q2beou6msw" path="res://scenes/ui/options_scene.gd" id="1_script"]
-[ext_resource type="PackedScene" uid="uid://b02diyhkn2nly" path="res://scenes/ui/StartMenu.tscn" id="2_afd72"]
 
 [node name="OptionsScene" type="Control" unique_id=11597928]
 layout_mode = 3
@@ -11,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
-back_scene = ExtResource("2_afd72")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=801504026]
 layout_mode = 1

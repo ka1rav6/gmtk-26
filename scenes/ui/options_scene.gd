@@ -117,3 +117,5 @@ func _remap_action(action: String, physical_keycode: int) -> void:
 func _on_back_pressed() -> void:
 	if back_scene:
 		get_tree().change_scene_to_packed(back_scene)
+	else:
+		get_tree().change_scene_to_file("res://scenes/ui/StartMenu.tscn")
