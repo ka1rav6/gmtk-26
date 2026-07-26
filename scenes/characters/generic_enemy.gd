@@ -190,7 +190,11 @@ func _physics_process(delta: float) -> void:
 	_update_facing()
 
 func _update_facing() -> void:
-	$Sprite2D.flip_h = velocity.x < 0
+	var toflipsprite = get_node_or_null("Sprite2D")
+	if toflipsprite == null:
+		toflipsprite = get_node_or_null("AnimatedSprite2D")
+	if toflipsprite:
+		toflipsprite.flip_h = velocity.x < 0
 
 func animate(_animation_name: String) -> void:
 	pass
