@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://divwe1hmwpkej" path="res://scenes/level_elements/pass_through_platform.tscn" id="9_glw47"]
 [ext_resource type="PackedScene" uid="uid://dhsk5i7hf7tea" path="res://scenes/characters/enemies/Sniper.tscn" id="10_4wsov"]
 [ext_resource type="PackedScene" uid="uid://b0l5lljwo4x8q" path="res://scenes/characters/enemies/crate.tscn" id="11_4wsov"]
+[ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="13_my386"]
 
 [node name="Level4" type="Node2D" unique_id=134326073]
 position = Vector2(-690, -98)
@@ -97,6 +98,10 @@ position = Vector2(-130, 16)
 
 [node name="basic_enemy2" parent="TileMapLayer" unique_id=254463564 instance=ExtResource("11_4wsov")]
 position = Vector2(-239, 945)
+
+[node name="killzone" parent="." unique_id=1901614281 instance=ExtResource("13_my386")]
+position = Vector2(975, 2118)
+scale = Vector2(100, 1)
 
 [editable path="TileMapLayer/MoveableSaw"]
 [editable path="TileMapLayer/MoveableSaw2"]

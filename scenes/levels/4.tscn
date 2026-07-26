@@ -46,3 +46,7 @@ position = Vector2(1084, 633)
 
 [node name="Area2D4" parent="TileMapLayer" unique_id=499214904 instance=ExtResource("7_ibugp")]
 position = Vector2(748, 645)
+
+[node name="killzone" parent="." unique_id=686962371 instance=ExtResource("3_fiq81")]
+position = Vector2(407, 1661)
+scale = Vector2(100, 1)

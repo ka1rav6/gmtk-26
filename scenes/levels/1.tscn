@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b8i4dtjkdrtt0" path="res://scenes/level_elements/locked_portal.tscn" id="5_p8jsc"]
 [ext_resource type="PackedScene" uid="uid://kxh4mvnfrfl" path="res://scenes/characters/enemies/Lazer.tscn" id="5_vsmah"]
 [ext_resource type="PackedScene" uid="uid://hd35hg4kjdwx" path="res://scenes/levels/2.tscn" id="6_p8jsc"]
+[ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="8_ijh0y"]
 
 [node name="level 1" type="Node2D" unique_id=1090548792]
 
@@ -42,3 +43,7 @@ offset_right = 2999.0
 offset_bottom = 159.0
 scale = Vector2(1.2975085, 4.978421)
 text = "Red Portals require a blood sacrifice"
+
+[node name="killzone" parent="." unique_id=936476831 instance=ExtResource("8_ijh0y")]
+position = Vector2(786, 1468)
+scale = Vector2(100, 1)

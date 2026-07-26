@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcm11727btdpl" path="res://scenes/levels/6.tscn" id="4_ftfob"]
 [ext_resource type="PackedScene" uid="uid://r4qgna3qvoyh" path="res://scenes/level_elements/saw.tscn" id="5_ftfob"]
 [ext_resource type="PackedScene" uid="uid://b3kaq3kjlcwxg" path="res://scenes/level_elements/moveable_saw.tscn" id="6_ftfob"]
+[ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="8_p5xfs"]
 
 [node name="Level3" type="Node2D" unique_id=387417563]
 position = Vector2(1579, -154)
@@ -66,5 +67,9 @@ scale = Vector2(0.5, 0.5)
 
 [node name="to_point" parent="TileMapLayer/MoveableSaw" index="6" unique_id=1390146590]
 position = Vector2(8, -3446)
+
+[node name="killzone" parent="." unique_id=1414643485 instance=ExtResource("8_p5xfs")]
+position = Vector2(850, 1907)
+scale = Vector2(100, 1)
 
 [editable path="TileMapLayer/MoveableSaw"]
