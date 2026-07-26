@@ -8,7 +8,7 @@ enum State {
 
 var state = State.IDLE
 
-@export var dash_speed := 250.0
+@export var dash_speed := 700.0
 @export var explosion_dmg := 100
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -27,6 +27,7 @@ func _body_entered_detection_radius(body: Node) -> void:
 	if state != State.IDLE:
 		return
 	state = State.DASH
+	sprite.modulate = Color.CRIMSON
 	explosion_timer.start()
 
 func explode() -> void:
@@ -82,6 +83,6 @@ func _physics_process(delta: float) -> void:
 	if state != State.EXPLOSION:
 		if sprite.animation != "idle":
 			sprite.play("idle")
-		sprite.rotation += velocity.x * delta / 100.0
+		sprite.rotation += velocity.x * delta / 10.0
 
 	super._physics_process(delta)

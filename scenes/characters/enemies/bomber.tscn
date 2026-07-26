@@ -55,16 +55,17 @@ radius = 200.0
 radius = 150.0
 
 [node name="Bomber" type="CharacterBody2D" unique_id=890417041 node_paths=PackedStringArray("line", "sels", "mc") groups=["selectable"]]
-script = ExtResource("1_0scq7")
 collision_layer = 8
 collision_mask = 43
+script = ExtResource("1_0scq7")
 line = NodePath("ShootDir")
 sels = NodePath("select_sprite")
 mc = NodePath("mouseCollider")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1715483146]
 texture_filter = 1
-scale = Vector2(0.1, 0.1)
+position = Vector2(3.100003, 3.4500031)
+scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_jyttb")
 animation = &"idle"
 
