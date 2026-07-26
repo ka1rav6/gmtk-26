@@ -178,6 +178,7 @@ size = Vector2(4800, 2800)
 [node name="Player" type="CharacterBody2D" unique_id=687081500 groups=["Player"]]
 collision_mask = 47
 script = SubResource("GDScript_su4eo")
+SPEED = 500.0
 JUMP_VELOCITY = -600.0
 WALL_SLIDE_GRAVITY_MULT = 0.9
 
@@ -216,7 +217,7 @@ shape = SubResource("RectangleShape2D_8njf7")
 
 [node name="PauseMenu" parent="." unique_id=1875723097 instance=ExtResource("2_pause")]
 
-[node name="PlayerHUD" parent="." instance=ExtResource("3_hud")]
+[node name="PlayerHUD" parent="." unique_id=1994374791 instance=ExtResource("3_hud")]
 
 [connection signal="body_entered" from="activeArea" to="." method="_on_active_area_body_entered"]
 [connection signal="body_exited" from="activeArea" to="." method="_on_active_area_body_exited"]
