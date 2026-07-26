@@ -7,7 +7,6 @@ extends CharacterBody2D
 @export var WALL_JUMP_SPEED: float = 650.0
 @export var WALL_JUMP_DURATION: float = 0.7
 @export var MAX_FALL_SPEED: float = 800.0
-@export var WALL_SLIDE_GRAVITY_MULT: float = 0.3
 
 @onready var bgm: Sprite2D = $CanvasLayer/bg_display_on_mode
 @onready var actArea: Area2D = $activeArea
@@ -146,8 +145,6 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * tDelta
 		velocity.y = minf(velocity.y, MAX_FALL_SPEED * currentTimeFactor)
-		if is_on_wall():
-			velocity.y *= WALL_SLIDE_GRAVITY_MULT
 
 	wall_jump_timer = max(wall_jump_timer - tDelta, 0.0)
 	if Input.is_action_just_pressed("jump"):

@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cnhtp17pmr1e7"]
 
 [ext_resource type="PackedScene" uid="uid://r1rf68rd11u" path="res://scenes/level_elements/tile_map_layer_tcent.tscn" id="1_0udwi"]
+[ext_resource type="PackedScene" uid="uid://cyvotpk3y0f31" path="res://scenes/level_elements/bg.tscn" id="1_kpjit"]
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="2_ansyy"]
 [ext_resource type="PackedScene" uid="uid://df6e63hfdtyn1" path="res://scenes/characters/enemies/melee_enemy.tscn" id="4_6japv"]
 [ext_resource type="PackedScene" uid="uid://b8i4dtjkdrtt0" path="res://scenes/level_elements/locked_portal.tscn" id="5_p8jsc"]
@@ -14,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cehlyro7l7l4b" path="res://art/deco-assets/Lamp.png" id="12_0ejwr"]
 
 [node name="level 1" type="Node2D" unique_id=1090548792]
+
+[node name="BG" parent="." unique_id=1674609490 instance=ExtResource("1_kpjit")]
 
 [node name="TileMapLayer" parent="." unique_id=1783266238 instance=ExtResource("1_0udwi")]
 z_index = 1

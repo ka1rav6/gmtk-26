@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://hd35hg4kjdwx"]
 
+[ext_resource type="PackedScene" uid="uid://cyvotpk3y0f31" path="res://scenes/level_elements/bg.tscn" id="1_fnalb"]
 [ext_resource type="PackedScene" uid="uid://r1rf68rd11u" path="res://scenes/level_elements/tile_map_layer_tcent.tscn" id="1_wo638"]
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="2_joqyv"]
 [ext_resource type="PackedScene" uid="uid://divwe1hmwpkej" path="res://scenes/level_elements/pass_through_platform.tscn" id="3_4b66w"]
@@ -17,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://5bbinu4mpnxq" path="res://art/deco-assets/tree.png" id="15_7lk5s"]
 
 [node name="Node2D" type="Node2D" unique_id=861412764]
+
+[node name="BG" parent="." unique_id=1674609490 instance=ExtResource("1_fnalb")]
 
 [node name="TileMapLayer" parent="." unique_id=1783266238 instance=ExtResource("1_wo638")]
 z_index = 1

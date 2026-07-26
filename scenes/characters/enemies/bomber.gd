@@ -10,6 +10,7 @@ var state = State.IDLE
 
 @export var dash_speed := 700.0
 @export var explosion_dmg := 100
+@export var explosion_size := 2
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var explosion_radius: Area2D = $Explosion_radius
@@ -41,7 +42,9 @@ func explode() -> void:
 	for body in explosion_radius.get_overlapping_bodies():
 		if body != self and body.has_method("take_damage"):
 			targets.append(body)
-
+	
+	var tween = create_tween()
+	tween.tween_property(sprite,"scale",Vector2(explosion_size,explosion_size),0.15)
 	sprite.play("explosion")
 	await sprite.animation_finished
 

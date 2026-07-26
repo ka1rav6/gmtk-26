@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://drud1dyqn4ew8"]
 
 [ext_resource type="PackedScene" uid="uid://r1rf68rd11u" path="res://scenes/level_elements/tile_map_layer_tcent.tscn" id="1_8xqld"]
+[ext_resource type="PackedScene" uid="uid://cyvotpk3y0f31" path="res://scenes/level_elements/bg.tscn" id="1_q1k55"]
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="2_g2h2n"]
 [ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="3_fiq81"]
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="5_qpwj6"]
@@ -16,6 +17,9 @@ tile_map_data = PackedByteArray("AAAiAPf/AAAKAAEAAAAiAPb/AAAKAAEAAAAiAPX/AAAKAAE
 [node name="Area2D" parent="TileMapLayer2" unique_id=936476831 instance=ExtResource("3_fiq81")]
 position = Vector2(1189.907, 900.3984)
 scale = Vector2(6.6401057, 1.3280212)
+[node name="BG" parent="TileMapLayer" unique_id=1674609490 instance=ExtResource("1_q1k55")]
+position = Vector2(-1, 0)
+
 
 [node name="Player2" parent="TileMapLayer2" unique_id=424179130 instance=ExtResource("2_g2h2n")]
 position = Vector2(531.2085, 301.46082)

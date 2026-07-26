@@ -56,7 +56,6 @@ _data = {
 
 [node name="Player" parent="." unique_id=687081500 instance=ExtResource("1_h0hot")]
 position = Vector2(232, 16)
-WALL_JUMP_KICK_MULT = 3.0
 
 [node name="basic_enemy" parent="." unique_id=512232861 instance=ExtResource("2_yluh8")]
 position = Vector2(976, -56)

@@ -1,6 +1,6 @@
 extends "res://scenes/characters/generic_enemy.gd"
 
-@export var MAX_FALL_SPEED : int = 100
+@export var MAX_FALL_SPEED : int = 600
 
 func _ready():
 	super._ready()

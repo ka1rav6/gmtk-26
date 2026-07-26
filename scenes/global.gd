@@ -27,11 +27,8 @@ func _ready() -> void:
 	refresh_player()
 	throwDistance = 150
 	elixir = max_elixir
-	get_tree().connect("scene_changed", Callable(self, "_on_scene_changed"))
 	setup_level_timer_if_needed()
 
-func _on_scene_changed(_new_scene: Node) -> void:
-	setup_level_timer_if_needed()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -78,6 +75,7 @@ func start_level(level_scene: PackedScene) -> void:
 	reset_state()
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(level_scene)
+	setup_level_timer_if_needed.call_deferred()
 
 # Restarts whatever level is currently running, fresh, regardless of
 # whether it's paused or the player has already died.
@@ -85,6 +83,7 @@ func restart_current_level() -> void:
 	reset_state()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+	setup_level_timer_if_needed.call_deferred()
 
 func setup_level_timer_if_needed() -> void:
 	if not is_instance_valid(get_tree().current_scene):
