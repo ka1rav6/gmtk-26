@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdy42ogfcjo80" path="res://scenes/characters/enemies/long_laser_enemy.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="2_selected"]
+[ext_resource type="Texture2D" uid="uid://cpsu4crrdr6ip" path="res://art/longlaser.png" id="3_longlaser"]
 
 [sub_resource type="Gradient" id="Gradient_body"]
 offsets = PackedFloat32Array(0.10452962, 0.42771083, 0.5903614, 0.88850176)
@@ -25,7 +26,8 @@ sels = NodePath("select_sprite")
 mc = NodePath("mouseCollider")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1525407341]
-texture = SubResource("GradientTexture2D_body"11)
+texture = ExtResource("3_longlaser")
+scale = Vector2(0.11, 0.)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=583840138]
 shape = SubResource("RectangleShape2D_body")
