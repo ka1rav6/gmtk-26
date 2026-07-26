@@ -3,12 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://ihcus5gs8b1s" path="res://scenes/levels/level_test.tscn" id="2_xr47m"]
 [ext_resource type="PackedScene" path="res://scenes/ui/HowToPlayOverlay.tscn" id="howtoplay_overlay"]
 [ext_resource type="Script" uid="uid://71ek2iu26fu4" path="res://scenes/ui/start_menu.gd" id="start_menu_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/OptionsScene.tscn" id="4_options"]
 
 [node name="StartMenu" type="CanvasLayer" unique_id=90173304]
 process_mode = 3
 layer = 100
 script = ExtResource("start_menu_script")
 next_scene = ExtResource("2_xr47m")
+options_scene = ExtResource("4_options")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=652741435]
 anchors_preset = 15

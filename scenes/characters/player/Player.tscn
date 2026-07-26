@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://17e0yruel2ss" path="res://art/temp frame.png" id="1_db84v"]
 [ext_resource type="PackedScene" uid="uid://b53uc5e68os2d" path="res://scenes/ui/PauseMenu.tscn" id="2_pause"]
+[ext_resource type="PackedScene" path="res://scenes/ui/PlayerHUD.tscn" id="3_hud"]
 
 [sub_resource type="GDScript" id="GDScript_su4eo"]
 script/source = "extends CharacterBody2D
@@ -214,6 +215,8 @@ visible = false
 shape = SubResource("RectangleShape2D_8njf7")
 
 [node name="PauseMenu" parent="." unique_id=1875723097 instance=ExtResource("2_pause")]
+
+[node name="PlayerHUD" parent="." instance=ExtResource("3_hud")]
 
 [connection signal="body_entered" from="activeArea" to="." method="_on_active_area_body_entered"]
 [connection signal="body_exited" from="activeArea" to="." method="_on_active_area_body_exited"]

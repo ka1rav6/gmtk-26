@@ -16,6 +16,7 @@ extends CharacterBody2D
 @export var mc : Area2D = null
 
 @onready var tmrScene: PackedScene = preload("res://scenes/characters/timer_node.tscn")
+@onready var healthBarScene: PackedScene = preload("res://scenes/characters/helpers/HealthBar.tscn")
 @onready var health:= MAX_HEALTH
 
 var currentTimeFactor := 1.0
@@ -27,6 +28,7 @@ var isAffectedBy := 0
 var isThrown := false
 var is_grabbed := false
 var _kill_counted := false
+const REF_GRAVITY: float = 980.0
 
 func _ready() -> void:
 	Global.enemy_count += 1
@@ -45,6 +47,10 @@ func _ready() -> void:
 	mc.mouse_exited.connect(_on_mouse_collider_mouse_exited)
 	if Global.powerMode:
 		currentTimeFactor = Global.ULTRAINSTINCT_SLOWDOWN
+	var hb = healthBarScene.instantiate()
+	hb.enemy = self
+	hb.position = Vector2(0, -35)
+	add_child(hb)
 
 
 func toggle_sprite() -> void:
@@ -66,6 +72,12 @@ func set_speed(mult: float) -> void:
 	currentTimeFactor *= mult
 	if mult < 1.0:
 		velocity *= mult
+
+func _gravity_compensation() -> float:
+	var g = get_gravity().length()
+	if g <= 0.0:
+		return 1.0
+	return sqrt(g / REF_GRAVITY)
 
 func _exit_tree() -> void:
 	if not _kill_counted:
@@ -108,7 +120,7 @@ func throw() -> void:
 	var throw_power = power
 	if currentTimeFactor >= 1.0:
 		throw_power *= (1.0 / Global.ULTRAINSTINCT_SLOWDOWN)
-	velocity += drag * throw_power
+	velocity += drag * throw_power * _gravity_compensation()
 	currentTimeFactor = 1.0
 	move_and_slide()
 	isThrown = true
@@ -119,7 +131,7 @@ func update_trajectory() -> void:
 	var drag = global_position - get_global_mouse_position()
 	if drag.length() > max_drag:
 		drag = drag.normalized() * max_drag
-	var vel2 = (velocity + drag * power) * (1.0 / Global.ULTRAINSTINCT_SLOWDOWN)
+	var vel2 = (velocity + drag * power * _gravity_compensation()) * (1.0 / Global.ULTRAINSTINCT_SLOWDOWN)
 
 	var simpos = Vector2.ZERO
 	var step_dt = 0.25
@@ -169,5 +181,5 @@ func _physics_process(delta: float) -> void:
 		animate('jump')
 	move_and_slide()
 	
-func animate(animation_name: String) -> void:
+func animate(_animation_name: String) -> void:
 	pass
