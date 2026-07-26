@@ -156,7 +156,7 @@ func trigger_level_timeout() -> void:
 	else:
 		get_tree().paused = true
 		print("Level timeout without a player instance")
-
+	
 func toggle_all() -> void:
 	refresh_player()
 	if not powerMode and elixir <= 0:

@@ -3,10 +3,8 @@ extends CharacterBody2D
 @export var SPEED: float = 300.0
 @export var JUMP_VELOCITY: float = -400.0
 @export var MAX_HEALTH: int = 100
-@export var WALL_JUMP_ANGLE: float = 45.0
-@export var WALL_JUMP_SPEED: float = 650.0
-@export var WALL_JUMP_DURATION: float = 0.7
-@export var MAX_FALL_SPEED: float = 800.0
+@export var WALL_SLIDE_GRAVITY_MULT: float = 0.3
+@export var WALL_JUMP_KICK_MULT: float = 1.5
 @export var GRAB_DISTANCE: float = 75.0
 
 @onready var bgm: Sprite2D = $CanvasLayer/bg_display_on_mode
@@ -90,7 +88,8 @@ func show_game_over() -> void:
 	var menu = get_node_or_null("PauseMenu")
 	if menu:
 		menu.reparent(get_tree().current_scene)
-		menu.show_death_screen()
+		menu.visible = true
+		get_tree().paused = true
 	queue_free()
 
 func trigger_game_over() -> void:
@@ -145,18 +144,17 @@ func _physics_process(delta: float) -> void:
 	var tJumpVelocity: float = JUMP_VELOCITY * sqrt(currentTimeFactor)
 	if not is_on_floor():
 		velocity += get_gravity() * tDelta
-		velocity.y = minf(velocity.y, MAX_FALL_SPEED * currentTimeFactor)
+		if is_on_wall():
+			velocity.y *= WALL_SLIDE_GRAVITY_MULT
 
 	wall_jump_timer = max(wall_jump_timer - tDelta, 0.0)
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = tJumpVelocity
 		elif is_on_wall():
-			var angle_rad = deg_to_rad(WALL_JUMP_ANGLE)
-			var jump_magnitude = WALL_JUMP_SPEED * sqrt(currentTimeFactor)
-			velocity.x = get_wall_normal().x * cos(angle_rad) * jump_magnitude
-			velocity.y = -sin(angle_rad) * jump_magnitude
-			wall_jump_timer = WALL_JUMP_DURATION
+			velocity.y = tJumpVelocity
+			velocity.x = get_wall_normal().x * tSpeed * WALL_JUMP_KICK_MULT
+			wall_jump_timer = 0.7
 			wall_jump_direction = get_wall_normal().x
 
 	if Input.is_action_just_pressed("down") and not is_on_floor():
@@ -168,7 +166,7 @@ func _physics_process(delta: float) -> void:
 	if wall_jump_timer > 0.0:
 		var toward_wall: float = sign(direction) == -sign(wall_jump_direction)
 		if direction != 0.0 and toward_wall:
-			velocity.x = move_toward(velocity.x, 0, tSpeed * (WALL_JUMP_DURATION - wall_jump_timer))
+			velocity.x = move_toward(velocity.x, 0, tSpeed * (0.7 - wall_jump_timer))
 		elif direction:
 			velocity.x = direction * tSpeed
 		else:

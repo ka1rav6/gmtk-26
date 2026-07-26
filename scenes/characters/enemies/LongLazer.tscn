@@ -25,7 +25,7 @@ sels = NodePath("select_sprite")
 mc = NodePath("mouseCollider")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1525407341]
-texture = SubResource("GradientTexture2D_body")
+texture = SubResource("GradientTexture2D_body"11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=583840138]
 shape = SubResource("RectangleShape2D_body")
