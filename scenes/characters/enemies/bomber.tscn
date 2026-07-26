@@ -46,40 +46,41 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyttb"]
-radius = 97.04638
+radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dyrki"]
-radius = 529.81885
+radius = 200.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yopjt"]
-radius = 240.85889
+radius = 150.0
 
-[node name="Bomber" type="CharacterBody2D" unique_id=890417041 node_paths=PackedStringArray("line", "sels", "mc")]
+[node name="Bomber" type="CharacterBody2D" unique_id=890417041 node_paths=PackedStringArray("line", "sels", "mc") groups=["selectable"]]
 script = ExtResource("1_0scq7")
+collision_layer = 8
+collision_mask = 43
 line = NodePath("ShootDir")
 sels = NodePath("select_sprite")
 mc = NodePath("mouseCollider")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1715483146]
 texture_filter = 1
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_jyttb")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281111138]
-position = Vector2(-14, -17)
 shape = SubResource("CircleShape2D_jyttb")
 
 [node name="Detection_radius" type="Area2D" parent="." unique_id=259387586]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_radius" unique_id=338824990]
-position = Vector2(-15, -13)
 shape = SubResource("CircleShape2D_dyrki")
 
 [node name="Explosion_radius" type="Area2D" parent="." unique_id=34766761]
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion_radius" unique_id=265960365]
-position = Vector2(-15, -15)
 shape = SubResource("CircleShape2D_yopjt")
 
 [node name="explode_time" type="Timer" parent="." unique_id=551819674]
@@ -88,12 +89,11 @@ wait_time = 1.5
 [node name="mouseCollider" type="Area2D" parent="." unique_id=107711320]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mouseCollider" unique_id=1098004983]
-position = Vector2(-14, -17)
 shape = SubResource("CircleShape2D_jyttb")
 
 [node name="ShootDir" type="Line2D" parent="." unique_id=2022557861]
 
 [node name="select_sprite" type="Sprite2D" parent="." unique_id=164749493]
-position = Vector2(-14, -12)
-scale = Vector2(0.25, 0.25)
+visible = false
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_5jqwb")

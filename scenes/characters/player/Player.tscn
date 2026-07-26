@@ -13,6 +13,7 @@ script/source = "extends CharacterBody2D
 @export var MAX_HEALTH := 100
 @export var WALL_SLIDE_GRAVITY_MULT := 0.3
 @export var WALL_JUMP_KICK_MULT := 1.5
+@export var MAX_FALL_SPEED := 800.0
 @onready var bgm := $CanvasLayer/bg_display_on_mode
 @onready var actArea := $activeArea
 @onready var currentTimeFactor := 1.0
@@ -107,6 +108,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * tDelta
 		if is_on_wall():
 			velocity.y *= WALL_SLIDE_GRAVITY_MULT
+		velocity.y = minf(velocity.y, MAX_FALL_SPEED * currentTimeFactor)
 
 	wall_jump_timer = maxf(wall_jump_timer - tDelta, 0.0)
 	# Handle jump.
@@ -173,9 +175,9 @@ size = Vector2(4800, 2800)
 [node name="Player" type="CharacterBody2D" unique_id=687081500 groups=["Player"]]
 collision_mask = 47
 script = SubResource("GDScript_su4eo")
-SPEED = 500.0
+SPEED = 489.0
 JUMP_VELOCITY = -600.0
-WALL_SLIDE_GRAVITY_MULT = 0.9
+WALL_SLIDE_GRAVITY_MULT = 0.7
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1371535421]
 z_index = 4
