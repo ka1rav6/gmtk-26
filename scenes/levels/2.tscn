@@ -38,8 +38,8 @@ nextLevel = ExtResource("8_uyxho")
 
 [node name="LongLazer" parent="." unique_id=1671628358 instance=ExtResource("8_3io2x")]
 position = Vector2(1428, 1168)
-on_duration = 0.25
-off_duration = 0.25
+on_duration = 0.5
+off_duration = 0.5
 
 [node name="Target" parent="LongLazer" index="2" unique_id=1652668192]
 position = Vector2(0, -512)

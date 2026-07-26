@@ -20,6 +20,7 @@ var isAffectedBy := 0
 var COUNTDOWN_HEIGHT := 60
 
 var _enemy_dead := false
+var _freeze_timer_node: Node = null
 
 var _beam_active := false
 var _cycle_time_remaining := 0.0
@@ -99,13 +100,14 @@ func set_speed(mult: float) -> void:
 	if mult < 1.0:
 		velocity *= mult
 
-func CreateTimer(time: int, functi: Callable):
+func CreateTimer(time: int, functi: Callable) -> Node:
 	var x = tmrScene.instantiate()
 	x.time = time
 	x.cb = functi 
 	x.height = COUNTDOWN_HEIGHT
 	add_child(x)
 	x.global_position = global_position
+	return x
 
 func _tf() -> void:
 	if currentTimeFactor < 1.0:
@@ -118,7 +120,13 @@ func _tf() -> void:
 func _on_mouse_input(_vp: Node, event: InputEvent, _idx: int) -> void:
 	if not Global.powerMode: return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if isAffectedBy > 0:
+			Global.toggle_all()
+			if _freeze_timer_node and is_instance_valid(_freeze_timer_node):
+				_freeze_timer_node.queue_free()
+			_freeze_timer_node = CreateTimer(5, Callable(self, "_tf"))
+			return
 		Global.toggle_all()
 		set_speed(slowDownTimeFactor)
 		isAffectedBy += 1
-		CreateTimer(5, Callable(self, "_tf"))
+		_freeze_timer_node = CreateTimer(5, Callable(self, "_tf"))
