@@ -4,6 +4,8 @@
 
 addons/
 
+AGENTS.md
+
 # Godot-specific ignores
 .import/
 export.cfg
