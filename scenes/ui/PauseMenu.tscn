@@ -1,29 +1,26 @@
-[gd_scene format=3 uid="uid://pause_menu"]
+[gd_scene format=3 uid="uid://b53uc5e68os2d"]
 
+[ext_resource type="PackedScene" uid="uid://cwqpxe48ooixl" path="res://scenes/ui/HowToPlayOverlay.tscn" id="howtoplay_overlay"]
 [ext_resource type="Script" uid="uid://cqfyj5v82504k" path="res://scenes/ui/pause_menu.gd" id="pause_menu_script"]
-[ext_resource type="PackedScene" path="res://scenes/ui/HowToPlayOverlay.tscn" id="howtoplay_overlay"]
 
-[node name="PauseMenu" type="CanvasLayer"]
-layer = 100
+[node name="PauseMenu" type="CanvasLayer" unique_id=1165446629]
 process_mode = 3
+layer = 100
+visible = false
 script = ExtResource("pause_menu_script")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1061351389]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-anchor_left = 0.0
-anchor_top = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.03, 0.01, 0.1, 0.85)
 
-[node name="TitleLabel" type="Label" parent="ColorRect"]
-anchors_preset = 5
+[node name="TitleLabel" type="Label" parent="ColorRect" unique_id=1269375124]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-anchor_top = 0.0
-anchor_bottom = 0.0
 offset_left = -300.0
 offset_top = 150.0
 offset_right = 300.0
@@ -35,8 +32,8 @@ text = "Game Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="ColorRect"]
-anchors_preset = 5
+[node name="ResumeButton" type="Button" parent="ColorRect" unique_id=1963909484]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -120.0
@@ -47,8 +44,8 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 20
 text = "▶  Resume"
 
-[node name="RestartButton" type="Button" parent="ColorRect"]
-anchors_preset = 5
+[node name="RestartButton" type="Button" parent="ColorRect" unique_id=1768808049]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -120.0
@@ -59,8 +56,8 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 20
 text = "⟲  Restart"
 
-[node name="HowToPlayButton" type="Button" parent="ColorRect"]
-anchors_preset = 5
+[node name="HowToPlayButton" type="Button" parent="ColorRect" unique_id=1583911510]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -120.0
@@ -71,8 +68,8 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 18
 text = "?  How to Play"
 
-[node name="OptionsButton" type="Button" parent="ColorRect"]
-anchors_preset = 5
+[node name="OptionsButton" type="Button" parent="ColorRect" unique_id=1964959956]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -120.0
@@ -83,8 +80,8 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 18
 text = "⚙  Options"
 
-[node name="QuitButton" type="Button" parent="ColorRect"]
-anchors_preset = 5
+[node name="QuitButton" type="Button" parent="ColorRect" unique_id=1231016926]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -120.0
@@ -95,4 +92,4 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 18
 text = "✕  Quit Game"
 
-[node name="HowToPlayOverlay" parent="." instance=ExtResource("howtoplay_overlay")]
+[node name="HowToPlayOverlay" parent="." unique_id=1227519802 instance=ExtResource("howtoplay_overlay")]

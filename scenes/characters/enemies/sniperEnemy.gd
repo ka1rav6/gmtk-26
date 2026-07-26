@@ -23,7 +23,18 @@ func _schedule_pulse() -> void:
 		return
 	if (not isShooting) && (Global.player.global_position - global_position).length_squared() < 100000000.0:
 		isShooting = true
-		playerPos = Global.player.global_position
+		var dir = (Global.player.global_position - global_position).normalized()
+		var space = get_world_2d().direct_space_state
+		var mask := (collision_mask | 1) & ~32
+		var params := PhysicsRayQueryParameters2D.create(
+			global_position, global_position + dir * 2000.0, mask)
+		params.exclude = [get_rid()]
+		var hit := space.intersect_ray(params)
+		if hit.is_empty():
+			playerPos = global_position + dir * 2000.0
+		else:
+			playerPos = hit.position
+
 		crossHair.reparent(get_parent())
 		crossHair.global_position = playerPos
 		crossHair.visible = true

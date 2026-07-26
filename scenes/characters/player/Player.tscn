@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8xvf6qyd5m1m"]
 
 [ext_resource type="Texture2D" uid="uid://17e0yruel2ss" path="res://art/temp frame.png" id="1_db84v"]
-[ext_resource type="PackedScene" path="res://scenes/ui/PauseMenu.tscn" id="2_pause"]
+[ext_resource type="PackedScene" uid="uid://b53uc5e68os2d" path="res://scenes/ui/PauseMenu.tscn" id="2_pause"]
 
 [sub_resource type="GDScript" id="GDScript_su4eo"]
 script/source = "extends CharacterBody2D
@@ -58,7 +58,7 @@ func try_grab() -> void:
 	grabbed_enemy.velocity = Vector2.ZERO
 	var col = grabbed_enemy.get_node_or_null(\"CollisionShape2D\")
 	if col:
-		col.disabled = true
+		col.set_deferred(\"disabled\", true)
 	if grabbed_enemy.get(\"_kill_counted\") != null:
 		grabbed_enemy._kill_counted = true
 		Global.kill_count -= 1
@@ -72,7 +72,7 @@ func release_grab() -> void:
 	grabbed_enemy.global_position = global_position + Vector2(facing_direction * 40, 0)
 	var col = grabbed_enemy.get_node_or_null(\"CollisionShape2D\")
 	if col:
-		col.disabled = false
+		col.set_deferred(\"disabled\", false)
 	grabbed_enemy.is_grabbed = false
 	grabbed_enemy.set_physics_process(true)
 	grabbed_enemy.velocity = Vector2.ZERO
@@ -197,6 +197,7 @@ drag_horizontal_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=527054487]
 layer = 100
+visible = false
 
 [node name="bg_display_on_mode" type="Sprite2D" parent="CanvasLayer" unique_id=1490776435]
 texture = ExtResource("1_db84v")

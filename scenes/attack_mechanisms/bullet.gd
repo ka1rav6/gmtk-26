@@ -20,7 +20,7 @@ func _ready() -> void:
 	mc.input_event.connect(_on_input_event)
 	mc.mouse_entered.connect(_on_mouse_entered)
 	mc.mouse_exited.connect(_on_mouse_exited)
-	get_tree().create_timer(3.0).timeout.connect(queue_free)
+	get_tree().create_timer(30.0).timeout.connect(queue_free)
 	if Global.powerMode:
 		set_speed(Global.ULTRAINSTINCT_SLOWDOWN)
 	toggle_sprite()

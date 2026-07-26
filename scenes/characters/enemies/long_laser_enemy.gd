@@ -10,10 +10,14 @@ extends CharacterBody2D
 @export var sels: Sprite2D
 @export var mc: Area2D
 
+@onready var tmrScene: PackedScene = preload("res://scenes/characters/timer_node.tscn")
+
 var health: int
 var currentTimeFactor := 1.0
 var slowDownTimeFactor := 0.1
 var is_grabbed := true # Prevents player from grabbing
+var isAffectedBy := 0
+var COUNTDOWN_HEIGHT := 60
 
 var _beam_active := false
 var _cycle_time_remaining := 0.0
@@ -25,8 +29,8 @@ func _ready() -> void:
 	health = MAX_HEALTH
 	Global.enemy_count += 1
 	if is_instance_valid(mc):
-		mc.mouse_entered.connect(func(): sels.scale *= 1.25)
-		mc.mouse_exited.connect(func(): sels.scale /= 1.25)
+		mc.mouse_entered.connect(func(): if is_instance_valid(sels): sels.scale *= 1.25)
+		mc.mouse_exited.connect(func(): if is_instance_valid(sels): sels.scale /= 1.25)
 		mc.input_event.connect(_on_mouse_input)
 	_start_off_cycle()
 
@@ -91,9 +95,29 @@ func toggle_sprite() -> void:
 
 func set_speed(mult: float) -> void:
 	currentTimeFactor *= mult
+	if mult < 1.0:
+		velocity *= mult
+
+func CreateTimer(time: int, functi: Callable):
+	var x = tmrScene.instantiate()
+	x.time = time
+	x.cb = functi 
+	x.height = COUNTDOWN_HEIGHT
+	add_child(x)
+	x.global_position = global_position
+
+func _tf() -> void:
+	if currentTimeFactor < 1.0:
+		if Global.powerMode:
+			currentTimeFactor = Global.ULTRAINSTINCT_SLOWDOWN
+		else:
+			currentTimeFactor = 1.0
+	isAffectedBy -= 1
 
 func _on_mouse_input(_vp: Node, event: InputEvent, _idx: int) -> void:
 	if not Global.powerMode: return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		Global.toggle_all()
 		set_speed(slowDownTimeFactor)
+		isAffectedBy += 1
+		CreateTimer(5, Callable(self, "_tf"))

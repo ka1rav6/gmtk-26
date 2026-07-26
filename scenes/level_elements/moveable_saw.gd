@@ -6,7 +6,6 @@ extends Area2D
 @export var onHoverScaleFactor := 1.25
 
 @onready var animP: AnimationPlayer = $AnimationPlayer
-@onready var spinAnimP: AnimationPlayer = $SpinAnimationPlayer
 @onready var from_point: Marker2D = $from_point
 @onready var to_point: Marker2D = $to_point
 @onready var sels: Sprite2D = $select_sprite
@@ -18,14 +17,16 @@ var isAffectedBy := 0
 
 func _ready() -> void:
 	add_to_group("selectable")
-	# mc.input_event.connect(_on_mouse_collider_input_event)
 	mc.mouse_entered.connect(_on_mouse_collider_mouse_entered)
 	mc.mouse_exited.connect(_on_mouse_collider_mouse_exited)
-	spinAnimP.play("saw_animation")
 	_build_movement()
 	if Global.powerMode:
 		set_speed(Global.ULTRAINSTINCT_SLOWDOWN)
 	toggle_sprite()
+
+
+func _process(delta: float) -> void:
+	$Sprite2D.rotation += 4.0 * delta * currentTimeFactor
 
 
 func _build_movement() -> void:
@@ -56,7 +57,6 @@ func toggle_sprite() -> void:
 func set_speed(mult: float) -> void:
 	currentTimeFactor *= mult
 	animP.speed_scale = currentTimeFactor
-	spinAnimP.speed_scale = currentTimeFactor
 
 
 func _on_mouse_collider_mouse_entered() -> void:

@@ -3,4 +3,5 @@
 [ext_resource type="TileSet" uid="uid://lorrgp765jlg" path="res://non-art_assets/new_tile_set.tres" id="1_88pex"]
 
 [node name="TileMapLayer" type="TileMapLayer" unique_id=1783266238]
+scale = Vector2(0.753, 0.753)
 tile_set = ExtResource("1_88pex")
