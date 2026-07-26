@@ -170,7 +170,6 @@ collision_mask = 47
 script = ExtResource("player_script")
 SPEED = 500.0
 JUMP_VELOCITY = -600.0
-WALL_SLIDE_GRAVITY_MULT = 0.9
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1371535421]
 z_index = 4

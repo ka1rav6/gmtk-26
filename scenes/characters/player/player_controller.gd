@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var SPEED: float = 300.0
 @export var JUMP_VELOCITY: float = -400.0
 @export var MAX_HEALTH: int = 100
-@export var WALL_SLIDE_GRAVITY_MULT: float = 0.3
 @export var WALL_JUMP_KICK_MULT: float = 1.5
 @export var GRAB_DISTANCE: float = 75.0
 
@@ -88,8 +87,14 @@ func show_game_over() -> void:
 	var menu = get_node_or_null("PauseMenu")
 	if menu:
 		menu.reparent(get_tree().current_scene)
-		menu.visible = true
-		get_tree().paused = true
+		menu.show_death_screen()
+		var timer = Timer.new()
+		timer.wait_time = 1.5
+		timer.one_shot = true
+		timer.process_mode = Node.PROCESS_MODE_ALWAYS
+		timer.timeout.connect(func(): Global.restart_current_level())
+		get_tree().current_scene.add_child(timer)
+		timer.start()
 	queue_free()
 
 func trigger_game_over() -> void:
@@ -144,8 +149,6 @@ func _physics_process(delta: float) -> void:
 	var tJumpVelocity: float = JUMP_VELOCITY * sqrt(currentTimeFactor)
 	if not is_on_floor():
 		velocity += get_gravity() * tDelta
-		if is_on_wall():
-			velocity.y *= WALL_SLIDE_GRAVITY_MULT
 
 	wall_jump_timer = max(wall_jump_timer - tDelta, 0.0)
 	if Input.is_action_just_pressed("jump"):

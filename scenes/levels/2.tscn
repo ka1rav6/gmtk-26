@@ -9,14 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://b0l5lljwo4x8q" path="res://scenes/characters/enemies/crate.tscn" id="6_ctqvy"]
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="7_yqrfs"]
 [ext_resource type="PackedScene" uid="uid://cymjwe3j64qvp" path="res://scenes/characters/enemies/LongLazer.tscn" id="8_3io2x"]
-[ext_resource type="PackedScene" uid="uid://qkmetoqvr6pd" path="res://scenes/levels/3.tscn" id="8_uyxho"]
+[ext_resource type="PackedScene" uid="uid://yb1n7lubjnmp" path="res://scenes/levels/5.tscn" id="9_i33xw"]
 [ext_resource type="Texture2D" uid="uid://cehlyro7l7l4b" path="res://art/deco-assets/Lamp.png" id="10_js46e"]
 [ext_resource type="Texture2D" uid="uid://bnvvqkuertxw0" path="res://art/deco-assets/Grass v4.png" id="11_64ba3"]
+[ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="11_sipdq"]
 [ext_resource type="Texture2D" uid="uid://dfehw17t05jm1" path="res://art/deco-assets/Grass v3.png" id="12_i33xw"]
 [ext_resource type="Texture2D" uid="uid://dfgvjnqtvojev" path="res://art/deco-assets/Grass v2.png" id="13_76eh3"]
 [ext_resource type="Texture2D" uid="uid://j0giqrg28ct8" path="res://art/deco-assets/Grass v1.png" id="14_pcsq5"]
 [ext_resource type="Texture2D" uid="uid://5bbinu4mpnxq" path="res://art/deco-assets/tree.png" id="15_7lk5s"]
-[ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="11_sipdq"]
 
 [node name="Node2D" type="Node2D" unique_id=861412764]
 
@@ -45,7 +45,7 @@ position = Vector2(1176, -32)
 
 [node name="portal" parent="." unique_id=1524441498 instance=ExtResource("7_yqrfs")]
 position = Vector2(2864, -24)
-nextLevel = ExtResource("8_uyxho")
+nextLevel = ExtResource("9_i33xw")
 
 [node name="LongLazer" parent="." unique_id=1671628358 instance=ExtResource("8_3io2x")]
 position = Vector2(1745, 534)
@@ -193,6 +193,7 @@ texture = ExtResource("11_64ba3")
 [node name="GrassV27" type="Sprite2D" parent="." unique_id=519543525]
 position = Vector2(1077, 1069)
 texture = ExtResource("12_i33xw")
+
 [node name="killzone" parent="." unique_id=936476831 instance=ExtResource("11_sipdq")]
 position = Vector2(190, 1316)
 scale = Vector2(100, 1)
