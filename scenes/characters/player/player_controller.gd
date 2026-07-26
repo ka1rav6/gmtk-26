@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var WALL_JUMP_SPEED: float = 650.0
 @export var WALL_JUMP_DURATION: float = 0.7
 @export var MAX_FALL_SPEED: float = 800.0
+@export var GRAB_DISTANCE: float = 75.0
 
 @onready var bgm: Sprite2D = $CanvasLayer/bg_display_on_mode
 @onready var actArea: Area2D = $activeArea
@@ -38,7 +39,7 @@ func _process(_delta: float) -> void:
 func try_grab() -> void:
 	var enemies: Array[Node] = get_tree().get_nodes_in_group("selectable")
 	var closest: CollisionObject2D
-	var closest_dist_sq: float = float(Global.throwDistance) ** 2.0
+	var closest_dist_sq: float = GRAB_DISTANCE ** 2.0
 	for enemy in enemies:
 		if not is_instance_valid(enemy) or enemy.get("is_grabbed"):
 			continue

@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bnvvqkuertxw0" path="res://art/deco-assets/Grass v4.png" id="10_g3chb"]
 [ext_resource type="Texture2D" uid="uid://5bbinu4mpnxq" path="res://art/deco-assets/tree.png" id="11_lfn86"]
 [ext_resource type="Texture2D" uid="uid://cehlyro7l7l4b" path="res://art/deco-assets/Lamp.png" id="12_0ejwr"]
+[ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="8_ijh0y"]
 
 [node name="level 1" type="Node2D" unique_id=1090548792]
 
@@ -50,6 +51,7 @@ offset_bottom = 159.0
 scale = Vector2(1.2975085, 4.978421)
 text = "Red Portals require a blood sacrifice"
 
+<<<<<<< HEAD
 [node name="GrassV1" type="Sprite2D" parent="." unique_id=260194816]
 position = Vector2(1551.5, 312.5)
 texture = ExtResource("7_kekgo")
@@ -636,3 +638,8 @@ texture = ExtResource("7_kekgo")
 [node name="GrassV139" type="Sprite2D" parent="." unique_id=429612143]
 position = Vector2(860, 247)
 texture = ExtResource("8_576tg")
+=======
+[node name="killzone" parent="." unique_id=936476831 instance=ExtResource("8_ijh0y")]
+position = Vector2(786, 1468)
+scale = Vector2(100, 1)
+>>>>>>> b1f8dddba6695be5bbe33bd966613bb8d7e5250d

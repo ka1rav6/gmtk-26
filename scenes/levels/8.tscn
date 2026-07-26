@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://r1rf68rd11u" path="res://scenes/level_elements/tile_map_layer_tcent.tscn" id="1_78kjj"]
 [ext_resource type="PackedScene" uid="uid://divwe1hmwpkej" path="res://scenes/level_elements/pass_through_platform.tscn" id="1_ibrdf"]
+[ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="1_jh4i8"]
 [ext_resource type="PackedScene" uid="uid://cyvotpk3y0f31" path="res://scenes/level_elements/bg.tscn" id="1_v7p68"]
 [ext_resource type="PackedScene" path="res://scenes/characters/enemies/gunner_enemy.tscn" id="3_qedpi"]
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="4_veeug"]
@@ -9,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://gsmpavco23kr" path="res://scenes/levels/9.tscn" id="6_logfc"]
 
 [node name="8" type="Node2D" unique_id=1780797476]
+
+[node name="killzone" parent="." unique_id=936476831 instance=ExtResource("1_jh4i8")]
+position = Vector2(229, 1759)
+scale = Vector2(100, 1)
 
 [node name="BG" parent="." unique_id=1674609490 instance=ExtResource("1_v7p68")]
 

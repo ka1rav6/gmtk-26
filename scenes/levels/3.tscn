@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://berxsoguxvgf8" path="res://scenes/characters/enemies/basic_enemy.tscn" id="5_6761a"]
 [ext_resource type="PackedScene" uid="uid://b8i4dtjkdrtt0" path="res://scenes/level_elements/locked_portal.tscn" id="5_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://drud1dyqn4ew8" path="res://scenes/levels/4.tscn" id="6_oc4kc"]
+[ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="8_s5tjy"]
 
 [node name="Level1" type="Node2D" unique_id=213221670]
 position = Vector2(1233, -935)
@@ -41,3 +42,7 @@ offset_right = 1112.0
 offset_bottom = -717.0
 text = "This level is the starting level 
 no need to kill the lazer just have to kill 3 meleee and this will also have the tutorial for the game on how to throw enemies and use our ability and all. "
+
+[node name="killzone" parent="." unique_id=936476831 instance=ExtResource("8_s5tjy")]
+position = Vector2(919, 2143)
+scale = Vector2(100, 1)

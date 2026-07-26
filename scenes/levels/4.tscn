@@ -53,3 +53,7 @@ scale = Vector2(1.3280212, 1.3280212)
 [node name="Area2D4" parent="TileMapLayer2" unique_id=499214904 instance=ExtResource("7_ibugp")]
 position = Vector2(994.68787, 856.57367)
 scale = Vector2(1.3280212, 1.3280212)
+
+[node name="killzone" parent="." unique_id=686962371 instance=ExtResource("3_fiq81")]
+position = Vector2(407, 1661)
+scale = Vector2(100, 1)

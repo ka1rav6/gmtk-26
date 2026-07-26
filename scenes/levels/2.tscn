@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dfgvjnqtvojev" path="res://art/deco-assets/Grass v2.png" id="13_76eh3"]
 [ext_resource type="Texture2D" uid="uid://j0giqrg28ct8" path="res://art/deco-assets/Grass v1.png" id="14_pcsq5"]
 [ext_resource type="Texture2D" uid="uid://5bbinu4mpnxq" path="res://art/deco-assets/tree.png" id="15_7lk5s"]
+[ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="11_sipdq"]
 
 [node name="Node2D" type="Node2D" unique_id=861412764]
 
@@ -192,5 +193,8 @@ texture = ExtResource("11_64ba3")
 [node name="GrassV27" type="Sprite2D" parent="." unique_id=519543525]
 position = Vector2(1077, 1069)
 texture = ExtResource("12_i33xw")
+[node name="killzone" parent="." unique_id=936476831 instance=ExtResource("11_sipdq")]
+position = Vector2(190, 1316)
+scale = Vector2(100, 1)
 
 [editable path="LongLazer"]

@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://csgvedge027r6"]
 
 [ext_resource type="PackedScene" uid="uid://r1rf68rd11u" path="res://scenes/level_elements/tile_map_layer_tcent.tscn" id="1_5f2d8"]
+[ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="1_8xjyh"]
 [ext_resource type="PackedScene" uid="uid://cyvotpk3y0f31" path="res://scenes/level_elements/bg.tscn" id="1_jkjun"]
 [ext_resource type="PackedScene" uid="uid://8xvf6qyd5m1m" path="res://scenes/characters/player/Player.tscn" id="2_jkjun"]
 [ext_resource type="PackedScene" uid="uid://caikyytchu28a" path="res://scenes/level_elements/destroyable_platform.tscn" id="3_8xjyh"]
@@ -15,6 +16,10 @@
 [node name="Level4" type="Node2D" unique_id=134326073]
 position = Vector2(-690, -98)
 
+[node name="killzone" parent="." unique_id=936476831 instance=ExtResource("1_8xjyh")]
+position = Vector2(554, 2399)
+scale = Vector2(100, 1)
+
 [node name="BG" parent="." unique_id=1674609490 instance=ExtResource("1_jkjun")]
 
 [node name="TileMapLayer2" parent="." unique_id=1783266238 instance=ExtResource("1_5f2d8")]
@@ -23,7 +28,7 @@ tile_map_data = PackedByteArray("AAApADcAAAALAAIAAAApADYAAAALAAEAAAApADUAAAALAAE
 [node name="Player" parent="." unique_id=687081500 instance=ExtResource("2_jkjun")]
 position = Vector2(971, 1377)
 
-[node name="Area2D" parent="." unique_id=936476831 instance=ExtResource("6_fd21f")]
+[node name="Area2D" parent="." unique_id=801797993 instance=ExtResource("6_fd21f")]
 position = Vector2(-272, 1936.0001)
 scale = Vector2(3, 3)
 
