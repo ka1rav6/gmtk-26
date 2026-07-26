@@ -25,15 +25,15 @@ position = Vector2(-501, 34)
 position = Vector2(-295, 754)
 scale = Vector2(7, 1)
 
-[node name="DestroyablePlatform5" parent="TileMapLayer" unique_id=2077341854 instance=ExtResource("3_w6h2s")]
+[node name="DestroyablePlatform5" parent="TileMapLayer" unique_id=1012864105 instance=ExtResource("3_w6h2s")]
 position = Vector2(-295, 1011)
 scale = Vector2(7, 1)
 
-[node name="DestroyablePlatform2" parent="TileMapLayer" unique_id=2052403087 instance=ExtResource("3_w6h2s")]
+[node name="DestroyablePlatform2" parent="TileMapLayer" unique_id=1299810873 instance=ExtResource("3_w6h2s")]
 position = Vector2(-298, 349)
 scale = Vector2(7, 1)
 
-[node name="DestroyablePlatform3" parent="TileMapLayer" unique_id=2146601990 instance=ExtResource("3_w6h2s")]
+[node name="DestroyablePlatform3" parent="TileMapLayer" unique_id=1280784114 instance=ExtResource("3_w6h2s")]
 position = Vector2(-282, 91)
 scale = Vector2(7, 1)
 
@@ -45,28 +45,28 @@ nextLevel = ExtResource("6_ts8eg")
 position = Vector2(-304, 1576)
 scale = Vector2(3, 3)
 
-[node name="MoveableSaw" parent="TileMapLayer" unique_id=1059859440 instance=ExtResource("8_um320")]
+[node name="MoveableSaw" parent="TileMapLayer" unique_id=1671754387 instance=ExtResource("8_um320")]
 position = Vector2(294, 1116)
 scale = Vector2(0.3, 0.3)
 
-[node name="to_point" parent="TileMapLayer/MoveableSaw" index="5"]
+[node name="to_point" parent="TileMapLayer/MoveableSaw" index="7"]
 position = Vector2(-6.6666565, -1426.6666)
 
-[node name="MoveableSaw2" parent="TileMapLayer" unique_id=1679852255 instance=ExtResource("8_um320")]
+[node name="MoveableSaw2" parent="TileMapLayer" unique_id=1743546511 instance=ExtResource("8_um320")]
 position = Vector2(686, 1132)
 scale = Vector2(0.3, 0.3)
 
-[node name="to_point" parent="TileMapLayer/MoveableSaw2" index="5"]
+[node name="to_point" parent="TileMapLayer/MoveableSaw2" index="7"]
 position = Vector2(-6.6666565, -1426.6666)
 
-[node name="MoveableSaw3" parent="TileMapLayer" unique_id=421907003 instance=ExtResource("8_um320")]
+[node name="MoveableSaw3" parent="TileMapLayer" unique_id=990810760 instance=ExtResource("8_um320")]
 position = Vector2(489, 683)
 scale = Vector2(0.3, 0.3)
 
-[node name="to_point" parent="TileMapLayer/MoveableSaw3" index="5"]
+[node name="to_point" parent="TileMapLayer/MoveableSaw3" index="7"]
 position = Vector2(-6.6666565, 1513.3334)
 
-[node name="LongLazer" parent="TileMapLayer" unique_id=527624059 instance=ExtResource("8_ts8eg")]
+[node name="LongLazer" parent="TileMapLayer" unique_id=1671628358 instance=ExtResource("8_ts8eg")]
 position = Vector2(132, 280)
 
 [node name="CollisionShape2D" parent="TileMapLayer/LongLazer" index="1" unique_id=583840138]
@@ -75,22 +75,24 @@ position = Vector2(-3, -3)
 [node name="Target" parent="TileMapLayer/LongLazer" index="2" unique_id=1652668192]
 position = Vector2(-946, -5)
 
-[node name="LongLazer2" parent="TileMapLayer" unique_id=1437285215 instance=ExtResource("8_ts8eg")]
+[node name="LongLazer2" parent="TileMapLayer" unique_id=1597676919 instance=ExtResource("8_ts8eg")]
 position = Vector2(-703, 679)
 
 [node name="Target" parent="TileMapLayer/LongLazer2" index="2" unique_id=1652668192]
 position = Vector2(822, 10)
 
 [node name="PassThroughPlatform" parent="TileMapLayer" unique_id=805281583 instance=ExtResource("9_glw47")]
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(-290, -220)
+scale = Vector2(0.7, 0.7)
 
 [node name="sniper" parent="TileMapLayer" unique_id=512232861 instance=ExtResource("10_4wsov")]
 position = Vector2(-290, -296)
 
-[node name="basic_enemy" parent="TileMapLayer" unique_id=119105096 instance=ExtResource("11_4wsov")]
+[node name="basic_enemy" parent="TileMapLayer" unique_id=680935181 instance=ExtResource("11_4wsov")]
 position = Vector2(-130, 16)
 
-[node name="basic_enemy2" parent="TileMapLayer" unique_id=655531048 instance=ExtResource("11_4wsov")]
+[node name="basic_enemy2" parent="TileMapLayer" unique_id=254463564 instance=ExtResource("11_4wsov")]
 position = Vector2(-239, 945)
 
 [editable path="TileMapLayer/MoveableSaw"]
