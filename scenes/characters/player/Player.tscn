@@ -168,9 +168,13 @@ size = Vector2(4800, 2800)
 [node name="Player" type="CharacterBody2D" unique_id=687081500 groups=["Player"]]
 collision_mask = 47
 script = ExtResource("player_script")
-SPEED = 500.0
+SPEED = 489.0
 JUMP_VELOCITY = -600.0
-WALL_SLIDE_GRAVITY_MULT = 0.9
+MAX_HEALTH = 100
+WALL_JUMP_ANGLE = 35.0
+WALL_JUMP_SPEED = 1100.0
+WALL_JUMP_DURATION = 0.5
+MAX_FALL_SPEED = 800.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1371535421]
 z_index = 4
