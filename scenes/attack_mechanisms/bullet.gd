@@ -66,7 +66,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 func _start_freeze_timer() -> void:
 	_freeze_timer = Timer.new()
-	_freeze_timer.wait_time = 5.0
+	_freeze_timer.wait_time = Global.freeze_duration
 	_freeze_timer.one_shot = true
 	add_child(_freeze_timer)
 	_freeze_timer.timeout.connect(func():

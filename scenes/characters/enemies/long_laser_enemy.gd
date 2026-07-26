@@ -124,9 +124,9 @@ func _on_mouse_input(_vp: Node, event: InputEvent, _idx: int) -> void:
 			Global.toggle_all()
 			if _freeze_timer_node and is_instance_valid(_freeze_timer_node):
 				_freeze_timer_node.queue_free()
-			_freeze_timer_node = CreateTimer(5, Callable(self, "_tf"))
+			_freeze_timer_node = CreateTimer(Global.freeze_duration, Callable(self, "_tf"))
 			return
 		Global.toggle_all()
 		set_speed(slowDownTimeFactor)
 		isAffectedBy += 1
-		_freeze_timer_node = CreateTimer(5, Callable(self, "_tf"))
+		_freeze_timer_node = CreateTimer(Global.freeze_duration, Callable(self, "_tf"))

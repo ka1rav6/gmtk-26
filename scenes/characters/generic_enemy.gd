@@ -151,14 +151,14 @@ func _on_mouse_collider_input_event(_viewport: Node, event: InputEvent, _shape_i
 				Global.toggle_all()
 				if _freeze_timer_node and is_instance_valid(_freeze_timer_node):
 					_freeze_timer_node.queue_free()
-				_freeze_timer_node = CreateTimer(5, Callable(self, "_tf"))
+				_freeze_timer_node = CreateTimer(Global.freeze_duration, Callable(self, "_tf"))
 				return
 			if Global.elixir >= Global.enemy_freeze_elixir_cost:
 				Global.elixir -= Global.enemy_freeze_elixir_cost
 				Global.toggle_all()
 				set_speed(slowDownTimeFactor)
 				isAffectedBy += 1
-				_freeze_timer_node = CreateTimer(5, Callable(self, "_tf"))
+				_freeze_timer_node = CreateTimer(Global.freeze_duration, Callable(self, "_tf"))
 		elif event.button_index == MOUSE_BUTTON_RIGHT and (Global.player.global_position - global_position).length_squared() < (Global.throwDistance**2):
 			if event.is_released() and dragging:
 				Global.toggle_all()

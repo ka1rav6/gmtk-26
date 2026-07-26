@@ -12,6 +12,7 @@ var elixir := 100.0
 var elixir_gain_speed := 20.0
 var power_mode_drain_rate := 30.0
 var enemy_freeze_elixir_cost := 25.0
+var freeze_duration := 10.0
 const ULTRAINSTINCT_SLOWDOWN = 0.1
 const LEVEL_TIME_LIMIT := 100.0
 

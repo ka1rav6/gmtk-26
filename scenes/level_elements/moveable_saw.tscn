@@ -11,6 +11,8 @@ radius = 147.03061
 radius = 156.55351
 
 [node name="MoveableSaw" type="Area2D" unique_id=998351863 groups=["selectable"]]
+collision_layer = 16
+collision_mask = 9
 script = ExtResource("2_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=221903204]
