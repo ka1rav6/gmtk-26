@@ -1,7 +1,25 @@
 [gd_scene format=3 uid="uid://r1rf68rd11u"]
 
 [ext_resource type="TileSet" uid="uid://lorrgp765jlg" path="res://non-art_assets/new_tile_set.tres" id="1_88pex"]
+[ext_resource type="Texture2D" uid="uid://o8vyet7rg0f5" path="res://art/background/background_var_1/bg1.svg" id="2_pjfqw"]
+[ext_resource type="Texture2D" uid="uid://bpovseq162qd7" path="res://art/background/background_var_1/bg.svg" id="3_ghmr3"]
 
 [node name="TileMapLayer" type="TileMapLayer" unique_id=1783266238]
 scale = Vector2(0.753, 0.753)
 tile_set = ExtResource("1_88pex")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=411279862]
+layer = -2147483648
+
+[node name="Parallax2D" type="Parallax2D" parent="CanvasLayer" unique_id=516965781]
+scroll_scale = Vector2(0.1, 0.1)
+
+[node name="Bg1" type="Sprite2D" parent="CanvasLayer/Parallax2D" unique_id=937361707]
+texture = ExtResource("2_pjfqw")
+
+[node name="Parallax2D2" type="Parallax2D" parent="CanvasLayer" unique_id=1053087402]
+scroll_scale = Vector2(0.2, 0.2)
+
+[node name="Bg1" type="Sprite2D" parent="CanvasLayer/Parallax2D2" unique_id=1324752662]
+scale = Vector2(1.6652046, 1)
+texture = ExtResource("3_ghmr3")

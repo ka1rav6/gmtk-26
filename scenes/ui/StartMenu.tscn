@@ -7,6 +7,8 @@
 process_mode = 3
 layer = 100
 script = ExtResource("start_menu_script")
+next_scene_path = "uid://1r57aanhwmd0"
+options_scene_path = "uid://iu7l6yjy2u4v"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=652741435]
 anchors_preset = 15

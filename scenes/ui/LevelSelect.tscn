@@ -21,6 +21,7 @@ script = ExtResource("1_level_select")
 num_levels = 20
 columns = 5
 level_scenes = Array[PackedScene]([ExtResource("2_td270"), ExtResource("3_y7m5q"), ExtResource("2_tyiyf"), ExtResource("5_kj5cj"), ExtResource("6_kgix2"), ExtResource("7_wtv7g"), ExtResource("8_wtv7g"), ExtResource("9_ourel"), null, null, null, null, null, null, null, null, null, null, null, null])
+back_scene_path = "uid://b02diyhkn2nly"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=738577082]
 layout_mode = 1
