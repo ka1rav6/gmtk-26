@@ -17,7 +17,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="DestroyablePlatform" parent="." unique_id=517292022 instance=ExtResource("1_2r80v")]
 position = Vector2(661.00006, -1232)
-rotation = 1.5707964
+rotation = -1.5707964
 scale = Vector2(5, 1.667)
 
 [node name="TileMapLayer" parent="." unique_id=1783266238 instance=ExtResource("2_jel50")]

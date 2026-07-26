@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://kfeya6dvslxy"
-=======
-uid="uid://dg04sqpprht5r"
->>>>>>> 29624cd (-)
-path="res://.godot/imported/laser.png-582b25a39cfa4d8d29e6ed18abfee315.ctex"
+uid="uid://cisn2fuccmf5r"
+path="res://.godot/imported/gem.png-c016273987aace0e891a96bbf0d94d62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/laser.png"
-dest_files=["res://.godot/imported/laser.png-582b25a39cfa4d8d29e6ed18abfee315.ctex"]
+source_file="res://art/gem.png"
+dest_files=["res://.godot/imported/gem.png-c016273987aace0e891a96bbf0d94d62.ctex"]
 
 [params]
 
