@@ -32,7 +32,7 @@ script = ExtResource("1_ulutc")
 
 [node name="select_sprite" type="Sprite2D" parent="." unique_id=269152621]
 visible = false
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_v4f75")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=154427481]

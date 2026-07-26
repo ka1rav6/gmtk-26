@@ -27,7 +27,7 @@ mc = NodePath("mouseCollider")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1525407341]
 texture = ExtResource("3_longlaser")
-scale = Vector2(0.11, 0.)
+scale = Vector2(0.11, 0.11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=583840138]
 shape = SubResource("RectangleShape2D_body")
