@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cymjwe3j64qvp" path="res://scenes/characters/enemies/LongLazer.tscn" id="7_8aoj4"]
 [ext_resource type="PackedScene" path="res://scenes/characters/enemies/gunner_enemy.tscn" id="8_q04di"]
 [ext_resource type="PackedScene" uid="uid://3ydcser1r0v4" path="res://scenes/level_elements/portal.tscn" id="9_vriqm"]
+[ext_resource type="PackedScene" uid="uid://dwcy15pq33ivq" path="res://scenes/levels/12.tscn" id="10_l0o5w"]
 
 [node name="10" type="Node2D" unique_id=2084787642]
 
@@ -71,6 +72,7 @@ position = Vector2(151, 2592)
 
 [node name="portal" parent="." unique_id=1524441498 instance=ExtResource("9_vriqm")]
 position = Vector2(726, 7319)
+nextLevel = ExtResource("10_l0o5w")
 
 [editable path="saws/MoveableSaw"]
 [editable path="enemies/LongLazer"]
