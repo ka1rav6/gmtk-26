@@ -19,7 +19,8 @@
 [node name="level 1" type="Node2D" unique_id=1090548792]
 
 [node name="BG" parent="." unique_id=1674609490 instance=ExtResource("1_4m6j3")]
-position = Vector2(0, 300)
+z_index = -2
+position = Vector2(512, -839)
 
 [node name="TileMapLayer" parent="." unique_id=1783266238 instance=ExtResource("1_snhpm")]
 z_index = 1
