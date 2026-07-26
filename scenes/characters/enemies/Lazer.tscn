@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ca35m23fge551" path="res://scenes/characters/enemies/laserEnemy.gd" id="1_ulutc"]
 [ext_resource type="Texture2D" uid="uid://dr20vf6x70sab" path="res://art/object_selected.png" id="2_v4f75"]
 [ext_resource type="Texture2D" uid="uid://fcvrcoy55y13" path="res://art/big big dot.png" id="3_v4f75"]
+[ext_resource type="Texture2D" uid="uid://k7ejy0surlox" path="res://art/laser.png" id="3_laser"]
 
 [sub_resource type="Gradient" id="Gradient_wuwo8"]
 offsets = PackedFloat32Array(0.10452962, 0.42771083, 0.5903614, 0.88850176)
@@ -31,11 +32,12 @@ script = ExtResource("1_ulutc")
 
 [node name="select_sprite" type="Sprite2D" parent="." unique_id=269152621]
 visible = false
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_v4f75")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=154427481]
-texture = SubResource("GradientTexture2D_8njf7"11)
+texture = ExtResource("3_laser")
+scale = Vector2(0.11, 0.11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1100398884]
 shape = SubResource("RectangleShape2D_8njf7")
