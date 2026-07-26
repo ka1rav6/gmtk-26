@@ -4,7 +4,7 @@ var damage:= 30
 var damage_enemies:=true
 var direction:= Vector2.RIGHT
 var SPEED:= 0
-var ignore_body: Node2D = null
+var ignore_body: Node2D
 var currentTimeFactor := 1.0
 
 var onHoverScaleFactor := 1.25

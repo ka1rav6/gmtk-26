@@ -11,9 +11,9 @@ extends CharacterBody2D
 @export var power := 2.0
 @export var friction := 1.0
 @export var max_drag := 50.0
-@export var line : Line2D = null
-@export var sels : Sprite2D = null
-@export var mc : Area2D = null
+@export var line : Line2D
+@export var sels : Sprite2D
+@export var mc : Area2D
 
 @onready var tmrScene: PackedScene = preload("res://scenes/characters/timer_node.tscn")
 @onready var healthBarScene: PackedScene = preload("res://scenes/characters/helpers/HealthBar.tscn")

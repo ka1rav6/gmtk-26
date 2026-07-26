@@ -57,26 +57,26 @@ func _update_attack(tDelta: float) -> void:
 	_state_time += tDelta
 	match _state:
 		State.CHASE:
-			weapon_pivot.rotation = lerp_angle(weapon_pivot.rotation, REST_ANGLE, minf(tDelta * 8.0, 1.0))
+			weapon_pivot.rotation = lerp_angle(weapon_pivot.rotation, REST_ANGLE, min(tDelta * 8.0, 1.0))
 			if _in_attack_range() and not isThrown and not is_grabbed:
 				_state = State.WINDUP
 				_state_time = 0.0
 				_hit_this_swing = false
 				_set_hitbox_active(true)
 		State.WINDUP:
-			weapon_pivot.rotation = lerp_angle(REST_ANGLE, WINDUP_ANGLE, minf(_state_time / WINDUP_TIME, 1.0))
+			weapon_pivot.rotation = lerp_angle(REST_ANGLE, WINDUP_ANGLE, min(_state_time / WINDUP_TIME, 1.0))
 			if _state_time >= WINDUP_TIME:
 				_state = State.SWING
 				_state_time = 0.0
 		State.SWING:
-			weapon_pivot.rotation = lerp_angle(WINDUP_ANGLE, SWING_ANGLE, minf(_state_time / SWING_TIME, 1.0))
+			weapon_pivot.rotation = lerp_angle(WINDUP_ANGLE, SWING_ANGLE, min(_state_time / SWING_TIME, 1.0))
 			_try_hit()
 			if _state_time >= SWING_TIME:
 				_state = State.RECOVER
 				_state_time = 0.0
 				_set_hitbox_active(false)
 		State.RECOVER:
-			weapon_pivot.rotation = lerp_angle(SWING_ANGLE, REST_ANGLE, minf(_state_time / RECOVER_TIME, 1.0))
+			weapon_pivot.rotation = lerp_angle(SWING_ANGLE, REST_ANGLE, min(_state_time / RECOVER_TIME, 1.0))
 			if _state_time >= RECOVER_TIME:
 				_state = State.CHASE
 				_state_time = 0.0
