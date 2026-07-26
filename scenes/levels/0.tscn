@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://j0giqrg28ct8" path="res://art/deco-assets/Grass v1.png" id="14_5dpwo"]
 [ext_resource type="Texture2D" uid="uid://dfgvjnqtvojev" path="res://art/deco-assets/Grass v2.png" id="15_4v5sm"]
 [ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="16_6kgux"]
+[ext_resource type="Texture2D" uid="uid://beymc1tg241m3" path="res://art/WhatsApp Image 2026-07-26 at 21.30.25.jpeg" id="17_2e6b6"]
 
 [node name="level 1" type="Node2D" unique_id=1090548792]
 
@@ -130,6 +131,28 @@ texture = ExtResource("13_2e6b6")
 [node name="killzone" parent="." unique_id=1098182603 instance=ExtResource("16_6kgux")]
 position = Vector2(190, 1316)
 scale = Vector2(100, 1)
+
+[node name="WhatsAppImage20260726At21_30_25" type="Sprite2D" parent="." unique_id=925361907]
+position = Vector2(-77, -75)
+scale = Vector2(0.39768335, 0.44666666)
+texture = ExtResource("17_2e6b6")
+region_enabled = true
+region_rect = Rect2(250, 259, 259, 150)
+
+[node name="Label" type="Label" parent="." unique_id=1927653709]
+offset_left = -11.0
+offset_top = -104.0
+offset_right = 164.0
+offset_bottom = -55.0
+text = "E -> enter power mode
+q -> Grab"
+
+[node name="Label2" type="Label" parent="." unique_id=1955642877]
+offset_left = 2329.0
+offset_top = -82.0
+offset_right = 2412.0
+offset_bottom = -59.0
+text = "wall jump?"
 
 [editable path="LongLazer"]
 [editable path="LongLazer2"]
