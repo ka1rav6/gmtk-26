@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bq1x8dobvxllh" path="res://scenes/level_elements/killzone.tscn" id="8_s5tjy"]
 
 [node name="Level1" type="Node2D" unique_id=213221670]
-position = Vector2(1233, -935)
 
 [node name="BG" parent="." unique_id=1674609490 instance=ExtResource("1_2n3hm")]
 
